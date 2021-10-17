@@ -62,7 +62,9 @@ function LogIn() {
                             </div>
                             <Form noValidate onSubmit={handleSubmit}>
                                 <Form.Group controlId="email">
+                                    <Form.Label className="form-label w-100">Email</Form.Label>
                                     <Form.Control 
+                                        className="rounded"
                                         type="text" 
                                         name="email" 
                                         value={values.email} 
@@ -74,7 +76,9 @@ function LogIn() {
                                 </Form.Group>
 
                                 <Form.Group controlId="password">
-                                    <Form.Control 
+                                    <Form.Label className="form-label w-100">Password</Form.Label>
+                                    <Form.Control
+                                        className="rounded" 
                                         type="password" 
                                         name="password" 
                                         value={values.password} 
