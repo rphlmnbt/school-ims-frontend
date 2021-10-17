@@ -18,7 +18,7 @@ p.form-title {
 }
 
 .extend-height {
-    min-height: calc(100vh - 205px);
+    min-height: calc(100vh - 95px);
 }
 
 #info {
