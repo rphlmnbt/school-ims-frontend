@@ -8,7 +8,7 @@
 .footer-items {
     text-align: center;
     color: white;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Raleway', sans-serif;
     padding-bottom: 20px;
 }
 
@@ -28,7 +28,7 @@
     border:none;
     border-radius: 0%;
     text-align: center;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Raleway', sans-serif;
 }
 
 .btn.subscribe-btn:hover {
