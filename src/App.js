@@ -14,7 +14,6 @@ function App() {
           <Route exact path="/acadbase/logIn" component={LogIn} />
           <Redirect from="" to="/acadbase/logIn"/>
         </Switch>
-        <Footer/>
       </Router>
     </div>
   );
