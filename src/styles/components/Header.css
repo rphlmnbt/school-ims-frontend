@@ -1,0 +1,47 @@
+.navbar {
+    background-color: #710E1D;
+}
+
+.btn.custom-btn {
+    font-family: 'Roboto', sans-serif;
+    border: none;
+    color: #D9D9D9;
+    background-color: rgba(0,0,0,0);
+}
+
+a.btn.custom-btn.active.btn-primary, a.btn.custom-btn.active.btn-primary:active  {
+    color: #D9D9D9;
+    background-color: rgba(0,0,0,0);
+    border: none;
+}
+
+a.btn.custom-btn.active.btn-primary:hover {
+    color: #710E1D;
+    background-color: #D9D9D9;
+}
+
+
+div.mr-auto.navbar-nav a.item-style.nav-link {
+    color: #D9D9D9;
+    font-weight: 500;
+}
+
+a.dropdown-item.active, a.dropdown-item:active {
+    background-color: rgb(85,85,85);
+    color: white;
+}
+
+#basic-nav-dropdown#basic-nav-dropdown {
+    color: rgba(255,255,255,.8)
+}
+.color-bar {
+    background-color: gray;
+    height: 5px;
+}
+
+.brand-label {
+    color:white;
+    font-family: 'Raleway';
+    letter-spacing: 3px;
+    font-weight: 600;
+}
