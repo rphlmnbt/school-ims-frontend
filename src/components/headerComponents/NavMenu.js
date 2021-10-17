@@ -15,6 +15,9 @@ function NavMenu() {
                             style={{padding : "5px"}}
                             height={"80px"}
                         />
+                        <span className="brand-label">
+                            ACADBASE
+                        </span>
                     </Navbar.Brand>
                 <Nav  className="mr-auto">
                 </Nav>
