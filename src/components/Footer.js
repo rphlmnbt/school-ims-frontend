@@ -2,8 +2,8 @@ import React from 'react'
 import { Container, Row } from 'react-bootstrap'
 import '../styles/components/Footer.css'
 import SocialIcons from './footerComponents/SocialIcons'
-import Subscribe from './footerComponents/Subscribe'
 import NeedAssistance from './footerComponents/NeedAssistance'
+import Copyright from './footerComponents/Copyright'
 
 
 
@@ -13,8 +13,8 @@ function Footer() {
         <Container className="footer" >
             <Row>
                 <SocialIcons />
-                <Subscribe />
                 <NeedAssistance />
+                <Copyright />
             </Row>
         </Container>
     )

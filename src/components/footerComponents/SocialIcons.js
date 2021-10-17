@@ -8,7 +8,7 @@ function SocialIcons() {
         <Col lg={4} className="footer-items">
             STAY CONNECTED
             <br/>
-            <div className="mt-3">
+            <div className="mt-1">
                 <IconContext.Provider value={{size:"20px", style: {marginLeft: "10px", marginRight:"10px"}}}>
                     <FaTwitter />
                     <FaFacebook />

@@ -1,20 +1,20 @@
 import React from 'react'
 import { Col } from 'react-bootstrap'
 
-function NeedAssistance() {
-    return(
+function Copyright() {
+    return (
         <Col lg={4} className="footer-items">
-            NEED ASSISTANCE?
+            COPYRIGHT
             <br/>
             <div className="mt-1">
                 <div className="footer-text">
-                    acadbase@gmail.com
+                    All rights reserved, 2021. 
                     <br />
-                    (123-456-789)
+                    MS. A, Philippines.
                 </div>
             </div>
         </Col>
     )
 }
 
-export default NeedAssistance
+export default Copyright
