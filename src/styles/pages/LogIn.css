@@ -31,3 +31,9 @@ p.form-title {
     letter-spacing: 3px;
     font-weight: 600;
 }
+
+.form-label {
+    text-align: left;
+    font-family: 'Raleway';
+    font-weight: 600;
+}
