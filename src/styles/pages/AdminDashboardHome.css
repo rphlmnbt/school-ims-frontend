@@ -7,8 +7,11 @@
 }
 
 .boxInfo {
-    float: left;
-    font-size: 25px;
+    
     background-color:white;
 }
 
+p {
+    float: left;
+    font-size: 25px;
+}
