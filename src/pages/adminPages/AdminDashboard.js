@@ -1,14 +1,14 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
-import Sidebar from '../components/sideBarcomponents/Sidebar'
+import AdminDashboardHome from './AdminDashboardHome'
 
 function AdminDashboard() {
 
     return (
         <>
             <Router>
-                <Sidebar />
                 <Switch>
+                    <AdminDashboardHome />
                 </Switch>
             </Router>
         </>

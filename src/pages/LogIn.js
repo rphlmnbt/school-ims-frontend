@@ -6,14 +6,23 @@ import { IconContext } from 'react-icons/lib'
 import '../styles/pages/LogIn.css'
 import schema from '../schemas/login.schema'
 import logo from '../pseudoDb/acadbase-logo.png'
+import { useHistory  } from 'react-router-dom';
 
 function LogIn() {
     const formRef = useRef()
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const history = useHistory();
 
+    sessionStorage.setItem("logged",false); 
+    console.log(sessionStorage.getItem("logged"));
 
+    function loggedIn() {
+        sessionStorage.setItem("logged",true);              
+        let path = `/acadbase/AdminDashboard`; 
+        history.push(path);
+    }
 
     return (
         <Formik
@@ -92,6 +101,7 @@ function LogIn() {
                                         variant="primary btn-block" 
                                         type="submit" 
                                         className="submit-btn mt-5"
+                                        onClick={loggedIn}
                                     >
                                         Log In
                                 </Button>

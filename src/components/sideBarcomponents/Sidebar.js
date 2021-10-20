@@ -6,29 +6,35 @@ import * as AiIcons from 'react-icons/ai';
 import { SidebarData } from './SidebarData';
 import SubMenu from './SubMenu';
 import { IconContext } from 'react-icons/lib';
+import { Container } from 'react-bootstrap';
+import logo from '../../pseudoDb/acadbase-logo.png'
+import Accounts from '../headerComponents/Accounts'
+import { Navbar, Nav } from 'react-bootstrap'
 
 
-const Nav = styled.div`
+
+const Navi = styled.div`
   background: #710E1D;
-  height: 80px;
+  height: 90px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  width: 100%;
   
 `;
 
 const NavIcon = styled(Link)`
   margin-left: 2rem;
   font-size: 2rem;
-  height: 80px;
+  height: 90px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  
 `;
 
 const SidebarNav = styled.nav`
-  margin-top: 80px;
-  background: #710E1D;
+  background: #808080;
   width: 300px;
   height: 100vh;
   display: flex;
@@ -38,36 +44,84 @@ const SidebarNav = styled.nav`
   left: ${({ sidebar }) => (sidebar ? '0' : '-100%')};
   transition: 350ms;
   z-index: 10;
+  
 `;
 
 const SidebarWrap = styled.div`
   width: 100%;
 `;
 
+const WholeNav = styled.nav`
+  position: -webkit-sticky;
+  position: sticky;
+`;
+
+
 const Sidebar = () => {
   const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);
 
+  const setTitlePage = () => {
+
+      document.getElementById("mainTitle").innerHTML = sessionStorage.getItem("pageTitle");
+
+    console.log("working");
+
+  };
+  
   return (
     <>
-      <IconContext.Provider value={{ color: '#fff' }}>
-        <Nav>
-          <NavIcon to='#'>
-            <FaIcons.FaBars onClick={showSidebar} />
-          </NavIcon>
-        </Nav>
-        <SidebarNav sidebar={sidebar}>
-          <SidebarWrap>
-            <NavIcon to='#'>
-              <AiIcons.AiOutlineClose onClick={showSidebar} />
-            </NavIcon>
-            {SidebarData.map((item, index) => {
-              return <SubMenu item={item} key={index} />;
-            })}
-          </SidebarWrap>
-        </SidebarNav>
-      </IconContext.Provider>
+      <WholeNav>
+        <IconContext.Provider value={{ color: '#fff' }}>
+          <div  className="row" >
+            <Navi >
+              <div className="col-lg-1">
+                <NavIcon to='#'>
+                  <FaIcons.FaBars onClick={showSidebar}/>
+                </NavIcon>
+              </div>
+              
+              <div className="col-lg-1">
+                <Navbar.Brand>
+                    <img 
+                        src={logo} 
+                        alt="acadbase-logo"
+                        style={{padding : "5px"}}
+                        height={"80px"}
+                    />
+                    <span className="brand-label">
+                        ACADBASE
+                    </span>
+                </Navbar.Brand>
+                </div>
+                
+                <div className="col-lg-8">
+                 <h1 id="mainTitle" className="text-light">
+                    Dashboard
+                      
+                  </h1> 
+                </div>
+    
+                <div className="col-lg-2">
+                  <Accounts />
+                </div>
+            </Navi>
+          </div>
+          <div className="color-bar"></div>
+          <SidebarNav sidebar={sidebar} onClick={setTitlePage}>
+            <SidebarWrap>
+              <NavIcon to='#'>
+                <AiIcons.AiOutlineClose onClick={showSidebar} />
+              </NavIcon>
+              {SidebarData.map((item, index) => {
+                return <SubMenu item={item} key={index} />;
+              })}
+            </SidebarWrap>
+          </SidebarNav>
+        </IconContext.Provider>
+      </WholeNav>
+      
     </>
   );
 };

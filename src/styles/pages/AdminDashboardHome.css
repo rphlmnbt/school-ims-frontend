@@ -1,0 +1,14 @@
+
+
+.boxTitle {
+    background-color: #710E1D;
+    color: white;
+    justify-content: center;
+}
+
+.boxInfo {
+    float: left;
+    font-size: 25px;
+    background-color:white;
+}
+

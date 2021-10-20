@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const SidebarLink = styled(Link)`
   display: flex;
-  color: #e1e9fc;
+  color: black;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
@@ -15,14 +15,10 @@ const SidebarLink = styled(Link)`
   &:hover {
     color: white;
     background: #440710;
-    border-left: 4px solid red;
     cursor: pointer;
     
   }
-  transition: all 0.2s ease-in-out;
-    -moz-transition: all 0.2s ease-in-out;
-    -webkit-transition: all 0.2s ease-in-out;
-    -o-transition: all 0.2s ease-in-out;
+
 `;
 
 const SidebarLabel = styled.span`
@@ -30,37 +26,42 @@ const SidebarLabel = styled.span`
 `;
 
 const DropdownLink = styled(Link)`
-  background: #803e48;
+  background: #707070;
   height: 60px;
   padding-left: 3rem;
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: #f5f5f5;
+  color: black;
   font-size: 18px;
   &:hover {
     color: white;
     background: #440710;
     cursor: pointer;
   }
-  transition: all 0.2s ease-in-out;
-    -moz-transition: all 0.2s ease-in-out;
-    -webkit-transition: all 0.2s ease-in-out;
-    -o-transition: all 0.2s ease-in-out;
-`;
-
-const Navmenu = styled.div`
 
 `;
+
 
 
 const SubMenu = ({ item }) => {
   const [subnav, setSubnav] = useState(false);
 
-  const showSubnav = () => setSubnav(!subnav);
+  const showSubnav = () => {
+    setSubnav(!subnav);
+  }
+
+ 
+
+  const setTitle = () => {
+    sessionStorage.clear();
+    sessionStorage.setItem("pageTitle", item.mainTitle); 
+    console.log(sessionStorage.getItem("pageTitle"));
+  }
 
   return (
     <>
+    <div  onClick={setTitle}>
       <SidebarLink to={item.path} onClick={item.subNav && showSubnav}>
         <div>
           {item.icon}
@@ -74,16 +75,18 @@ const SubMenu = ({ item }) => {
             : null}
         </div>
       </SidebarLink>
+    </div>
+      
 
       {subnav &&
         item.subNav.map((item, index) => {
           return (
-            <Navmenu id = "menu">
-                <DropdownLink to={item.path} key={index}>
+           
+                <DropdownLink to={item.path} key={index} onClick={ setTitle}>
                 {item.icon}
                 <SidebarLabel>{item.title}</SidebarLabel>
                 </DropdownLink>
-            </Navmenu>
+            
           );
         })}
     </>
