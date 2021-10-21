@@ -14,7 +14,7 @@ function Accounts() {
                     <IconContext.Provider value={{size:"30px", style: {marginLeft: "10px", marginRight: "10px"}}}>
                         <FaUserCircle />
                     </IconContext.Provider>
-                    Log In
+                    Log Out
                 </Button>
             </LinkContainer>
         </span>

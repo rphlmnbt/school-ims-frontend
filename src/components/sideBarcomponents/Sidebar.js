@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import { SidebarData } from './SidebarData';
+import { StudentSidebarData } from './StudentSidebarData';
 import SubMenu from './SubMenu';
 import { IconContext } from 'react-icons/lib';
 import { Container } from 'react-bootstrap';
@@ -74,11 +75,11 @@ const Sidebar = () => {
     <>
       <WholeNav>
         <IconContext.Provider value={{ color: '#fff' }}>
-          <div  className="row" >
+          <div  className="row" onClick={showSidebar}>
             <Navi >
               <div className="col-lg-1">
                 <NavIcon to='#'>
-                  <FaIcons.FaBars onClick={showSidebar}/>
+                  <FaIcons.FaBars/>
                 </NavIcon>
               </div>
               
@@ -114,9 +115,17 @@ const Sidebar = () => {
               <NavIcon to='#'>
                 <AiIcons.AiOutlineClose onClick={showSidebar} />
               </NavIcon>
-              {SidebarData.map((item, index) => {
+              {
+                //if stundent:
+                StudentSidebarData.map((item, index) => {
                 return <SubMenu item={item} key={index} />;
-              })}
+                })
+                
+                //if admin:
+                // SidebarData.map((item, index) => {
+                //   return <SubMenu item={item} key={index} />;
+                //   })
+                }
             </SidebarWrap>
           </SidebarNav>
         </IconContext.Provider>
