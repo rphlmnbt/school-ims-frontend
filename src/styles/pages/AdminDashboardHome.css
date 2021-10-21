@@ -13,5 +13,31 @@
 
 .parCenter {
     float: left;
-    font-size: 25px;
+    font-size: 20px;
+    
+}
+
+.extend-height {
+    min-height: calc(5vh - 95px);
+}
+
+  .extend-width {
+    min-width: calc(130vh - 95px);
+}
+.borderLeft {
+    border-left: 2px solid rgb(187, 185, 185);
+}
+
+
+.LName {
+    font-size: 30px;
+    font-weight: bold;
+}
+.FName {
+    font-size: 20px;
+}
+
+.AdminInfo {
+    text-align:left;
+    font-size: 15px;
 }
