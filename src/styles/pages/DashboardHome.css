@@ -7,7 +7,7 @@
 }
 
 .boxInfo {
-    
+    min-height: 158px;
     background-color:white;
 }
 
@@ -21,9 +21,10 @@
     min-height: calc(5vh - 95px);
 }
 
-  .extend-width {
+.extend-width {
     min-width: calc(130vh - 95px);
 }
+
 .borderLeft {
     border-left: 2px solid rgb(187, 185, 185);
 }
@@ -40,4 +41,8 @@
 .AdminInfo {
     text-align:left;
     font-size: 15px;
+}
+
+.userinfo {
+    width: 1481px;
 }

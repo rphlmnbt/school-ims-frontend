@@ -78,8 +78,8 @@ const Sidebar = () => {
         <IconContext.Provider value={{ color: '#fff' }}>
           <Row onClick={showSidebar}>
             <Navi >
-              <Col lg={3}>
-                <NavIcon to='#' className="d-inline">
+              <Col lg={3} className="d-flex justify-content-start">
+                <NavIcon to='#'>
                   <FaIcons.FaBars/>
                 </NavIcon>
                 <LinkContainer to="/tracevax/login">
