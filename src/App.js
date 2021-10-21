@@ -17,6 +17,12 @@ import Course from './pages/adminPages/Course'
 import Employee from './pages/adminPages/Employee';
 import Student from './pages/adminPages/Student';
 import Subject from './pages/adminPages/Subject';
+import StudentDashboardHome from './pages/studentPages/StudentDashboardHome'
+import EditUserProfile from './pages/studentPages/EditUserProfile'
+import ViewSubject from './pages/studentPages/ViewSubject'
+import ViewCourses from './pages/studentPages/ViewCourses'
+import ViewActivities from './pages/studentPages/ViewActivities'
+
 
 
 function App() {
@@ -39,6 +45,12 @@ function App() {
           <Route exact path="/acadbase/AdminDashboard/ModifyCourse" component={ModifyCourse} />
           <Route exact path="/acadbase/AdminDashboard/AddSubject" component={AddSubject} />
           <Route exact path="/acadbase/AdminDashboard/ModifySubject" component={ModifySubject} />
+          <Route exact path="/acadbase/StudentDashboard" component={StudentDashboardHome} />
+          <Route exact path="/acadbase/StudentDashboard/EditUserProfile" component={EditUserProfile} />
+          <Route exact path="/acadbase/StudentDashboard/ViewSubject" component={ViewSubject} />
+          <Route exact path="/acadbase/StudentDashboard/ViewCourses" component={ViewCourses} />
+          <Route exact path="/acadbase/StudentDashboard/ViewActivities" component={ViewActivities} />
+          
           <Redirect from="" to="/acadbase/logIn"/>
         </Switch>
       </Router>
