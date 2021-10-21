@@ -15,11 +15,11 @@ function LogIn() {
     const handleShow = () => setShow(true);
     const history = useHistory();
 
-    sessionStorage.setItem("logged",false); 
-    console.log(sessionStorage.getItem("logged"));
+    localStorage.setItem("logged",false); 
+    console.log(localStorage.getItem("logged"));
 
     function loggedIn() {
-        sessionStorage.setItem("logged",true);              
+        localStorage.setItem("logged",true);              
         let path = `/acadbase/AdminDashboard`; 
         history.push(path);
     }

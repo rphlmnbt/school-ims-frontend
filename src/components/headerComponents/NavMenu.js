@@ -11,8 +11,9 @@ function NavMenu() {
     const [user, setUser] = useState(undefined);
     const location = useLocation()
     useEffect(() => {   
-        if (sessionStorage.getItem("logged") === 'true') {
-            setUser(true)
+        if (localStorage.getItem("logged") === 'true') {
+            setUser("Active")
+            console.log(user)
         } else {
             setUser()
         }

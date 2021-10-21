@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { LinkContainer } from 'react-router-bootstrap'
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import { SidebarData } from './SidebarData';
@@ -10,7 +11,7 @@ import { IconContext } from 'react-icons/lib';
 import { Container } from 'react-bootstrap';
 import logo from '../../pseudoDb/acadbase-logo.png'
 import Accounts from '../headerComponents/Accounts'
-import { Navbar, Nav } from 'react-bootstrap'
+import { Navbar, Nav, Row, Col } from 'react-bootstrap'
 
 
 
@@ -75,40 +76,39 @@ const Sidebar = () => {
     <>
       <WholeNav>
         <IconContext.Provider value={{ color: '#fff' }}>
-          <div  className="row" onClick={showSidebar}>
+          <Row onClick={showSidebar}>
             <Navi >
-              <div className="col-lg-1">
-                <NavIcon to='#'>
+              <Col lg={3}>
+                <NavIcon to='#' className="d-inline">
                   <FaIcons.FaBars/>
                 </NavIcon>
-              </div>
-              
-              <div className="col-lg-1">
-                <Navbar.Brand>
-                    <img 
-                        src={logo} 
-                        alt="acadbase-logo"
-                        style={{padding : "5px"}}
-                        height={"80px"}
-                    />
-                    <span className="brand-label">
-                        ACADBASE
-                    </span>
-                </Navbar.Brand>
-                </div>
+                <LinkContainer to="/tracevax/login">
+                  <Navbar.Brand>
+                      <img 
+                          src={logo} 
+                          alt="acadbase-logo"
+                          style={{padding : "5px"}}
+                          height={"80px"}
+                      />
+                      <span className="brand-label">
+                          ACADBASE
+                      </span>
+                  </Navbar.Brand>
+                </LinkContainer>
+                </Col>
                 
-                <div className="col-lg-8">
+                <Col lg={7}>
                  <h1 id="mainTitle" className="text-light">
                     Dashboard
                       
                   </h1> 
-                </div>
+                </Col>
     
-                <div className="col-lg-2">
+                <Col lg={2}>
                   <Accounts />
-                </div>
+                </Col>
             </Navi>
-          </div>
+          </Row>
           <div className="color-bar"></div>
           <SidebarNav sidebar={sidebar} onClick={setTitlePage}>
             <SidebarWrap>
