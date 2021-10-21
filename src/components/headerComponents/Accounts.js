@@ -7,14 +7,18 @@ import '../../styles/components/Header.css'
 
 
 function Accounts() {
+    const handleLogOut = () => {
+        sessionStorage.removeItem('logged')
+    }
+
     return (
         <span className="px-4">
             <LinkContainer to="/acadbase/login">
-                <Button className="custom-btn">
+                <Button className="custom-btn" onClick={handleLogOut}>
                     <IconContext.Provider value={{size:"30px", style: {marginLeft: "10px", marginRight: "10px"}}}>
                         <FaUserCircle />
                     </IconContext.Provider>
-                    Log In
+                    Log Out
                 </Button>
             </LinkContainer>
         </span>
