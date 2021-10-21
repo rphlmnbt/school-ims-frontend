@@ -22,7 +22,7 @@ import EditUserProfile from './pages/studentPages/EditUserProfile'
 import ViewSubject from './pages/studentPages/ViewSubject'
 import ViewCourses from './pages/studentPages/ViewCourses'
 import ViewActivities from './pages/studentPages/ViewActivities'
-
+import ProfDashboardHome from './pages/profPages/ProfDashboardHome'
 
 
 function App() {
@@ -50,7 +50,7 @@ function App() {
           <Route exact path="/acadbase/StudentDashboard/ViewSubject" component={ViewSubject} />
           <Route exact path="/acadbase/StudentDashboard/ViewCourses" component={ViewCourses} />
           <Route exact path="/acadbase/StudentDashboard/ViewActivities" component={ViewActivities} />
-          
+          <Route exact path="/acadbase/ProfessorDashboard" component={ProfDashboardHome} />
           <Redirect from="" to="/acadbase/logIn"/>
         </Switch>
       </Router>

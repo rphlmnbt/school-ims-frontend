@@ -3,14 +3,14 @@ import { Row, Col } from 'react-bootstrap'
 import { FaUserCircle } from 'react-icons/fa'
 import { IconContext } from 'react-icons/lib'
 
-function StudentProfile() {
+function ProfProfile() {
     return (
-        <Row className="user-info-box mx-auto pt-5 ">
-            <Col lg={12} sm={12} className=" shadow " >
+        <Row className="user-info-box mx-auto pt-5">
+            <Col lg={12} sm={12} className="shadow" >
                 <Row>
                     <Col className="box-title p-2">
                         <div >
-                            <h4>Student Information</h4>
+                            <h4>Professor Information</h4>
                         </div>
                     </Col>
                 </Row>
@@ -22,32 +22,30 @@ function StudentProfile() {
                     </Col>
                     
                     <Col lg={5} sm={12}>
-                            <p className="lname">Samson,</p>
-                            <p className="fname">Yennyl</p>
+                            <p className="lname">Mendoza,</p>
+                            <p className="fname">AILGER MAE CARINO</p>
                     </Col>
                     <span className="border-left"></span>
-                    <Col lg={2} sm={12} className="">
+                    <Col lg={2} sm={12}>
                         <div>
-                            <p className="profile-info m-0 p-0">Admin Number : </p>
+                            <p className="profile-info m-0 p-0">Employee Number : </p>
                             <p className="profile-info  m-0 p-0">Gender: </p>
                             <p className="profile-info  m-0 p-0">Nationality: </p>
-                            <p className="profile-info ">Religion: </p>
-                            
+                            <p className="profile-info ">Religion: </p> 
                         </div>
                     </Col>
-                    <Col lg={2} sm={12} className="">
+                    <Col lg={2} sm={12}>
                         <div>
                             <p className="profile-info m-0 p-0">12345674</p>
                             <p className="profile-info  m-0 p-0">Male</p>
                             <p className="profile-info  m-0 p-0">Filipino</p>
-                            <p className="profile-info ">Yen's Org</p>
-                            
+                            <p className="profile-info ">Yen's Org</p>   
                         </div>
-                    </Col>               
+                    </Col>
                 </Row>
             </Col>
         </Row>
     )
 }
 
-export default StudentProfile
+export default ProfProfile

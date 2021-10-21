@@ -1,17 +1,17 @@
 
 
-.boxTitle {
+.box-title {
     background-color: #710E1D;
     color: white;
     justify-content: center;
 }
 
-.boxInfo {
+.box-info {
     min-height: 158px;
     background-color:white;
 }
 
-.parCenter {
+.par-center {
     float: left;
     font-size: 20px;
     
@@ -25,24 +25,24 @@
     min-width: calc(130vh - 95px);
 }
 
-.borderLeft {
+.border-left {
     border-left: 2px solid rgb(187, 185, 185);
 }
 
 
-.LName {
+.lname {
     font-size: 30px;
     font-weight: bold;
 }
-.FName {
+.fname {
     font-size: 20px;
 }
 
-.AdminInfo {
+.profile-info {
     text-align:left;
     font-size: 15px;
 }
 
-.userinfo {
+.user-info-box {
     width: 1481px;
 }
