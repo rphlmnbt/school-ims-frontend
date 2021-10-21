@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap'
 import { FaUserCircle } from 'react-icons/fa'
 import { IconContext } from 'react-icons/lib'
 import { LinkContainer } from 'react-router-bootstrap'
-
+import '../../styles/components/Header.css'
 
 
 function Accounts() {

@@ -19,9 +19,9 @@ function AdminDashboardHome() {
                         <Row className="boxInfo p-2">
                             <Col >
                                 <div>
-                                    <p>Total Employees: 99</p><br/>
-                                    <p>Total Employees Resigned: 99</p><br/>
-                                    <p>Total Employees Present: 99</p><br/>
+                                    <p className="parCenter">Total Employees: 99</p><br/>
+                                    <p className="parCenter">Total Employees Resigned: 99</p><br/>
+                                    <p className="parCenter">Total Employees Present: 99</p><br/>
                                 </div>
                             </Col>
                         </Row>
@@ -40,9 +40,9 @@ function AdminDashboardHome() {
                         <Row className="boxInfo p-2">
                             <Col >
                                 <div>
-                                    <p>Total Students: 99</p><br/>
-                                    <p>Total Students Enrolled: 99</p><br/>
-                                    <p>Total Students Drop: 99</p><br/>
+                                    <p className="parCenter">Total Students: 99</p><br/>
+                                    <p className="parCenter">Total Students Enrolled: 99</p><br/>
+                                    <p className="parCenter">Total Students Drop: 99</p><br/>
                                 </div>
                             </Col>
                         </Row>
@@ -63,9 +63,9 @@ function AdminDashboardHome() {
                         <Row className="boxInfo p-2">
                             <Col >
                                 <div>
-                                    <p>Total Subjects: 99</p><br/>
-                                    <p>Total Inactive Subjects : 99</p><br/>
-                                    <p>Total Active Subjects : 99</p><br/>
+                                    <p className="parCenter">Total Subjects: 99</p><br/>
+                                    <p className="parCenter">Total Inactive Subjects : 99</p><br/>
+                                    <p className="parCenter">Total Active Subjects : 99</p><br/>
                                 </div>
                             </Col>
                         </Row>
@@ -83,10 +83,10 @@ function AdminDashboardHome() {
                         </Row>
                         <Row className="boxInfo p-2">
                             <Col >
-                                <div>
-                                    <p>Total Courses: 99</p><br/>
-                                    <p>Total Active Courses: 99</p><br/>
-                                    <p>Total Inactive Courses: 99</p><br/>
+                                <div >
+                                    <p className="parCenter">Total Courses: 99</p><br/>
+                                    <p className="parCenter">Total Active Courses: 99</p><br/>
+                                    <p className="parCenter">Total Inactive Courses: 99</p><br/>
                                 </div>
                             </Col>
                         </Row>

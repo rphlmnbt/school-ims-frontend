@@ -46,7 +46,7 @@ function LogIn() {
             }) => (
                 <Container className="extend-height py-5 d-flex align-items-center justify-content-center">
                     <Row className="justify-content-center w-100">
-                        <Col lg={6} className="d-sm-none d-md-block shadow" id="info">
+                        <Col lg={6} className="d-sm-none d-md-block shadow " id="info">
                             <div class="pt-3">
                                 <img 
                                     src={logo} 
