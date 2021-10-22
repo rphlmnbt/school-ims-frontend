@@ -17,12 +17,8 @@
     
 }
 
-.extend-height {
-    min-height: calc(5vh - 95px);
-}
-
-.extend-width {
-    min-width: calc(130vh - 95px);
+.extend-width-info {
+    min-width: calc(100vh - 95px);
 }
 
 .border-left {

@@ -22,12 +22,12 @@ export const SidebarData = [
         subNav: [
         {
             title: 'Create New Employee',
-            path: '/acadbase/AdminDashboard/AddEmployee',
+            path: '/acadbase/AdminDashboard/Employee/AddEmployee',
             icon: <FaIcons.FaUserPlus />
         },
         {
             title: 'Modify Employee',
-            path: '/acadbase/AdminDashboard/ModifyEmployee',
+            path: '/acadbase/AdminDashboard/Employee/ModifyEmployee',
             icon: <FaIcons.FaUserCog />
         }
         ]
@@ -43,12 +43,12 @@ export const SidebarData = [
         subNav: [
         {
             title: 'Create New Student',
-            path: '/acadbase/AdminDashboard/AddStudent',
+            path: '/acadbase/AdminDashboard/Student/AddStudent',
             icon: <FaIcons.FaUserPlus />
         },
         {
             title: 'Modify Student',
-            path: '/acadbase/AdminDashboard/ModifyStudent',
+            path: '/acadbase/AdminDashboard/Student/ModifyStudent',
             icon: <FaIcons.FaUserCog />
         }
         ]
@@ -64,12 +64,12 @@ export const SidebarData = [
         subNav: [
         {
             title: 'Create New Subject',
-            path: '/acadbase/AdminDashboard/AddSubject',
+            path: '/acadbase/AdminDashboard/Subject/AddSubject',
             icon: <AiIcons.AiFillFileAdd />
         },
         {
             title: 'Modify Subject',
-            path: '/acadbase/AdminDashboard/ModifySubject',
+            path: '/acadbase/AdminDashboard/Subject/ModifySubject',
             icon: <AiIcons.AiFillSetting />
         }
         ]
@@ -85,12 +85,12 @@ export const SidebarData = [
         subNav: [
         {
             title: 'Create New Course',
-            path: '/acadbase/AdminDashboard/AddCourse',
+            path: '/acadbase/AdminDashboard/Course/AddCourse',
             icon: <AiIcons.AiFillFileAdd />
         },
         {
             title: 'Modify Course',
-            path: '/acadbase/AdminDashboard/ModifyCourse',
+            path: '/acadbase/AdminDashboard/Course/ModifyCourse',
             icon: <AiIcons.AiFillSetting />
         }
         ]

@@ -2,10 +2,29 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-const SidebarLink = styled(Link)`
+const SidebarLink = styled.div`
   display: flex;
-  color: black;
+  color: white;
   justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  list-style: none;
+  height: 60px;
+  text-decoration: none;
+  font-size: 18px;
+  &:hover {
+    
+    background: #440710;
+    cursor: pointer;
+    
+  }
+
+`;
+
+
+const SidebarLink2 = styled(Link)`
+  display: flex;
+  color: white;
   align-items: center;
   padding: 20px;
   list-style: none;
@@ -32,7 +51,7 @@ const DropdownLink = styled(Link)`
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: black;
+  color: white;
   font-size: 18px;
   &:hover {
     color: white;
@@ -61,13 +80,16 @@ const SubMenu = ({ item }) => {
 
   return (
     <>
-    <div  onClick={setTitle}>
-      <SidebarLink to={item.path} onClick={item.subNav && showSubnav}>
-        <div>
-          {item.icon}
-          <SidebarLabel>{item.title}</SidebarLabel>
+
+      <SidebarLink>
+        <div className ="w-100" >
+          <SidebarLink2 to={item.path} onClick={setTitle}>
+            
+              {item.icon}
+              <SidebarLabel>{item.title}</SidebarLabel>
+          </SidebarLink2>
         </div>
-        <div>
+        <div  onClick={item.subNav && showSubnav}>
           {item.subNav && subnav
             ? item.iconOpened
             : item.subNav
@@ -75,7 +97,6 @@ const SubMenu = ({ item }) => {
             : null}
         </div>
       </SidebarLink>
-    </div>
       
 
       {subnav &&

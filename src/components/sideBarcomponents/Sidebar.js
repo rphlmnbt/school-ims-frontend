@@ -117,14 +117,14 @@ const Sidebar = () => {
               </NavIcon>
               {
                 //if stundent:
-                StudentSidebarData.map((item, index) => {
-                return <SubMenu item={item} key={index} />;
-                })
+                // StudentSidebarData.map((item, index) => {
+                // return <SubMenu item={item} key={index} />;
+                // })
                 
                 //if admin:
-                // SidebarData.map((item, index) => {
-                //   return <SubMenu item={item} key={index} />;
-                //   })
+                SidebarData.map((item, index) => {
+                  return <SubMenu item={item} key={index} />;
+                  })
                 }
             </SidebarWrap>
           </SidebarNav>

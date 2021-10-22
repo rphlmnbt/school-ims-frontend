@@ -32,24 +32,27 @@ function App() {
         <Header/>
         <Switch>
           <Route exact path="/acadbase/logIn" component={LogIn} />
+
           <Route exact path="/acadbase/AdminDashboard" component={AdminDashboard} />
           <Route exact path="/acadbase/AdminDashboard/Course" component={Course} />
           <Route exact path="/acadbase/AdminDashboard/Employee" component={Employee} />
           <Route exact path="/acadbase/AdminDashboard/Student" component={Student} />
           <Route exact path="/acadbase/AdminDashboard/Subject" component={Subject} />
-          <Route exact path="/acadbase/AdminDashboard/AddEmployee" component={AddEmployee} />
-          <Route exact path="/acadbase/AdminDashboard/ModifyEmployee" component={ModifyEmployee} />
-          <Route exact path="/acadbase/AdminDashboard/AddStudent" component={AddStudent} />
-          <Route exact path="/acadbase/AdminDashboard/ModifyStudent" component={ModifyStudent} />
-          <Route exact path="/acadbase/AdminDashboard/AddCourse" component={AddCourse} />
-          <Route exact path="/acadbase/AdminDashboard/ModifyCourse" component={ModifyCourse} />
-          <Route exact path="/acadbase/AdminDashboard/AddSubject" component={AddSubject} />
-          <Route exact path="/acadbase/AdminDashboard/ModifySubject" component={ModifySubject} />
+          <Route exact path="/acadbase/AdminDashboard/Employee/AddEmployee" component={AddEmployee} />
+          <Route exact path="/acadbase/AdminDashboard/Employee/ModifyEmployee" component={ModifyEmployee} />
+          <Route exact path="/acadbase/AdminDashboard/Student/AddStudent" component={AddStudent} />
+          <Route exact path="/acadbase/AdminDashboard/Student/ModifyStudent" component={ModifyStudent} />
+          <Route exact path="/acadbase/AdminDashboard/Course/AddCourse" component={AddCourse} />
+          <Route exact path="/acadbase/AdminDashboard/Course/ModifyCourse" component={ModifyCourse} />
+          <Route exact path="/acadbase/AdminDashboard/Subject/AddSubject" component={AddSubject} />
+          <Route exact path="/acadbase/AdminDashboard/Subject/ModifySubject" component={ModifySubject} />
+
           <Route exact path="/acadbase/StudentDashboard" component={StudentDashboardHome} />
           <Route exact path="/acadbase/StudentDashboard/EditUserProfile" component={EditUserProfile} />
           <Route exact path="/acadbase/StudentDashboard/ViewSubject" component={ViewSubject} />
           <Route exact path="/acadbase/StudentDashboard/ViewCourses" component={ViewCourses} />
           <Route exact path="/acadbase/StudentDashboard/ViewActivities" component={ViewActivities} />
+          
           <Route exact path="/acadbase/ProfessorDashboard" component={ProfDashboardHome} />
           <Redirect from="" to="/acadbase/logIn"/>
         </Switch>
