@@ -21,6 +21,11 @@ a.btn.custom-btn.active.btn-primary:hover {
 }
 
 
+.btn-primary:hover, .btn-primary:active{
+    color: #fff;
+    background-color: #47010b !important;
+}
+
 div.mr-auto.navbar-nav a.item-style.nav-link {
     color: #D9D9D9;
     font-weight: 500;

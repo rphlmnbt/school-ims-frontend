@@ -1,0 +1,44 @@
+
+
+.box-title {
+    background-color: #710E1D;
+    color: white;
+    justify-content: center;
+}
+
+.box-info {
+    min-height: 158px;
+    background-color:white;
+}
+
+.par-center {
+    float: left;
+    font-size: 20px;
+    
+}
+
+.extend-width-info {
+    min-width: calc(100vh - 95px);
+}
+
+.border-left {
+    border-left: 2px solid rgb(187, 185, 185);
+}
+
+
+.lname {
+    font-size: 30px;
+    font-weight: bold;
+}
+.fname {
+    font-size: 20px;
+}
+
+.profile-info {
+    text-align:left;
+    font-size: 15px;
+}
+
+.user-info-box {
+    width: 1481px;
+}

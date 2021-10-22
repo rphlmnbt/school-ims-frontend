@@ -6,14 +6,23 @@ import { IconContext } from 'react-icons/lib'
 import '../styles/pages/LogIn.css'
 import schema from '../schemas/login.schema'
 import logo from '../pseudoDb/acadbase-logo.png'
+import { useHistory  } from 'react-router-dom';
 
 function LogIn() {
     const formRef = useRef()
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const history = useHistory();
 
+    localStorage.setItem("logged",false); 
+    console.log(localStorage.getItem("logged"));
 
+    function loggedIn() {
+        localStorage.setItem("logged",true);              
+        let path = `/acadbase/AdminDashboard`; 
+        history.push(path);
+    }
 
     return (
         <Formik
@@ -37,7 +46,7 @@ function LogIn() {
             }) => (
                 <Container className="extend-height py-5 d-flex align-items-center justify-content-center">
                     <Row className="justify-content-center w-100">
-                        <Col lg={6} className="d-sm-none d-md-block shadow" id="info">
+                        <Col lg={6} className="d-sm-none d-md-block shadow " id="info">
                             <div class="pt-3">
                                 <img 
                                     src={logo} 
@@ -50,7 +59,7 @@ function LogIn() {
                                 <h3 id="infoLabel">
                                     ACADBASE
                                 </h3>
-                                <p className="text-white">Lorem Ipsum Ailger Manyaman</p>
+                                <p className="text-white" >Lorem Ipsum Ailger Manyaman</p>
                             </div>
                         </Col>
                         <Col lg={4} sm={12} className="text-center shadow p-3 bg-white">
@@ -92,6 +101,7 @@ function LogIn() {
                                         variant="primary btn-block" 
                                         type="submit" 
                                         className="submit-btn mt-5"
+                                        onClick={loggedIn}
                                     >
                                         Log In
                                 </Button>
