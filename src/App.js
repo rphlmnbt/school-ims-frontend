@@ -23,6 +23,12 @@ import ViewSubject from './pages/studentPages/ViewSubject'
 import ViewCourses from './pages/studentPages/ViewCourses'
 import ViewActivities from './pages/studentPages/ViewActivities'
 import ProfDashboardHome from './pages/profPages/ProfDashboardHome'
+import ProfEditUserProfile from './pages/profPages/ProfEditUserProfile'
+import ProfViewSubjects from './pages/profPages/ProfViewSubjects'
+import ProfViewCourses from './pages/profPages/ProfViewCourses'
+import ProfViewActivities from './pages/profPages/ProfViewActivities'
+import AddActivity from './pages/profPages/AddActivity'
+import ModifyActivity from './pages/profPages/ModifyActivity'
 
 
 function App() {
@@ -54,6 +60,13 @@ function App() {
           <Route exact path="/acadbase/StudentDashboard/ViewActivities" component={ViewActivities} />
           
           <Route exact path="/acadbase/ProfessorDashboard" component={ProfDashboardHome} />
+          <Route exact path="/acadbase/ProfessorDashboard/ProfEditUserProfile" component={ProfEditUserProfile} />
+          <Route exact path="/acadbase/ProfessorDashboard/ProfViewSubject" component={ProfViewSubjects} />
+          <Route exact path="/acadbase/ProfessorDashboard/ProfViewCourses" component={ProfViewCourses} />
+          <Route exact path="/acadbase/ProfessorDashboard/ProfViewActivities" component={ProfViewActivities} />
+          <Route exact path="/acadbase/ProfessorDashboard/ProfViewActivities/AddActivity" component={AddActivity} />
+          <Route exact path="/acadbase/ProfessorDashboard/ProfViewActivities/ModifyActivity" component={ModifyActivity} />
+
           <Redirect from="" to="/acadbase/logIn"/>
         </Switch>
       </Router>

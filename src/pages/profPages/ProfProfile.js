@@ -23,7 +23,7 @@ function ProfProfile() {
                     
                     <Col lg={5} sm={12}>
                             <p className="lname">Mendoza,</p>
-                            <p className="fname">AILGER MAE CARINO</p>
+                            <p className="fname">AILGER CARIÑO</p>
                     </Col>
                     <span className="border-left"></span>
                     <Col lg={2} sm={12}>

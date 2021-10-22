@@ -6,6 +6,7 @@ import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import { SidebarData } from './SidebarData';
 import { StudentSidebarData } from './StudentSidebarData';
+import { ProfSidebarData } from './ProfSidebarData';
 import SubMenu from './SubMenu';
 import { IconContext } from 'react-icons/lib';
 import { Container } from 'react-bootstrap';
@@ -119,14 +120,19 @@ const Sidebar = () => {
               </div>
               {
                 //if stundent:
-                StudentSidebarData.map((item, index) => {
-                return <SubMenu item={item} key={index} />;
-                })
+                // StudentSidebarData.map((item, index) => {
+                // return <SubMenu item={item} key={index} />;
+                // })
                 
                 //if admin:
                 // SidebarData.map((item, index) => {
                 //   return <SubMenu item={item} key={index} />;
                 //   })
+
+                //if prof:
+                ProfSidebarData.map((item, index) => {
+                  return <SubMenu item={item} key={index} />;
+                  })
                 }
             </SidebarWrap>
           </SidebarNav>
