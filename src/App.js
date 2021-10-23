@@ -18,12 +18,11 @@ import Employee from './pages/adminPages/Employee';
 import Student from './pages/adminPages/Student';
 import Subject from './pages/adminPages/Subject';
 import StudentDashboardHome from './pages/studentPages/StudentDashboardHome'
-import EditUserProfile from './pages/studentPages/EditUserProfile'
+import EditUserProfile from './pages/EditUserProfile'
 import ViewSubject from './pages/studentPages/ViewSubject'
 import ViewCourses from './pages/studentPages/ViewCourses'
 import ViewActivities from './pages/studentPages/ViewActivities'
 import ProfDashboardHome from './pages/profPages/ProfDashboardHome'
-import ProfEditUserProfile from './pages/profPages/ProfEditUserProfile'
 import ProfViewSubjects from './pages/profPages/ProfViewSubjects'
 import ProfViewCourses from './pages/profPages/ProfViewCourses'
 import ProfViewActivities from './pages/profPages/ProfViewActivities'
@@ -40,6 +39,7 @@ function App() {
           <Route exact path="/acadbase/logIn" component={LogIn} />
 
           <Route exact path="/acadbase/AdminDashboard" component={AdminDashboard} />
+          <Route exact path="/acadbase/AdminDashboard/EditUserProfile" component={EditUserProfile} />
           <Route exact path="/acadbase/AdminDashboard/Course" component={Course} />
           <Route exact path="/acadbase/AdminDashboard/Employee" component={Employee} />
           <Route exact path="/acadbase/AdminDashboard/Student" component={Student} />
@@ -60,7 +60,7 @@ function App() {
           <Route exact path="/acadbase/StudentDashboard/ViewActivities" component={ViewActivities} />
           
           <Route exact path="/acadbase/ProfessorDashboard" component={ProfDashboardHome} />
-          <Route exact path="/acadbase/ProfessorDashboard/ProfEditUserProfile" component={ProfEditUserProfile} />
+          <Route exact path="/acadbase/ProfessorDashboard/EditUserProfile" component={EditUserProfile} />
           <Route exact path="/acadbase/ProfessorDashboard/ProfViewSubject" component={ProfViewSubjects} />
           <Route exact path="/acadbase/ProfessorDashboard/ProfViewCourses" component={ProfViewCourses} />
           <Route exact path="/acadbase/ProfessorDashboard/ProfViewActivities" component={ProfViewActivities} />
