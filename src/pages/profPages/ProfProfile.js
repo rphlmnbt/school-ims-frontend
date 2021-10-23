@@ -5,7 +5,7 @@ import { IconContext } from 'react-icons/lib'
 
 function ProfProfile() {
     return (
-        <Row className="user-info-box mx-auto pt-5">
+        <Row className="user-info-box pt-5">
             <Col lg={12} sm={12} className="shadow" >
                 <Row>
                     <Col className="box-title p-2">
