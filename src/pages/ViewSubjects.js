@@ -1,7 +1,14 @@
-import React from 'react'
-import { useState } from 'react'
-import { Col, Container, Row, Table, InputGroup, FormControl  } from 'react-bootstrap'
 
+
+import React from 'react';
+import { Col, Container, Row} from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-bootstrap-table-next/dist/react-bootstrap-table2.css';
+import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css';
+import BootstrapTable from 'react-bootstrap-table-next';
+import paginationFactory from 'react-bootstrap-table2-paginator';
+import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
+import '../styles/pages/ViewSubjects.css'
 
 function ViewSubjects() {
 
@@ -20,94 +27,86 @@ function ViewSubjects() {
         {id: 12, subjectCode: 12, subjectName: 'english4', units: 3, lectureHours: 3, labHours: 0 },
         
     ]
+    
+      const columns = [
+        { dataField: 'id', text: 'Id', sort: true },
+        { dataField: 'subjectCode', text: 'Subject Code', sort: true },
+        { dataField: 'subjectName', text: 'Subject Name', sort: true },
+        { dataField: 'units', text: 'Units', sort: true },
+        { dataField: 'lectureHours', text: 'Lecture Hours', sort: true },
+        { dataField: 'labHours', text: 'Lab Hours', sort: true }
+      ];
+    
+      const defaultSorted = [{
+        dataField: 'name',
+        order: 'desc'
+      }];
+    
+      const pagination = paginationFactory({
+        page: 1,
+        sizePerPage: 5,
+        lastPageText: '>>',
+        firstPageText: '<<',
+        nextPageText: '>',
+        prePageText: '<',
+        showTotal: true,
+        alwaysShowAllBtns: true,
+      });
+    
+      const { SearchBar, ClearSearchButton } = Search;
+    
+      return (
+        
+        <Container className="mt-5 ">
+            <Row>
+                <Col className="box-title">
+                         <h1>View Subjects</h1>
+                </Col>
+            </Row> 
+            <Row >
+                <Col  className="m-0 p-0 table-container">
+                    <ToolkitProvider
+                        bootstrap4
+                        keyField='id'
+                        data={dummyData}
+                        columns={columns}
+                        search
+                            >
+                            {
+                                props => (
+                                    <>
+                                        <div className=" my-2" style={{float:'left'}}>
+                                            < Row>
+                                                <Col lg={10} sm={12} >
+                                                    <SearchBar  
+                                                        {...props.searchProps} 
+                                                        style={{ width: "450px", height: "40px" }}
+                                                        
+                                                    />
+                                                </Col>
+                                                <Col lg={2} sm={12}>
+                                                    <ClearSearchButton 
+                                                        {...props.searchProps} 
+                                                        className="border"
+                                                    />
+                                                </Col>
+                                            </Row> 
+                                        </div>
+                                        <BootstrapTable 
+                                            defaultSorted={defaultSorted}
+                                            pagination={pagination}
+                                            {...props.baseProps}
+                                        />
+                                    </>
+                                )
+                            }
+                    </ToolkitProvider>
+                </Col>
+            </Row>
+        </Container>
+       
+      );
 
-    const [value, setValue] = useState('');
-    const [dataSource, setDataSource] = useState(dummyData);
-    const [tableFilter, setTableFilter] = useState([]);
-
-
-    const filterData = (e) =>{
-        if(e.target.value != ""){
-         setValue(e.target.value);
-            const filterTable = dataSource.filter(o=>Object.keys(o).some(k =>
-                    String(o[k]).toLowerCase().includes(e.target.value.toLowerCase())
-                ));
-                setTableFilter([...filterTable])
-        }else {
-         setValue(e.target.value);
-         setDataSource([...dataSource]);
-        }
-    }
-
-    return (
-        <>
-           
-            <Container className="mt-5">
-                <Row>
-                    <Col className="box-title">
-                     <h1>View Subjects</h1>
-                    </Col>
-                </Row> 
-                <Row >
-                    <Col  className="m-0 p-0">
-                        <InputGroup className=""> 
-                            <FormControl
-                                placeholder="Search"
-                                aria-label="Search"
-                                aria-describedby="basic-addon1"
-                                value={value}
-                                onChange = {filterData}
-                            />
-                        </InputGroup>
-                        <Table striped bordered hover className="m-0 p-0 box-info">
-                            <thead>
-                                <tr>
-                                    <th>id</th>
-                                    <th>Subject COde</th>
-                                    <th>Subject Name</th>
-                                    <th>Units</th>
-                                    <th>Lec Hours</th>
-                                    <th>Lab Hour</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {
-                                    value.length > 0 ? tableFilter.map((info) =>{
-                                        return(
-                                            <tr>
-                                                <td>{info.id}</td>
-                                                <td>{info.subjectCode}</td>
-                                                <td>{info.subjectName}</td>
-                                                <td>{info.units}</td>
-                                                <td>{info.lectureHours}</td>
-                                                <td>{info.labHours}</td>
-                                            </tr>
-
-                                        )
-
-                                    })
-                                    : dataSource.map((info) =>{
-                                        return(
-                                            <tr>
-                                                <td>{info.id}</td>
-                                                <td>{info.subjectCode}</td>
-                                                <td>{info.subjectName}</td>
-                                                <td>{info.units}</td>
-                                                <td>{info.lectureHours}</td>
-                                                <td>{info.labHours}</td>
-                                            </tr>
-
-                                        )
-
-                                    })
-                                }
-                            </tbody>
-                        </Table>
-                    </Col>
-                </Row>
-            </Container>
-        </>
-    )
 }
 
 export default ViewSubjects
