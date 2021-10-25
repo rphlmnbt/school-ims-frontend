@@ -14,7 +14,7 @@ export const ProfSidebarData = [
     {
         mainTitle: 'User Profile',
         title: 'Edit User Profile',
-        path: '/acadbase/ProfessorDashboard/ProfEditUserProfile',
+        path: '/acadbase/ProfessorDashboard/EditUserProfile',
         icon: <FaIcons.FaUserTie />,
     },
     {

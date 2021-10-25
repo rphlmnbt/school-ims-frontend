@@ -39,6 +39,7 @@
     font-size: 15px;
 }
 
-.user-info-box {
-    width: 1481px;
+.row.user-info-box {
+    margin-left: 46px;
+    margin-right: 46px;
 }

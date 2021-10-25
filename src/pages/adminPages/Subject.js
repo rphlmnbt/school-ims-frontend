@@ -1,11 +1,11 @@
 import React from 'react'
-
+import ViewSubjects from '../ViewSubjects'
 
 function Subject() {
 
     return (
         <>
-            <h1>Subject</h1>
+            <ViewSubjects/>
         </>
     )
 }
