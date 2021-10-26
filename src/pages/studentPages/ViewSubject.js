@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-function ProfViewSubjects() {
+function ViewSubjects() {
 
     return (
         <>
@@ -10,4 +10,4 @@ function ProfViewSubjects() {
     )
 }
 
-export default ProfViewSubjects
+export default ViewSubjects
