@@ -1,13 +1,13 @@
 import React from 'react'
 import ViewSubjects from '../ViewSubjects'
 
-function ProfViewSubjects() {
+function StudentViewSubject() {
 
     return (
         <>
-            <ViewSubjects/>
+            <ViewSubjects />
         </>
     )
 }
 
-export default ProfViewSubjects
+export default StudentViewSubject
