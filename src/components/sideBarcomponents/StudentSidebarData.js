@@ -20,19 +20,19 @@ export const StudentSidebarData = [
     {
         mainTitle: 'Subject',
         title: 'View Subjects',
-        path: '/acadbase/StudentDashboard/StudentViewSubjects',
+        path: '/acadbase/StudentDashboard/ViewSubject',
         icon: <FaIcons.FaUserEdit />,
     },
     {
         mainTitle: 'Course',
         title: 'View Courses',
-        path: '/acadbase/StudentDashboard/StudentViewCourses',
+        path: '/acadbase/StudentDashboard/ViewCourses',
         icon: <MdIcons.MdTopic />,
     },
     {
         mainTitle: 'Activities',
         title: 'View Activities',
-        path: '/acadbase/StudentDashboard/StudentViewActivities',
+        path: '/acadbase/StudentDashboard/ViewActivities',
         icon: <FaIcons.FaGraduationCap />,
     }
     
