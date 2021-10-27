@@ -9,7 +9,7 @@ import AddEmployee from './pages/adminPages/AddEmployee';
 import ModifyEmployee from './pages/adminPages/ModifyEmployee';
 import AddStudent from './pages/adminPages/AddStudent';
 import ModifyStudent from './pages/adminPages/ModifyStudent';
-import AddCourse from './pages/adminPages/AddCourse';
+import AddCourses from './pages/adminPages/AddCourses';
 import ModifyCourse from './pages/adminPages/ModifyCourse';
 import AddSubject from './pages/adminPages/AddSubject';
 import ModifySubject from './pages/adminPages/ModifySubject';
@@ -49,7 +49,7 @@ function App() {
           <Route exact path="/acadbase/AdminDashboard/Employee/ModifyEmployee" component={ModifyEmployee} />
           <Route exact path="/acadbase/AdminDashboard/Student/AddStudent" component={AddStudent} />
           <Route exact path="/acadbase/AdminDashboard/Student/ModifyStudent" component={ModifyStudent} />
-          <Route exact path="/acadbase/AdminDashboard/Course/AddCourse" component={AddCourse} />
+          <Route exact path="/acadbase/AdminDashboard/Course/AddCourse" component={AddCourses} />
           <Route exact path="/acadbase/AdminDashboard/Course/ModifyCourse" component={ModifyCourse} />
           <Route exact path="/acadbase/AdminDashboard/Subject/AddSubject" component={AddSubject} />
           <Route exact path="/acadbase/AdminDashboard/Subject/ModifySubject" component={ModifySubject} />
