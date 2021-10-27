@@ -1,11 +1,9 @@
 import React, { useRef, useState } from 'react'
 import { Formik} from 'formik'
 import { Form, Button, Container, Row, Col, Modal } from "react-bootstrap";
-
 import { useHistory } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap'
 import schema from '../../schemas/modifySubject.schema'
-
 
 function ModifySubject() {
 
@@ -68,9 +66,9 @@ function ModifySubject() {
                 errors,
             }) => ( 
                 <Container className="extend-height py-5 ">
-                    <Row className="align-items-center justify-content-center">
+                    <Row className="align-items-center justify-content-center mx-auto">
                         
-                        <Col  md={8} sm={12} className="text-center mt-5 shadow p-3 mb-5 bg-white">
+                        <Col  md={8} sm={12} className="text-center mt-5 shadow pb-3 mb-5 bg-white">
                             <Row>
                                 <Col className="box-title p-2 mb-5">
                                     <div >
@@ -182,7 +180,7 @@ function ModifySubject() {
 
                                     <Col md>
                                         <Form.Group controlId="lab_hours">
-                                            <Form.Label>Laboratory</Form.Label>
+                                            <Form.Label>Laboratory Hours</Form.Label>
                                             <Form.Control 
                                                 type="text" 
                                                 name="lab_hours" 
