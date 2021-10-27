@@ -10,31 +10,30 @@ import paginationFactory from 'react-bootstrap-table2-paginator';
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
 import '../styles/pages/ViewSubjects.css'
 
-function ViewSubjects() {
+function ViewCourses() {
 
     const dummyData = [
-        {id: 1, subjectCode: 1, subjectName: 'math1', units: 3, lectureHours: 3, labHours: 0 },
-        {id: 2, subjectCode: 2, subjectName: 'math2', units: 3, lectureHours: 3, labHours: 3 },
-        {id: 3, subjectCode: 3, subjectName: 'math3', units: 3, lectureHours: 0, labHours: 4 },
-        {id: 4, subjectCode: 4, subjectName: 'math4', units: 3, lectureHours: 3, labHours: 0 },
-        {id: 5, subjectCode: 5, subjectName: 'science1', units: 3, lectureHours: 3, labHours: 0 },
-        {id: 6, subjectCode: 6, subjectName: 'science2', units: 3, lectureHours: 1, labHours: 4 },
-        {id: 7, subjectCode: 7, subjectName: 'science3', units: 3, lectureHours: 4, labHours: 0 },
-        {id: 8, subjectCode: 8, subjectName: 'science4', units: 3, lectureHours: 3, labHours: 3 },
-        {id: 9, subjectCode: 9, subjectName: 'english1', units: 3, lectureHours: 3, labHours: 2 },
-        {id: 10, subjectCode: 10, subjectName: 'english2', units: 3, lectureHours: 2, labHours: 4 },
-        {id: 11, subjectCode: 11, subjectName: 'english3', units: 3, lectureHours: 0, labHours: 4 },
-        {id: 12, subjectCode: 12, subjectName: 'english4', units: 3, lectureHours: 3, labHours: 0 },
+        {courseId: 1, courseCode: 1010, courseName: 'Computer Engineering', departmentId: 1, chairperson: 'Juan Dela Cruz'},
+        {courseId: 2, courseCode: 2020, courseName: 'Civil Engineering', departmentId: 1, chairperson: 'Juan Dela Cruz'},
+        {courseId: 3, courseCode: 3030, courseName: 'Industrial Engineering', departmentId: 1, chairperson: 'Juan Dela Cruz'},
+        {courseId: 4, courseCode: 4040, courseName: 'Electrical Engineering', departmentId: 1, chairperson: 'Juan Dela Cruz'},
+        {courseId: 5, courseCode: 5040, courseName: 'Business Management', departmentId: 2, chairperson: 'Andres Bonifacio'},
+        {courseId: 6, courseCode: 6060, courseName: 'Education', departmentId: 3, chairperson: 'Gregoria Del Pilar'},
+        {courseId: 7, courseCode: 7070, courseName: 'Psychology', departmentId: 3, chairperson: 'Gregoria Del Pilar'},
+        {courseId: 8, courseCode: 8080, courseName: 'Architecture', departmentId: 1, chairperson: 'Juan Dela Cruz'},
+        {courseId: 9, courseCode: 9090, courseName: 'Accountancy', departmentId: 2, chairperson: 'Andres Bonifacio'},
+        {courseId: 10, courseCode: 1100, courseName: 'Computer Science', departmentId: 4, chairperson: 'Apolinario Mabini'},
+        {courseId: 11, courseCode: 1111, courseName: 'Information Technology', departmentId: 4, chairperson: 'Apolinario Mabini'},
+        {courseId: 12, courseCode: 1200, courseName: 'Nursing', departmentId: 5, chairperson: 'Satoru Gojo'},
         
     ]
     
       const columns = [
-        { dataField: 'id', text: 'Id', sort: true },
-        { dataField: 'subjectCode', text: 'Subject Code', sort: true },
-        { dataField: 'subjectName', text: 'Subject Name', sort: true },
-        { dataField: 'units', text: 'Units', sort: true },
-        { dataField: 'lectureHours', text: 'Lecture Hours', sort: true },
-        { dataField: 'labHours', text: 'Lab Hours', sort: true }
+        { dataField: 'courseId', text: 'Course ID', sort: true },
+        { dataField: 'courseCode', text: 'Course Code', sort: true },
+        { dataField: 'courseName', text: 'Course Name', sort: true },
+        { dataField: 'departmentId', text: 'Department ID', sort: true },
+        { dataField: 'chairperson', text: 'Chairperson', sort: true }
       ];
     
       const defaultSorted = [{
@@ -60,7 +59,7 @@ function ViewSubjects() {
         <Container className="mt-5 border shadow">
             <Row>
                 <Col className="box-title">
-                         <h1>View Subjects</h1>
+                         <h1>View Courses</h1>
                 </Col>
             </Row> 
             <Row >
@@ -99,6 +98,7 @@ function ViewSubjects() {
                                                 {...props.baseProps}
                                             />
                                         </div>
+                                        
                                     </>
                                 )
                             }
@@ -111,4 +111,4 @@ function ViewSubjects() {
 
 }
 
-export default ViewSubjects
+export default ViewCourses
