@@ -57,7 +57,7 @@ function ViewSubjects() {
     
       return (
         
-        <Container className="mt-5 ">
+        <Container className="mt-5 border shadow">
             <Row>
                 <Col className="box-title">
                          <h1>View Subjects</h1>
@@ -75,7 +75,7 @@ function ViewSubjects() {
                             {
                                 props => (
                                     <>
-                                        <div className=" my-2" style={{float:'left'}}>
+                                        <div className="ml-2 my-2" style={{float:'left'}}>
                                             < Row>
                                                 <Col lg={10} sm={12} >
                                                     <SearchBar  
@@ -92,11 +92,13 @@ function ViewSubjects() {
                                                 </Col>
                                             </Row> 
                                         </div>
-                                        <BootstrapTable 
-                                            defaultSorted={defaultSorted}
-                                            pagination={pagination}
-                                            {...props.baseProps}
-                                        />
+                                        <div className="mx-2">
+                                            <BootstrapTable 
+                                                defaultSorted={defaultSorted}
+                                                pagination={pagination}
+                                                {...props.baseProps}
+                                            />
+                                        </div>
                                     </>
                                 )
                             }
