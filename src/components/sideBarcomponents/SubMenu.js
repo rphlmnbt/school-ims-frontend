@@ -2,16 +2,11 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-const SidebarLink = styled.div`
+const SidebarLink = styled(Link)`
   display: flex;
-  color: white;
   justify-content: space-between;
-  align-items: center;
   padding: 20px;
-  list-style: none;
   height: 60px;
-  text-decoration: none;
-  font-size: 18px;
   &:hover {
     
     background: #440710;
@@ -22,27 +17,19 @@ const SidebarLink = styled.div`
 `;
 
 
-const SidebarLink2 = styled(Link)`
-  display: flex;
-  color: white;
-  align-items: center;
-  padding: 20px;
-  list-style: none;
-  height: 60px;
-  text-decoration: none;
+const SidebarData = styled.div`
+ color: white; 
+ list-style: none;
+ text-decoration: none;
   font-size: 18px;
-  &:hover {
-    color: white;
-    background: #440710;
-    cursor: pointer;
-    
-  }
-
+  
 `;
 
 const SidebarLabel = styled.span`
   margin-left: 16px;
 `;
+
+
 
 const DropdownLink = styled(Link)`
   background: #707070;
@@ -68,11 +55,12 @@ const SubMenu = ({ item }) => {
 
   const showSubnav = () => {
     setSubnav(!subnav);
+
   }
 
  
 
-  const setTitle = () => {
+  function setTitle() {
     sessionStorage.clear();
     sessionStorage.setItem("pageTitle", item.mainTitle); 
     console.log(sessionStorage.getItem("pageTitle"));
@@ -81,21 +69,17 @@ const SubMenu = ({ item }) => {
   return (
     <>
 
-      <SidebarLink>
-        <div className ="w-100" >
-          <SidebarLink2 to={item.path} onClick={setTitle}>
-            
-              {item.icon}
+      <SidebarLink to={item.path} onClick={item.subNav && showSubnav || setTitle}>
+            <SidebarData>
+            {item.icon}
               <SidebarLabel>{item.title}</SidebarLabel>
-          </SidebarLink2>
-        </div>
-        <div  onClick={item.subNav && showSubnav}>
-          {item.subNav && subnav
+            </SidebarData>
+            {item.subNav && subnav
             ? item.iconOpened
             : item.subNav
             ? item.iconClosed
             : null}
-        </div>
+
       </SidebarLink>
       
 
@@ -104,8 +88,8 @@ const SubMenu = ({ item }) => {
           return (
            
                 <DropdownLink to={item.path} key={index} onClick={ setTitle}>
-                {item.icon}
-                <SidebarLabel>{item.title}</SidebarLabel>
+                    {item.icon}
+                  <SidebarLabel>{item.title}</SidebarLabel>
                 </DropdownLink>
             
           );

@@ -114,7 +114,7 @@ const Sidebar = () => {
           <SidebarNav sidebar={sidebar} onClick={setTitlePage}>
             <SidebarWrap>
               <div className="d-flex justify-content-end pr-4">
-                <NavIcon  to='#'>
+                <NavIcon to='#'>
                   <AiIcons.AiOutlineClose onClick={showSidebar} />
                 </NavIcon>
               </div>

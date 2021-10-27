@@ -14,12 +14,17 @@ export const SidebarData = [
     {
         mainTitle: 'Employee Database',
         title: 'Employee',
-        path: '/acadbase/AdminDashboard/Employee',
+        path: '#',
         icon: <FaIcons.FaUserTie />,
         iconClosed: <RiIcons.RiArrowDownSFill />,
         iconOpened: <RiIcons.RiArrowUpSFill />,
 
         subNav: [
+        {
+            title: 'View List of Employees',
+            path: '/acadbase/AdminDashboard/ViewEmployees',
+            icon: <FaIcons.FaRegListAlt />
+        },
         {
             title: 'Create New Employee',
             path: '/acadbase/AdminDashboard/Employee/AddEmployee',
@@ -35,12 +40,17 @@ export const SidebarData = [
     {
         mainTitle: 'Student Database',
         title: 'Student',
-        path: '/acadbase/AdminDashboard/Student',
+        path: '#',
         icon: <FaIcons.FaUserEdit />,
         iconClosed: <RiIcons.RiArrowDownSFill />,
         iconOpened: <RiIcons.RiArrowUpSFill />,
 
         subNav: [
+        {
+            title: 'View List of Students',
+            path: '/acadbase/AdminDashboard/ViewStudents',
+            icon: <FaIcons.FaRegListAlt />
+        },
         {
             title: 'Create New Student',
             path: '/acadbase/AdminDashboard/Student/AddStudent',
@@ -56,12 +66,17 @@ export const SidebarData = [
     {
         mainTitle: 'Subject Database',
         title: 'Subject',
-        path: '/acadbase/AdminDashboard/Subject',
+        path: '#',
         icon: <MdIcons.MdTopic />,
         iconClosed: <RiIcons.RiArrowDownSFill />,
         iconOpened: <RiIcons.RiArrowUpSFill />,
 
         subNav: [
+        {
+            title: 'View List of Subjects',
+            path: '/acadbase/AdminDashboard/ViewSubjects',
+            icon: <FaIcons.FaRegListAlt />
+        },
         {
             title: 'Create New Subject',
             path: '/acadbase/AdminDashboard/Subject/AddSubject',
@@ -77,12 +92,17 @@ export const SidebarData = [
     {
         mainTitle: 'Course Database',
         title: 'Course',
-        path: '/acadbase/AdminDashboard/Course',
+        path: '#',
         icon: <FaIcons.FaGraduationCap />,
         iconClosed: <RiIcons.RiArrowDownSFill />,
         iconOpened: <RiIcons.RiArrowUpSFill />,
 
         subNav: [
+        {
+            title: 'View List of Courses',
+            path: '/acadbase/AdminDashboard/ViewCourses',
+            icon: <FaIcons.FaRegListAlt />
+        },
         {
             title: 'Create New Course',
             path: '/acadbase/AdminDashboard/Course/AddCourse',

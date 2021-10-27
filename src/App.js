@@ -13,13 +13,12 @@ import AddCourses from './pages/adminPages/AddCourses';
 import ModifyCourse from './pages/adminPages/ModifyCourse';
 import AddSubject from './pages/adminPages/AddSubject';
 import ModifySubject from './pages/adminPages/ModifySubject';
-import Course from './pages/adminPages/Course'
-import Employee from './pages/adminPages/Employee';
-import Student from './pages/adminPages/Student';
-import Subject from './pages/adminPages/Subject';
+import ViewCourses from './pages/adminPages/Course'
+import ViewEmployee from './pages/adminPages/Employee';
+import ViewStudent from './pages/adminPages/Student';
+import ViewSubject from './pages/adminPages/Subject';
 import StudentDashboardHome from './pages/studentPages/StudentDashboardHome'
 import EditUserProfile from './pages/EditUserProfile'
-import ViewCourses from './pages/ViewCourses'
 import StudentViewSubject from './pages/studentPages/StudentViewSubject'
 import StudentViewCourses from './pages/studentPages/StudentViewCourses'
 import StudentViewActivities from './pages/studentPages/StudentViewActivities'
@@ -42,9 +41,9 @@ function App() {
           <Route exact path="/acadbase/AdminDashboard" component={AdminDashboard} />
           <Route exact path="/acadbase/AdminDashboard/EditUserProfile" component={EditUserProfile} />
           <Route exact path="/acadbase/AdminDashboard/ViewCourses" component={ViewCourses} />
-          <Route exact path="/acadbase/AdminDashboard/Employee" component={Employee} />
-          <Route exact path="/acadbase/AdminDashboard/Student" component={Student} />
-          <Route exact path="/acadbase/AdminDashboard/Subject" component={Subject} />
+          <Route exact path="/acadbase/AdminDashboard/ViewEmployees" component={ViewEmployee} />
+          <Route exact path="/acadbase/AdminDashboard/ViewStudents" component={ViewStudent} />
+          <Route exact path="/acadbase/AdminDashboard/ViewSubjects" component={ViewSubject} />
           <Route exact path="/acadbase/AdminDashboard/Employee/AddEmployee" component={AddEmployee} />
           <Route exact path="/acadbase/AdminDashboard/Employee/ModifyEmployee" component={ModifyEmployee} />
           <Route exact path="/acadbase/AdminDashboard/Student/AddStudent" component={AddStudent} />
