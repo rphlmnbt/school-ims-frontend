@@ -59,7 +59,7 @@ function ViewCourses() {
         <Container className="mt-5 border shadow">
             <Row>
                 <Col className="box-title">
-                         <h1>View Subjects</h1>
+                         <h1>View Courses</h1>
                 </Col>
             </Row> 
             <Row >
@@ -92,11 +92,11 @@ function ViewCourses() {
                                             </Row> 
                                         </div>
                                         <div className="mx-2">
-                                        <BootstrapTable 
-                                            defaultSorted={defaultSorted}
-                                            pagination={pagination}
-                                            {...props.baseProps}
-                                        />
+                                            <BootstrapTable 
+                                                defaultSorted={defaultSorted}
+                                                pagination={pagination}
+                                                {...props.baseProps}
+                                            />
                                         </div>
                                         
                                     </>
