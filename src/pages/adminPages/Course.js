@@ -1,11 +1,12 @@
 import React from 'react'
+import ViewCourses from '../ViewCourses'
 
 
 function Course() {
 
     return (
         <>
-            <h1>Course</h1>
+            <ViewCourses/>
         </>
     )
 }
