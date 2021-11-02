@@ -32,14 +32,14 @@ export const ProfSidebarData = [
     {
         mainTitle: 'Activities',
         title: 'Activities',
-        path: '/acadbase/ProfessorDashboard/ProfViewActivities',
+        path: '#',
         icon: <FaIcons.FaGraduationCap />,
         icon: <FaIcons.FaGraduationCap />,
         iconClosed: <RiIcons.RiArrowDownSFill />,
         iconOpened: <RiIcons.RiArrowUpSFill />,
         subNav: [
             {
-                title: 'View Activity',
+                title: 'View Activities',
                 path: '/acadbase/ProfessorDashboard/ProfViewActivities',
                 icon: <FaIcons.FaUserPlus />
             },
