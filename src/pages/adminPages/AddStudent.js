@@ -279,7 +279,7 @@ function AddStudent() {
                                             <Form.Control 
                                                 type="year_level" 
                                                 name="year_level" 
-                                                value={values.course_id} 
+                                                value={values.year_level} 
                                                 onChange={handleChange}
                                                 isValid={touched.year_level && !errors.year_level} 
                                                 isInvalid={touched.year_level && !!errors.year_level} 

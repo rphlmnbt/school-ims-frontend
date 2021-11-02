@@ -55,7 +55,7 @@ function ModifyStudent() {
                                             <Form.Control 
                                                 type="student_id" 
                                                 name="student_id" 
-                                                value={values.section} 
+                                                value={values.student_id} 
                                                 onChange={handleChange}
                                                 isValid={touched.student_id && !errors.student_id} 
                                                 isInvalid={touched.student_id && !!errors.student_id} 
@@ -300,7 +300,7 @@ function ModifyStudent() {
                                             <Form.Control 
                                                 type="year_level" 
                                                 name="year_level" 
-                                                value={values.course_id} 
+                                                value={values.year_level} 
                                                 onChange={handleChange}
                                                 isValid={touched.year_level && !errors.year_level} 
                                                 isInvalid={touched.year_level && !!errors.year_level} 
