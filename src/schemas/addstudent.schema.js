@@ -22,6 +22,15 @@ const schema = yup.object().shape({
     birth_date: yup.string()
                     .nullable(),
     home_address: yup.string()
+                .min(1, "Invalid.")
+                .nullable(),
+    course_id: yup.number()
+                .min(4, "Please enter at least 4 characters.")
+                .nullable(),
+    year_level: yup.string()
+                .min(4, "Please enter at least 4 characters.")
+                .nullable(),
+    section: yup.string()
                 .min(4, "Please enter at least 4 characters.")
                 .nullable()
                 
