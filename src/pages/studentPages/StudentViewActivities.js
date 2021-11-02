@@ -1,13 +1,13 @@
 import React from 'react'
+import ViewActivities from '../ViewActivities'
 
-
-function ViewActivities() {
+function StudentViewActivities() {
 
     return (
         <>
-            <h1>View Activities</h1>
+            <ViewActivities />
         </>
     )
 }
 
-export default ViewActivities
+export default  StudentViewActivities
