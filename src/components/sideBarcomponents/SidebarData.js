@@ -27,12 +27,12 @@ export const SidebarData = [
         },
         {
             title: 'Create New Employee',
-            path: '/acadbase/AdminDashboard/Employee/AddEmployee',
+            path: '/acadbase/AdminDashboard/AddEmployee',
             icon: <FaIcons.FaUserPlus />
         },
         {
             title: 'Modify Employee',
-            path: '/acadbase/AdminDashboard/Employee/ModifyEmployee',
+            path: '/acadbase/AdminDashboard/ModifyEmployee',
             icon: <FaIcons.FaUserCog />
         }
         ]
@@ -53,12 +53,12 @@ export const SidebarData = [
         },
         {
             title: 'Create New Student',
-            path: '/acadbase/AdminDashboard/Student/AddStudent',
+            path: '/acadbase/AdminDashboard/AddStudent',
             icon: <FaIcons.FaUserPlus />
         },
         {
             title: 'Modify Student',
-            path: '/acadbase/AdminDashboard/Student/ModifyStudent',
+            path: '/acadbase/AdminDashboard/ModifyStudent',
             icon: <FaIcons.FaUserCog />
         }
         ]
@@ -79,12 +79,12 @@ export const SidebarData = [
         },
         {
             title: 'Create New Subject',
-            path: '/acadbase/AdminDashboard/Subject/AddSubject',
+            path: '/acadbase/AdminDashboard/AddSubject',
             icon: <AiIcons.AiFillFileAdd />
         },
         {
             title: 'Modify Subject',
-            path: '/acadbase/AdminDashboard/Subject/ModifySubject',
+            path: '/acadbase/AdminDashboard/ModifySubject',
             icon: <AiIcons.AiFillSetting />
         }
         ]
@@ -105,12 +105,12 @@ export const SidebarData = [
         },
         {
             title: 'Create New Course',
-            path: '/acadbase/AdminDashboard/Course/AddCourse',
+            path: '/acadbase/AdminDashboard/AddCourse',
             icon: <AiIcons.AiFillFileAdd />
         },
         {
             title: 'Modify Course',
-            path: '/acadbase/AdminDashboard/Course/ModifyCourse',
+            path: '/acadbase/AdminDashboard/ModifyCourse',
             icon: <AiIcons.AiFillSetting />
         }
         ]
