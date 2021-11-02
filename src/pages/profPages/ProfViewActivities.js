@@ -1,11 +1,11 @@
 import React from 'react'
-
+import ViewActivities from '../ViewActivities'
 
 function ProfViewActivities() {
 
     return (
         <>
-            <h1>View Activities</h1>
+            <ViewActivities />
         </>
     )
 }
