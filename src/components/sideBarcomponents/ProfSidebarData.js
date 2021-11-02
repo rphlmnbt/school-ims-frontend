@@ -3,6 +3,8 @@ import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import * as MdIcons from 'react-icons/md';
 import * as RiIcons from 'react-icons/ri';
+import * as BiIcons from 'react-icons/bi';
+
 
 export const ProfSidebarData = [
     {
@@ -31,22 +33,27 @@ export const ProfSidebarData = [
     },
     {
         mainTitle: 'Activities',
-        title: 'View Activities',
-        path: '/acadbase/ProfessorDashboard/ProfViewActivities',
+        title: 'Activities',
+        path: '#',
         icon: <FaIcons.FaGraduationCap />,
         icon: <FaIcons.FaGraduationCap />,
         iconClosed: <RiIcons.RiArrowDownSFill />,
         iconOpened: <RiIcons.RiArrowUpSFill />,
         subNav: [
             {
+                title: 'View Activities',
+                path: '/acadbase/ProfessorDashboard/ProfViewActivities',
+                icon: <FaIcons.FaList />
+            },
+            {
                 title: 'Add Activity',
-                path: '/acadbase/ProfessorDashboard/ProfViewActivities/AddActivity',
-                icon: <FaIcons.FaUserPlus />
+                path: '/acadbase/ProfessorDashboard/ProfAddActivity',
+                icon: <FaIcons.FaRegListAlt />
             },
             {
                 title: 'Modify Activity',
-                path: '/acadbase/ProfessorDashboard/ProfViewActivities/ModifyActivity',
-                icon: <FaIcons.FaUserCog />
+                path: '/acadbase/ProfessorDashboard/ProfModifyActivity',
+                icon: <FaIcons.FaRegListAlt />
             }
             ]
 
