@@ -3,7 +3,6 @@ import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import * as MdIcons from 'react-icons/md';
 import * as RiIcons from 'react-icons/ri';
-import * as BiIcons from 'react-icons/bi';
 
 
 export const ProfSidebarData = [
@@ -48,12 +47,12 @@ export const ProfSidebarData = [
             {
                 title: 'Add Activity',
                 path: '/acadbase/ProfessorDashboard/ProfAddActivity',
-                icon: <FaIcons.FaRegListAlt />
+                icon: <RiIcons.RiPlayListAddLine />
             },
             {
                 title: 'Modify Activity',
                 path: '/acadbase/ProfessorDashboard/ProfModifyActivity',
-                icon: <FaIcons.FaRegListAlt />
+                icon: <RiIcons.RiListSettingsFill />
             }
             ]
 
