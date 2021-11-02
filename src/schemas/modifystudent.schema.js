@@ -1,6 +1,7 @@
 import * as yup from "yup"
 
 const schema = yup.object().shape({
+    student_id: yup.number().min(1, "Invalid").nullable(),
     email: yup.string().email('Invalid email').nullable(),
     password: yup.string()
                 .min(4, "Please enter at least 4 characters.")
