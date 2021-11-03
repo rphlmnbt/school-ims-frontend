@@ -8,7 +8,7 @@ import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.m
 import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
-import '../styles/pages/ViewSubjects.css'
+import '../styles/pages/BootstrapTable.css'
 
 function ViewActivities() {
 

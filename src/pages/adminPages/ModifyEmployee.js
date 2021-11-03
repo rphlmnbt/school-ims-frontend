@@ -37,26 +37,7 @@ function ModifyEmployee() {
                 errors,
             }) => ( 
                 <Container className="extend-height py-5 ">
-                     <Row className="g-2">
-                        <Col md>
-                            <Form.Group controlId="professor_id">
-                                <Form.Label>Professor ID</Form.Label>
-                                <Form.Control 
-                                    type="professor_id" 
-                                    name="professor_id" 
-                                    value={values.professor_id} 
-                                    onChange={handleChange}
-                                    isValid={touched.professor_id && !errors.professor_id} 
-                                    isInvalid={touched.professor_id && !!errors.professor_id} 
-                                    placeholder="Professor ID" 
-                                />
-                                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                                <Form.Control.Feedback type="invalid">
-                                    {errors.professor_id}
-                                </Form.Control.Feedback>
-                            </Form.Group>
-                        </Col>
-                    </Row>
+                     
                     <Row className="align-items-center justify-content-center">
                         <Col  md={8} sm={12} className="text-center mt-5 shadow p-3 mb-5 bg-white">
                             <div className="pb-3 mx-auto" >
@@ -67,6 +48,26 @@ function ModifyEmployee() {
                             </div>
                            
                             <Form noValidate onSubmit={handleSubmit}>
+                                <Row className="g-2">
+                                    <Col md>
+                                        <Form.Group controlId="professor_id">
+                                            <Form.Label>Professor ID</Form.Label>
+                                            <Form.Control 
+                                                type="professor_id" 
+                                                name="professor_id" 
+                                                value={values.professor_id} 
+                                                onChange={handleChange}
+                                                isValid={touched.professor_id && !errors.professor_id} 
+                                                isInvalid={touched.professor_id && !!errors.professor_id} 
+                                                placeholder="Professor ID" 
+                                            />
+                                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                                            <Form.Control.Feedback type="invalid">
+                                                {errors.professor_id}
+                                            </Form.Control.Feedback>
+                                        </Form.Group>
+                                    </Col>
+                                </Row>
                                 <Row className="g-2">
                                     <Col md>
                                         <Form.Group  controlId="email">

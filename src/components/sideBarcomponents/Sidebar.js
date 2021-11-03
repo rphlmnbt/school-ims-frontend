@@ -125,14 +125,14 @@ const Sidebar = () => {
                 // })
                 
                 //if admin:
-                // SidebarData.map((item, index) => {
-                //   return <SubMenu item={item} key={index} />;
-                //   })
-
-                //if prof:
-                ProfSidebarData.map((item, index) => {
+                SidebarData.map((item, index) => {
                   return <SubMenu item={item} key={index} />;
                   })
+
+                //if prof:
+                // ProfSidebarData.map((item, index) => {
+                //   return <SubMenu item={item} key={index} />;
+                //   })
                 }
             </SidebarWrap>
           </SidebarNav>

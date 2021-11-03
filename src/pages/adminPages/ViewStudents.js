@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import { Col, Container, Row} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -8,32 +6,36 @@ import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.m
 import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
-import '../styles/pages/BootstrapTable.css'
+import '../../styles/pages/BootstrapTable.css'
 
-function ViewCourses() {
+function ViewStudent() {
 
     const dummyData = [
-        {courseId: 1, courseCode: 1010, courseName: 'Computer Engineering', departmentId: 1, chairperson: 'Juan Dela Cruz'},
-        {courseId: 2, courseCode: 2020, courseName: 'Civil Engineering', departmentId: 1, chairperson: 'Juan Dela Cruz'},
-        {courseId: 3, courseCode: 3030, courseName: 'Industrial Engineering', departmentId: 1, chairperson: 'Juan Dela Cruz'},
-        {courseId: 4, courseCode: 4040, courseName: 'Electrical Engineering', departmentId: 1, chairperson: 'Juan Dela Cruz'},
-        {courseId: 5, courseCode: 5040, courseName: 'Business Management', departmentId: 2, chairperson: 'Andres Bonifacio'},
-        {courseId: 6, courseCode: 6060, courseName: 'Education', departmentId: 3, chairperson: 'Gregoria Del Pilar'},
-        {courseId: 7, courseCode: 7070, courseName: 'Psychology', departmentId: 3, chairperson: 'Gregoria Del Pilar'},
-        {courseId: 8, courseCode: 8080, courseName: 'Architecture', departmentId: 1, chairperson: 'Juan Dela Cruz'},
-        {courseId: 9, courseCode: 9090, courseName: 'Accountancy', departmentId: 2, chairperson: 'Andres Bonifacio'},
-        {courseId: 10, courseCode: 1100, courseName: 'Computer Science', departmentId: 4, chairperson: 'Apolinario Mabini'},
-        {courseId: 11, courseCode: 1111, courseName: 'Information Technology', departmentId: 4, chairperson: 'Apolinario Mabini'},
-        {courseId: 12, courseCode: 1200, courseName: 'Nursing', departmentId: 5, chairperson: 'Satoru Gojo'},
+        {studentId: 1, email: 'yen@gmail.com', password: '******', firstName: 'yen', lastName: 'samson', contactNumber: '099999999', gender: 'mail', 
+            civilStatus: 'complicated', birthDate: '01/01/01', homeAddress: 'house', courseId: '1311', yearLevel: 4, section: 'CpE-401'},
+        {studentId: 2, email: 'yen@gmail.com', password: '******', firstName: 'glenn', lastName: 'uy cana', contactNumber: '099999999', gender: 'mail', 
+            civilStatus: 'complicated', birthDate: '01/01/01', homeAddress: 'house', courseId: '1311', yearLevel: 4, section: 'CpE-401'},
+        {studentId: 3, email: 'yen@gmail.com', password: '******', firstName: 'raph', lastName: 'manabat', contactNumber: '099999999', gender: 'mail', 
+            civilStatus: 'complicated', birthDate: '01/01/01', homeAddress: 'house', courseId: '1311', yearLevel: 4, section: 'CpE-401'},
+        {studentId: 4, email: 'yen@gmail.com', password: '******', firstName: 'me', lastName: 'you', contactNumber: '099999999', gender: 'mail', 
+            civilStatus: 'complicated', birthDate: '01/01/01', homeAddress: 'house', courseId: '1311', yearLevel: 4, section: 'CpE-401'}
+
         
     ]
     
       const columns = [
+        { dataField: 'studentId', text: 'Student ID ', sort: true },
+        { dataField: 'email', text: 'Email', sort: true },
+        { dataField: 'password', text: 'Password', sort: true },
+        { dataField: 'firstName', text: 'First Name', sort: true },
+        { dataField: 'lastName', text: 'Last Name', sort: true },
+        { dataField: 'contactNumber', text: 'Contact Number', sort: true },
+        { dataField: 'gender', text: 'Gender', sort: true },
+        { dataField: 'civilStatus', text: 'Civil Status', sort: true },
+        { dataField: 'birthDate', text: 'Birth Date', sort: true },
         { dataField: 'courseId', text: 'Course ID', sort: true },
-        { dataField: 'courseCode', text: 'Course Code', sort: true },
-        { dataField: 'courseName', text: 'Course Name', sort: true },
-        { dataField: 'departmentId', text: 'Department ID', sort: true },
-        { dataField: 'chairperson', text: 'Chairperson', sort: true }
+        { dataField: 'yearLevel', text: 'Year Level', sort: true },
+        { dataField: 'section', text: 'Section', sort: true }
       ];
     
       const defaultSorted = [{
@@ -56,10 +58,10 @@ function ViewCourses() {
     
       return (
         
-        <Container className="mt-5 border shadow">
+        <Container className="mt-5 border shadow extend-table-container">
             <Row>
                 <Col className="box-title">
-                         <h1>View Courses</h1>
+                         <h1>View Students</h1>
                 </Col>
             </Row> 
             <Row >
@@ -111,4 +113,4 @@ function ViewCourses() {
 
 }
 
-export default ViewCourses
+export default ViewStudent
