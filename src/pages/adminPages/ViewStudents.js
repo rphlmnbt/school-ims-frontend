@@ -8,7 +8,7 @@ import paginationFactory from 'react-bootstrap-table2-paginator';
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
 import '../../styles/pages/BootstrapTable.css'
 
-function ViewStudent() {
+function ViewStudents() {
 
     const dummyData = [
         {studentId: 1, email: 'yen@gmail.com', password: '******', firstName: 'yen', lastName: 'samson', contactNumber: '099999999', gender: 'mail', 
@@ -113,4 +113,4 @@ function ViewStudent() {
 
 }
 
-export default ViewStudent
+export default ViewStudents
