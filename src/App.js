@@ -14,7 +14,7 @@ import ModifyCourse from './pages/adminPages/ModifyCourse';
 import AddSubject from './pages/adminPages/AddSubject';
 import ModifySubject from './pages/adminPages/ModifySubject';
 import ViewCourses from './pages/adminPages/Course'
-import ViewEmployee from './pages/adminPages/Employee';
+import ViewEmployees from './pages/adminPages/ViewEmployees';
 import ViewStudents from './pages/adminPages/ViewStudents';
 import ViewSubject from './pages/adminPages/Subject';
 import StudentDashboardHome from './pages/studentPages/StudentDashboardHome'
@@ -41,7 +41,7 @@ function App() {
           <Route exact path="/acadbase/AdminDashboard" component={AdminDashboard} />
           <Route exact path="/acadbase/AdminDashboard/EditUserProfile" component={EditUserProfile} />
           <Route exact path="/acadbase/AdminDashboard/ViewCourses" component={ViewCourses} />
-          <Route exact path="/acadbase/AdminDashboard/ViewEmployees" component={ViewEmployee} />
+          <Route exact path="/acadbase/AdminDashboard/ViewEmployees" component={ViewEmployees} />
           <Route exact path="/acadbase/AdminDashboard/ViewStudents" component={ViewStudents} />
           <Route exact path="/acadbase/AdminDashboard/ViewSubjects" component={ViewSubject} />
           <Route exact path="/acadbase/AdminDashboard/AddEmployee" component={AddEmployee} />

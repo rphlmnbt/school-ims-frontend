@@ -11,20 +11,20 @@ import '../../styles/pages/BootstrapTable.css'
 function ViewEmployees() {
 
     const dummyData = [
-        {employeeId: 1, email: 'yen@gmail.com', password: '******', firstName: 'yen', lastName: 'samson', contactNumber: '099999999', gender: 'mail', 
+        {employeeId: 1, email: 'yen@gmail.com', password: '******', firstName: 'yen', lastName: 'samson', contactNumber: '099999999', gender: 'male', 
             civilStatus: 'complicated', birthDate: '01/01/01', homeAddress: 'house', departmentId: '1311'},
-        {employeeId: 2, email: 'yen@gmail.com', password: '******', firstName: 'glenn', lastName: 'uy cana', contactNumber: '099999999', gender: 'mail', 
+        {employeeId: 2, email: 'yen@gmail.com', password: '******', firstName: 'glenn', lastName: 'uy cana', contactNumber: '099999999', gender: 'male', 
             civilStatus: 'complicated', birthDate: '01/01/01', homeAddress: 'house', departmentId: '1311'},
-        {employeeId: 3, email: 'yen@gmail.com', password: '******', firstName: 'raph', lastName: 'manabat', contactNumber: '099999999', gender: 'mail', 
+        {employeeId: 3, email: 'yen@gmail.com', password: '******', firstName: 'raph', lastName: 'manabat', contactNumber: '099999999', gender: 'male', 
             civilStatus: 'complicated', birthDate: '01/01/01', homeAddress: 'house', departmentId: '1311'},
-        {employeeId: 4, email: 'yen@gmail.com', password: '******', firstName: 'me', lastName: 'you', contactNumber: '099999999', gender: 'mail', 
+        {employeeId: 4, email: 'yen@gmail.com', password: '******', firstName: 'me', lastName: 'you', contactNumber: '099999999', gender: 'male', 
             civilStatus: 'complicated', birthDate: '01/01/01', homeAddress: 'house', departmentId: '1311'}
 
         
     ]
     
       const columns = [
-        { dataField: 'employeeId', text: 'Student ID ', sort: true },
+        { dataField: 'employeeId', text: 'Employee ID ', sort: true },
         { dataField: 'email', text: 'Email', sort: true },
         { dataField: 'password', text: 'Password', sort: true },
         { dataField: 'firstName', text: 'First Name', sort: true },
@@ -33,7 +33,7 @@ function ViewEmployees() {
         { dataField: 'gender', text: 'Gender', sort: true },
         { dataField: 'civilStatus', text: 'Civil Status', sort: true },
         { dataField: 'birthDate', text: 'Birth Date', sort: true },
-        { dataField: 'departmentId', text: 'Course ID', sort: true }
+        { dataField: 'departmentId', text: 'Department ID', sort: true }
       ];
     
       const defaultSorted = [{

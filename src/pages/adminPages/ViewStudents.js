@@ -11,13 +11,13 @@ import '../../styles/pages/BootstrapTable.css'
 function ViewStudents() {
 
     const dummyData = [
-        {studentId: 1, email: 'yen@gmail.com', password: '******', firstName: 'yen', lastName: 'samson', contactNumber: '099999999', gender: 'mail', 
+        {studentId: 1, email: 'yen@gmail.com', password: '******', firstName: 'yen', lastName: 'samson', contactNumber: '099999999', gender: 'male', 
             civilStatus: 'complicated', birthDate: '01/01/01', homeAddress: 'house', courseId: '1311', yearLevel: 4, section: 'CpE-401'},
-        {studentId: 2, email: 'yen@gmail.com', password: '******', firstName: 'glenn', lastName: 'uy cana', contactNumber: '099999999', gender: 'mail', 
+        {studentId: 2, email: 'yen@gmail.com', password: '******', firstName: 'glenn', lastName: 'uy cana', contactNumber: '099999999', gender: 'male', 
             civilStatus: 'complicated', birthDate: '01/01/01', homeAddress: 'house', courseId: '1311', yearLevel: 4, section: 'CpE-401'},
-        {studentId: 3, email: 'yen@gmail.com', password: '******', firstName: 'raph', lastName: 'manabat', contactNumber: '099999999', gender: 'mail', 
+        {studentId: 3, email: 'yen@gmail.com', password: '******', firstName: 'raph', lastName: 'manabat', contactNumber: '099999999', gender: 'male', 
             civilStatus: 'complicated', birthDate: '01/01/01', homeAddress: 'house', courseId: '1311', yearLevel: 4, section: 'CpE-401'},
-        {studentId: 4, email: 'yen@gmail.com', password: '******', firstName: 'me', lastName: 'you', contactNumber: '099999999', gender: 'mail', 
+        {studentId: 4, email: 'yen@gmail.com', password: '******', firstName: 'me', lastName: 'you', contactNumber: '099999999', gender: 'male', 
             civilStatus: 'complicated', birthDate: '01/01/01', homeAddress: 'house', courseId: '1311', yearLevel: 4, section: 'CpE-401'}
 
         
