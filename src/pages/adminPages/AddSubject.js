@@ -27,17 +27,8 @@ function AddSubject() {
             formRef.current.values.subject_code, 
             formRef.current.values.units, 
             formRef.current.values.lec_hours,
-            formRef.current.values.lab_hours)
-            .then(response => {
-                console.log(response.status);
-                if (response.status === 200) {
-                    handleShow()
-                }
-            })
-            .catch(e => {
-                console.log(e);
-            }
-        );
+            formRef.current.values.lab_hours);
+            handleShow();
     };
 
     return (

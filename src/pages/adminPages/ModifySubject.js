@@ -1,9 +1,10 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { Formik} from 'formik'
 import { Form, Button, Container, Row, Col, Modal } from "react-bootstrap";
 import { useHistory } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap'
 import schema from '../../schemas/modifySubject.schema'
+import subjectService from '../../services/subject.service';
 
 function ModifySubject() {
 
@@ -26,19 +27,41 @@ function ModifySubject() {
         {id: 12, subjectCode: 12, subjectName: 'english4', units: 3, lectureHours: 3, labHours: 0 },
         
     ]
+    const [data, setDataa] = useState([]);
+    let [formValues, setFormValues] = useState(null);
+
+    useEffect(() => {
+        subjectService.getSubjects()
+          .then(response => {
+            setDataa(response.data);
+          })
+          .catch(function(error) {
+            console.log(error);
+          });
+      }, []);
+
 
     //function for getting the id
     const setData = e => {
+
         var x = e.target.value;
         var id = parseInt(x);
-        for(var i = 0; i < dummyData.length; i += 1){
-            var result = dummyData[i];
-            if(result.id === id){
-           
+        for(var i = 0; i < data.length; i += 1){
+            var result = data[i];
+            if(result.subjectID === id){
+                // const loadValues = {
+                //     subject_code: '',
+                //     subject_name: '',
+                //     units: '',
+                //     lab_hours: '',
+                //     lec_hours: '',
+                // }
+                setFormValues(loadValues);
                console.log(result.subjectName);
                 
             }
         }
+
     }
 
 
@@ -48,13 +71,29 @@ function ModifySubject() {
     };
     const handleShow = () => setShow(true);
 
+    const initialValues = {
+        subject_code: '',
+        subject_name: '',
+        units: '',
+        lab_hours: '',
+        lec_hours: '',
+    }
+    const loadValues = {
+        subject_code: '',
+        subject_name: '',
+        units: '',
+        lab_hours: '',
+        lec_hours: '',
+    }
+
+
     return (
         <Formik
             validationSchema={schema}
             onSubmit={handleShow}
             innerRef = {formRef}
-            initialValues={{
-            }}
+            initialValues={   formValues || initialValues}
+            enableReinitialize
         >
             {({
                 handleSubmit,
@@ -104,7 +143,7 @@ function ModifySubject() {
                                             <Form.Control 
                                                 type="text" 
                                                 name="subject_code" 
-                                                value={values.subject_code} 
+                                                value={values.subject_name} 
                                                 onChange={handleChange}
                                                 isValid={touched.subject_code && !errors.subject_code} 
                                                 isInvalid={touched.subject_code && !!errors.subject_code} 
