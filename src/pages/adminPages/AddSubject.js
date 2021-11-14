@@ -4,7 +4,7 @@ import { Form, Button, Container, Row, Col, Modal } from "react-bootstrap";
 import { useHistory } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap'
 import schema from '../../schemas/modifySubject.schema'
-
+import subjectService from '../../services/subject.service';
 
 function AddSubject() {
 
@@ -20,10 +20,30 @@ function AddSubject() {
     };
     const handleShow = () => setShow(true);
 
+    const addNewSubject = () => {
+        
+        subjectService.addNewSubject(
+            formRef.current.values.subject_name,
+            formRef.current.values.subject_code, 
+            formRef.current.values.units, 
+            formRef.current.values.lec_hours,
+            formRef.current.values.lab_hours)
+            .then(response => {
+                console.log(response.status);
+                if (response.status === 200) {
+                    handleShow()
+                }
+            })
+            .catch(e => {
+                console.log(e);
+            }
+        );
+    };
+
     return (
         <Formik
             validationSchema={schema}
-            onSubmit={handleShow}
+            onSubmit={addNewSubject}
             innerRef = {formRef}
             initialValues={{
             }}
