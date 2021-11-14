@@ -1,19 +1,19 @@
 import axios from 'axios'
 
-const API_URL =   + '/api/auth/'
+const API_URL =   + '/api/auth/';
 
 const addNewSubject = (
     subjectName,
     subjectCode, 
     units, 
-    lecHours,
+    lectureHours,
     labHours
     ) => {
 return axios.post('http://localhost:8080/subjects/', {
     subjectName,
     subjectCode, 
     units, 
-    lecHours,
+    lectureHours,
     labHours
 }).then(response => {
     console.log(response);
@@ -23,6 +23,12 @@ return axios.post('http://localhost:8080/subjects/', {
   });
 };
 
+
+const getSubjects = () => {
+    return axios.get('http://localhost:8080/subjects/')
+  };
+
 export default {
-    addNewSubject
+    addNewSubject,
+    getSubjects
   };
