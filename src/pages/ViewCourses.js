@@ -26,6 +26,7 @@ function ViewCourses() {
       }, []);
     
       const columns = [
+        { dataField: 'courseID', text: 'Course ID', sort: true },
         { dataField: 'courseCode', text: 'Course Code', sort: true },
         { dataField: 'courseName', text: 'Course Name', sort: true },
         { dataField: 'chairperson', text: 'Chairperson', sort: true },
