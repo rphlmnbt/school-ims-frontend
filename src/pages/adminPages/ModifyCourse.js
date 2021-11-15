@@ -65,6 +65,7 @@ function ModifyCourse() {
 
     return (
         <Formik
+            validationSchema={schema}
             initialValues={   formValues || initialValues}
             enableReinitialize
             onSubmit={updateCourse}
