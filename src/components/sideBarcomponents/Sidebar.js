@@ -74,72 +74,68 @@ const Sidebar = () => {
   };
   
   return (
-    <>
-      <WholeNav>
-        <IconContext.Provider value={{ color: '#fff' }}>
-          <Row onClick={showSidebar}>
-            <Navi >
-              <Col lg={3} className="d-flex justify-content-start">
-                <NavIcon to='#'>
-                  <FaIcons.FaBars/>
-                </NavIcon>
-                <LinkContainer to="/tracevax/login">
-                  <Navbar.Brand>
-                      <img 
-                          src={logo} 
-                          alt="acadbase-logo"
-                          style={{padding : "5px"}}
-                          height={"80px"}
-                      />
-                      <span className="brand-label">
-                          ACADBASE
-                      </span>
-                  </Navbar.Brand>
-                </LinkContainer>
-                </Col>
-                
-                <Col lg={7}>
-                 <h1 id="mainTitle" className="text-light">
-                    Dashboard
-                      
-                  </h1> 
-                </Col>
-    
-                <Col lg={2}>
-                  <Accounts />
-                </Col>
-            </Navi>
-          </Row>
-          <div className="color-bar"></div>
-          <SidebarNav sidebar={sidebar} onClick={setTitlePage}>
-            <SidebarWrap>
-              <div className="d-flex justify-content-end pr-4">
-                <NavIcon to='#'>
-                  <AiIcons.AiOutlineClose onClick={showSidebar} />
-                </NavIcon>
-              </div>
-              {
-                //if stundent:
-                // StudentSidebarData.map((item, index) => {
-                // return <SubMenu item={item} key={index} />;
-                // })
-                
-                //if admin:
-                SidebarData.map((item, index) => {
-                  return <SubMenu item={item} key={index} />;
-                  })
+      <div>
+        <Navbar className="navbar py-0" sticky="top" variant="light" expand="lg">
+          <IconContext.Provider value={{ color: '#fff' }}>
+            <Row onClick={showSidebar} className="w-100">
+                <Col lg={3} className="d-flex justify-content-start">
+                  <NavIcon to='#'>
+                    <FaIcons.FaBars/>
+                  </NavIcon>
+                  <LinkContainer to="/tracevax/login">
+                    <Navbar.Brand>
+                        <img 
+                            src={logo} 
+                            alt="acadbase-logo"
+                            style={{padding : "5px"}}
+                            height={"80px"}
+                        />
+                        <span className="brand-label">
+                            ACADBASE
+                        </span>
+                    </Navbar.Brand>
+                  </LinkContainer>
+                  </Col>
+                  
+                  <Col lg={6} className="vertical-center justify-content-center">
+                  <h1 id="mainTitle" className="text-light">
+                      Dashboard
+                        
+                    </h1> 
+                  </Col>
+                  <Col lg={3} className="d-flex justify-content-end vertical-center">
+                    <Accounts />
+                  </Col>
+            </Row>
+            <SidebarNav sidebar={sidebar} onClick={setTitlePage}>
+              <SidebarWrap>
+                <div className="d-flex justify-content-end pr-4">
+                  <NavIcon to='#'>
+                    <AiIcons.AiOutlineClose onClick={showSidebar} />
+                  </NavIcon>
+                </div>
+                {
+                  //if stundent:
+                  // StudentSidebarData.map((item, index) => {
+                  // return <SubMenu item={item} key={index} />;
+                  // })
+                  
+                  //if admin:
+                  SidebarData.map((item, index) => {
+                    return <SubMenu item={item} key={index} />;
+                    })
 
-                //if prof:
-                // ProfSidebarData.map((item, index) => {
-                //   return <SubMenu item={item} key={index} />;
-                //   })
-                }
-            </SidebarWrap>
-          </SidebarNav>
-        </IconContext.Provider>
-      </WholeNav>
-      
-    </>
+                  //if prof:
+                  // ProfSidebarData.map((item, index) => {
+                  //   return <SubMenu item={item} key={index} />;
+                  //   })
+                  }
+              </SidebarWrap>
+            </SidebarNav>
+          </IconContext.Provider>
+        </Navbar>
+        <div className="color-bar"></div>
+      </div>
   );
 };
 
