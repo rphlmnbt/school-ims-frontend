@@ -26,26 +26,22 @@ const getCourses = () => {
     return axios.get(API_URL)
   };
 
-const getOneCourse = (subjectID) => {
-    return axios.get(API_URL + `${subjectID}`)
+const getOneCourse = (courseID) => {
+    return axios.get(API_URL + `${courseID}`)
   };
 
 const updateCourse = (
-    subjectName,
-    subjectCode, 
-    units, 
-    lectureHours,
-    labHours,
-    departmentID,
-    subjectID
+  courseName, 
+  courseCode, 
+  chairperson,
+  departmentID,
+  courseID
     ) => {
-  return axios.put(API_URL + `${subjectID}
-  ?subjectName=${subjectName}
-  &subjectCode=${subjectCode}
-  &units=${units}
-  &lectureHours=${lectureHours}
-  &labHours=${labHours}
-  &departmentID=${departmentID}`);
+  return axios.put(API_URL + `${courseID}
+  ?courseName=${courseName}
+  &courseCode=${courseCode}
+  &departmentID=${chairperson}
+  &chairperson=${departmentID}`);
   };
 
 
@@ -53,6 +49,6 @@ const updateCourse = (
 export default {
     addNewCourse,
     getCourses,
-    updateCourse,
+    getOneCourse,
     updateCourse
   };

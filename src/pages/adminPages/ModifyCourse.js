@@ -4,15 +4,50 @@ import { Form, Button, Container, Row, Col, Modal } from "react-bootstrap";
 import { useHistory } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap'
 import schema from '../../schemas/course.schema'
-
+import courseService from '../../services/course.service';
 
 function ModifyCourse() {
 
     const formRef = useRef()
     const history = useHistory();
     const [show, setShow] = useState(false);
+    let [formValues, setFormValues] = useState(null);
+    const [updateId, setupdateId] = useState(null);
 
+    // function for setting data using id
+    const setData = async e => {
+        var x = e.target.value;
+        var id = parseInt(x);
+        setupdateId(id);
+        await courseService.getOneCourse(id)
+        .then(response => {
+            const  loadValues =  {
+                course_name: response.data.courseCode,
+                course_code: response.data.courseCode,
+                department_id: response.data.departmentID,
+                chairperson: response.data.chairperson
+            }   
+        return  setFormValues(loadValues);             
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+        
+    }
 
+    const updateCourse = () => {
+        courseService.updateCourse(    
+            formRef.current.values.course_name,  
+            formRef.current.values.course_code,
+            formRef.current.values.department_id, 
+            formRef.current.values.chairperson,
+            updateId)
+            console.log(
+                updateId);
+            handleShow();
+    };
+
+    
 
     const handleClose = () => {
         setShow(false)
@@ -20,13 +55,20 @@ function ModifyCourse() {
     };
     const handleShow = () => setShow(true);
 
+    const initialValues = {
+        course_code: '',
+        course_name: '',
+        department_id: '',
+        chairperson: ''
+    }
+
+
     return (
         <Formik
-            validationSchema={schema}
-            onSubmit={handleShow}
+            initialValues={   formValues || initialValues}
+            enableReinitialize
+            onSubmit={updateCourse}
             innerRef = {formRef}
-            initialValues={{
-            }}
         >
             {({
                 handleSubmit,
@@ -56,8 +98,7 @@ function ModifyCourse() {
                                                 type="text" 
                                                 name="course_id" 
                                                 value={values.course_id} 
-                                                onChange={handleChange}
-                                               
+                                                onChange={handleChange, setData}
                                                 isValid={touched.course_id && !errors.course_id}
                                                 isInvalid={touched.course_id && !!errors.course_id} 
                                                 placeholder="Course ID" 
@@ -148,24 +189,6 @@ function ModifyCourse() {
                                             </Form.Control.Feedback>
                                         </Form.Group>
                                     </Col>
-                                    <Col md>
-                                        <Form.Group  controlId="department_id">
-                                            <Form.Label>Department ID</Form.Label>
-                                            <Form.Control 
-                                                type="text" 
-                                                name="department_id" 
-                                                value={values.department_id} 
-                                                onChange={handleChange}
-                                                isValid={touched.department_id && !errors.department_id}
-                                                isInvalid={touched.department_id && !!errors.department_id} 
-                                                placeholder="Department ID" 
-                                            />
-                                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                                            <Form.Control.Feedback type="invalid">
-                                                {errors.department_id}
-                                            </Form.Control.Feedback>
-                                        </Form.Group>
-                                    </Col>
                                 </Row>
                                 <br />
                                 <Button 
@@ -173,7 +196,7 @@ function ModifyCourse() {
                                     type="submit" 
                                     className="submit-btn"
                                 >
-                                    Create Course
+                                    Apply Changes
                                 </Button>
                                 <LinkContainer to="/acadbase/AdminDashboard">
                                     <Button 
@@ -190,7 +213,7 @@ function ModifyCourse() {
                     
                     <Modal show={show} onHide={handleClose}>
                         <Modal.Header closeButton>
-                        <Modal.Title>Created!</Modal.Title>
+                        <Modal.Title>Edit Success!</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>Redirecting to User Dashboard</Modal.Body>
                         <Modal.Footer>
