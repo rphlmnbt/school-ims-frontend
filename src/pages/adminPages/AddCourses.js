@@ -4,7 +4,7 @@ import { Form, Button, Container, Row, Col, Modal } from "react-bootstrap";
 import { useHistory } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap'
 import schema from '../../schemas/course.schema'
-
+import courseService from '../../services/course.service';
 
 function AddCourses() {
 
@@ -12,7 +12,15 @@ function AddCourses() {
     const history = useHistory();
     const [show, setShow] = useState(false);
 
-
+    const addNewCourse = () => {
+        
+        courseService.addNewCourse(
+            formRef.current.values.course_code, 
+            formRef.current.values.course_name, 
+            formRef.current.values.department_id,
+            formRef.current.values.chairperson);
+            handleShow();
+    };
 
     const handleClose = () => {
         setShow(false)
@@ -23,7 +31,7 @@ function AddCourses() {
     return (
         <Formik
             validationSchema={schema}
-            onSubmit={handleShow}
+            onSubmit={addNewCourse}
             innerRef = {formRef}
             initialValues={{
             }}
@@ -48,27 +56,8 @@ function AddCourses() {
                                 </Col>
                             </Row>
                             <Form noValidate onSubmit={handleSubmit}>
+                                
                                 <Row className="g-2">
-                                    <Col md>
-                                        <Form.Group  controlId="course_id">
-                                            <Form.Label>Course ID</Form.Label>
-                                            <Form.Control 
-                                                type="text" 
-                                                name="course_id" 
-                                                value={values.course_id} 
-                                                onChange={handleChange}
-                                               
-                                                isValid={touched.course_id && !errors.course_id}
-                                                isInvalid={touched.course_id && !!errors.course_id} 
-                                                placeholder="Course ID" 
-                                            />
-                                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                                            <Form.Control.Feedback type="invalid">
-                                                {errors.course_id}
-                                            </Form.Control.Feedback>
-                                        </Form.Group>
-                                    </Col>
-
                                     <Col md>
                                         <Form.Group controlId="course_code">
                                             <Form.Label>Course Code</Form.Label>
@@ -84,6 +73,27 @@ function AddCourses() {
                                             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                                             <Form.Control.Feedback type="invalid">
                                                 {errors.course_code}
+                                            </Form.Control.Feedback>
+                                        </Form.Group>
+                                        
+                                    </Col>
+                                    
+
+                                    <Col md>
+                                        <Form.Group controlId="department_id">
+                                            <Form.Label>Department ID</Form.Label>
+                                            <Form.Control 
+                                                type="text" 
+                                                name="department_id" 
+                                                value={values.department_id} 
+                                                onChange={handleChange}
+                                                isValid={touched.department_id && !errors.department_id} 
+                                                isInvalid={touched.department_id && !!errors.department_id} 
+                                                placeholder="Department ID" 
+                                            />
+                                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                                            <Form.Control.Feedback type="invalid">
+                                                {errors.department_id}
                                             </Form.Control.Feedback>
                                         </Form.Group>
                                         
@@ -107,26 +117,6 @@ function AddCourses() {
                                                 {errors.course_name}
                                             </Form.Control.Feedback>
                                         </Form.Group>
-                                    </Col>
-
-                                    <Col md>
-                                        <Form.Group controlId="department_id">
-                                            <Form.Label>Department ID</Form.Label>
-                                            <Form.Control 
-                                                type="text" 
-                                                name="department_id" 
-                                                value={values.department_id} 
-                                                onChange={handleChange}
-                                                isValid={touched.department_id && !errors.department_id} 
-                                                isInvalid={touched.department_id && !!errors.department_id} 
-                                                placeholder="Department ID" 
-                                            />
-                                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                                            <Form.Control.Feedback type="invalid">
-                                                {errors.department_id}
-                                            </Form.Control.Feedback>
-                                        </Form.Group>
-                                        
                                     </Col>
                                 </Row>
                                 <Row className="g-2">
