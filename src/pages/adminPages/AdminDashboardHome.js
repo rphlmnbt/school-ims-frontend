@@ -6,7 +6,7 @@ import AdminProfile from './AdminProfile'
 function AdminDashboardHome() {
 
     return (
-            <Container className="extend-width" >
+            <Container>
                 <AdminProfile />
                 <Row className="mx-auto w-100 pt-5 justify-content-center" >
                     <Col lg={5} sm={12} className="shadow" >

@@ -3,10 +3,6 @@ import * as yup from "yup"
 const schema = yup.object().shape({
 
 
-    subject_id: yup.number()
-                .min(1, "Invalid")
-                .nullable().required("Please enter subject ID"),
-
     subject_code: yup.string()
                 .min(1, "Invalid")
                 .max(50, 'Too Long!')
@@ -19,10 +15,13 @@ const schema = yup.object().shape({
                 .min(1, "Invalid")
                 .nullable(),
     lec_hours: yup.number()
-                .min(1, "Invalid")
+                .min(0, "Invalid")
                 .nullable(),
     lab_hours: yup.number()
-                .min(1, "Invalid")
+                .min(0, "Invalid")
+                .nullable(),
+    department_id: yup.number()
+                .min(0, "Invalid")
                 .nullable()
 })
 

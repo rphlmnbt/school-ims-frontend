@@ -27,6 +27,7 @@ function ModifySubject() {
             units: response.data.units,
             lab_hours: response.data.labHours,
             lec_hours: response.data.lectureHours,
+            department_id: response.data.departmentID
         }   
         return  setFormValues(loadValues);             
         })
@@ -43,6 +44,7 @@ function ModifySubject() {
             formRef.current.values.units, 
             formRef.current.values.lec_hours,
             formRef.current.values.lab_hours,
+            formRef.current.values.department_id,
             updateId)
             console.log(
                 updateId);
@@ -62,6 +64,7 @@ function ModifySubject() {
         units: '',
         lab_hours: '',
         lec_hours: '',
+        department_id: ''
     }
     const loadValues = {
         subject_code: '',
@@ -69,6 +72,7 @@ function ModifySubject() {
         units: '',
         lab_hours: '',
         lec_hours: '',
+        department_id: ''
     }
 
 
@@ -219,6 +223,26 @@ function ModifySubject() {
                                             </Form.Control.Feedback>
                                         </Form.Group>
                                         
+                                    </Col>
+                                </Row>
+                                <Row className="g-2">
+                                    <Col md>
+                                        <Form.Group  controlId="department_id">
+                                            <Form.Label>Department ID</Form.Label>
+                                            <Form.Control 
+                                                type="text" 
+                                                name="department_id" 
+                                                value={values.department_id} 
+                                                onChange={handleChange}
+                                                isValid={touched.department_id && !errors.department_id}
+                                                isInvalid={touched.department_id && !!errors.department_id} 
+                                                placeholder="Department ID" 
+                                            />
+                                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                                            <Form.Control.Feedback type="invalid">
+                                                {errors.department_id}
+                                            </Form.Control.Feedback>
+                                        </Form.Group>
                                     </Col>
                                 </Row>
                                 <br />

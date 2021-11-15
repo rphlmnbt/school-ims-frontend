@@ -27,7 +27,8 @@ function AddSubject() {
             formRef.current.values.subject_code, 
             formRef.current.values.units, 
             formRef.current.values.lec_hours,
-            formRef.current.values.lab_hours);
+            formRef.current.values.lab_hours,
+            formRef.current.values.department_id);
             handleShow();
     };
 
@@ -60,26 +61,6 @@ function AddSubject() {
                             </Row>
                             <Form noValidate onSubmit={handleSubmit}>
                                 <Row className="g-2">
-                                    <Col md>
-                                        <Form.Group  controlId="subject_id">
-                                            <Form.Label>Subject ID</Form.Label>
-                                            <Form.Control 
-                                                type="text" 
-                                                name="subject_id" 
-                                                value={values.subject_id} 
-                                                onChange={handleChange}
-                                               
-                                                isValid={touched.subject_id && !errors.subject_id}
-                                                isInvalid={touched.subject_id && !!errors.subject_id} 
-                                                placeholder="ID" 
-                                            />
-                                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                                            <Form.Control.Feedback type="invalid">
-                                                {errors.subject_id}
-                                            </Form.Control.Feedback>
-                                        </Form.Group>
-                                    </Col>
-
                                     <Col md>
                                         <Form.Group controlId="subject_code">
                                             <Form.Label>Subject Code</Form.Label>
@@ -178,6 +159,26 @@ function AddSubject() {
                                             </Form.Control.Feedback>
                                         </Form.Group>
                                         
+                                    </Col>
+                                </Row>
+                                <Row className="g-2">
+                                    <Col md>
+                                        <Form.Group  controlId="department_id">
+                                            <Form.Label>Department ID</Form.Label>
+                                            <Form.Control 
+                                                type="text" 
+                                                name="department_id" 
+                                                value={values.department_id} 
+                                                onChange={handleChange}
+                                                isValid={touched.department_id && !errors.department_id}
+                                                isInvalid={touched.department_id && !!errors.department_id} 
+                                                placeholder="Department ID" 
+                                            />
+                                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                                            <Form.Control.Feedback type="invalid">
+                                                {errors.department_id}
+                                            </Form.Control.Feedback>
+                                        </Form.Group>
                                     </Col>
                                 </Row>
                                 <br />

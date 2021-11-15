@@ -28,7 +28,8 @@ function ViewSubjects() {
         { dataField: 'subjectCode', text: 'Subject Code', sort: true },
         { dataField: 'units', text: 'Units', sort: true },
         { dataField: 'lectureHours', text: 'Lecture Hours', sort: true },
-        { dataField: 'labHours', text: 'Lab Hours', sort: true }
+        { dataField: 'labHours', text: 'Lab Hours', sort: true },
+        { dataField: 'departmentID', text: 'Department ID', sort: true }
       ];
     
       const defaultSorted = [{

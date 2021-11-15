@@ -1,20 +1,22 @@
 import axios from 'axios'
 
-const API_URL =   + '/api/auth/';
+const API_URL =  'http://localhost:8080/subjects/';
 
 const addNewSubject = (
     subjectName,
     subjectCode, 
     units, 
     lectureHours,
-    labHours
+    labHours,
+    departmentID
     ) => {
-return axios.post('http://localhost:8080/subjects/', {
+return axios.post(API_URL, {
     subjectName,
     subjectCode, 
     units, 
     lectureHours,
-    labHours
+    labHours,
+    departmentID
 }).then(response => {
     console.log(response);
   })
@@ -25,11 +27,11 @@ return axios.post('http://localhost:8080/subjects/', {
 
 
 const getSubjects = () => {
-    return axios.get('http://localhost:8080/subjects/')
+    return axios.get(API_URL)
   };
 
 const getOneSubject = (subjectID) => {
-    return axios.get(`http://localhost:8080/subjects/${subjectID}`)
+    return axios.get(API_URL + `${subjectID}`)
   };
 
 const updateSubject = (
@@ -38,14 +40,16 @@ const updateSubject = (
     units, 
     lectureHours,
     labHours,
+    departmentID,
     subjectID
     ) => {
-  return axios.put(`http://localhost:8080/subjects/${subjectID}
+  return axios.put(API_URL + `${subjectID}
   ?subjectName=${subjectName}
   &subjectCode=${subjectCode}
   &units=${units}
   &lectureHours=${lectureHours}
-  &labHours=${labHours}`);
+  &labHours=${labHours}
+  &departmentID=${departmentID}`);
   };
 
 
