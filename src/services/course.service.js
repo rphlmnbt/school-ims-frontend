@@ -5,12 +5,14 @@ const API_URL =  'http://localhost:8080/courses/';
 const addNewCourse = (
     courseName, 
     courseCode, 
-    chairperson
+    chairperson,
+    departmentID
     ) => {
 return axios.post(API_URL, {
     courseName, 
     courseCode, 
-    chairperson
+    chairperson,
+    departmentID
 }).then(response => {
     console.log(response);
   })

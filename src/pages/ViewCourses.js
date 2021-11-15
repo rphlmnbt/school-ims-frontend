@@ -1,6 +1,6 @@
 
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Col, Container, Row} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.css';
@@ -9,31 +9,27 @@ import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
 import '../styles/pages/BootstrapTable.css'
+import courseService from '../services/course.service';
 
 function ViewCourses() {
 
-    const dummyData = [
-        {courseId: 1, courseCode: 1010, courseName: 'Computer Engineering', departmentId: 1, chairperson: 'Juan Dela Cruz'},
-        {courseId: 2, courseCode: 2020, courseName: 'Civil Engineering', departmentId: 1, chairperson: 'Juan Dela Cruz'},
-        {courseId: 3, courseCode: 3030, courseName: 'Industrial Engineering', departmentId: 1, chairperson: 'Juan Dela Cruz'},
-        {courseId: 4, courseCode: 4040, courseName: 'Electrical Engineering', departmentId: 1, chairperson: 'Juan Dela Cruz'},
-        {courseId: 5, courseCode: 5040, courseName: 'Business Management', departmentId: 2, chairperson: 'Andres Bonifacio'},
-        {courseId: 6, courseCode: 6060, courseName: 'Education', departmentId: 3, chairperson: 'Gregoria Del Pilar'},
-        {courseId: 7, courseCode: 7070, courseName: 'Psychology', departmentId: 3, chairperson: 'Gregoria Del Pilar'},
-        {courseId: 8, courseCode: 8080, courseName: 'Architecture', departmentId: 1, chairperson: 'Juan Dela Cruz'},
-        {courseId: 9, courseCode: 9090, courseName: 'Accountancy', departmentId: 2, chairperson: 'Andres Bonifacio'},
-        {courseId: 10, courseCode: 1100, courseName: 'Computer Science', departmentId: 4, chairperson: 'Apolinario Mabini'},
-        {courseId: 11, courseCode: 1111, courseName: 'Information Technology', departmentId: 4, chairperson: 'Apolinario Mabini'},
-        {courseId: 12, courseCode: 1200, courseName: 'Nursing', departmentId: 5, chairperson: 'Satoru Gojo'},
-        
-    ]
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        courseService.getCourses()
+          .then(response => {
+            setData(response.data);
+          })
+          .catch(function(error) {
+            console.log(error);
+          });
+      }, []);
     
       const columns = [
-        { dataField: 'courseId', text: 'Course ID', sort: true },
         { dataField: 'courseCode', text: 'Course Code', sort: true },
         { dataField: 'courseName', text: 'Course Name', sort: true },
-        { dataField: 'departmentId', text: 'Department ID', sort: true },
-        { dataField: 'chairperson', text: 'Chairperson', sort: true }
+        { dataField: 'chairperson', text: 'Chairperson', sort: true },
+        { dataField: 'departmentID', text: 'Department ID', sort: true }
       ];
     
       const defaultSorted = [{
@@ -67,7 +63,7 @@ function ViewCourses() {
                     <ToolkitProvider
                         bootstrap4
                         keyField='id'
-                        data={dummyData}
+                        data={data}
                         columns={columns}
                         search
                             >

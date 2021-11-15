@@ -17,7 +17,8 @@ function AddCourses() {
         courseService.addNewCourse(
             formRef.current.values.course_name, 
             formRef.current.values.course_code, 
-            formRef.current.values.chairperson);
+            formRef.current.values.chairperson,
+            formRef.current.values.department_id);
             handleShow();
     };
 
