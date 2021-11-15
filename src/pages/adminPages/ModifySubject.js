@@ -1,45 +1,55 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { Formik} from 'formik'
 import { Form, Button, Container, Row, Col, Modal } from "react-bootstrap";
 import { useHistory } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap'
 import schema from '../../schemas/modifySubject.schema'
+import SubjectService from '../../services/subject.service';
 
 function ModifySubject() {
 
     const formRef = useRef()
     const history = useHistory();
     const [show, setShow] = useState(false);
+    let [formValues, setFormValues] = useState(null);
+    const [updateId, setupdateId] = useState(null);
 
-    const dummyData = [
-        {id: 1, subjectCode: 1, subjectName: 'math1', units: 3, lectureHours: 3, labHours: 0 },
-        {id: 2, subjectCode: 2, subjectName: 'math2', units: 3, lectureHours: 3, labHours: 3 },
-        {id: 3, subjectCode: 3, subjectName: 'math3', units: 3, lectureHours: 0, labHours: 4 },
-        {id: 4, subjectCode: 4, subjectName: 'math4', units: 3, lectureHours: 3, labHours: 0 },
-        {id: 5, subjectCode: 5, subjectName: 'science1', units: 3, lectureHours: 3, labHours: 0 },
-        {id: 6, subjectCode: 6, subjectName: 'science2', units: 3, lectureHours: 1, labHours: 4 },
-        {id: 7, subjectCode: 7, subjectName: 'science3', units: 3, lectureHours: 4, labHours: 0 },
-        {id: 8, subjectCode: 8, subjectName: 'science4', units: 3, lectureHours: 3, labHours: 3 },
-        {id: 9, subjectCode: 9, subjectName: 'english1', units: 3, lectureHours: 3, labHours: 2 },
-        {id: 10, subjectCode: 10, subjectName: 'english2', units: 3, lectureHours: 2, labHours: 4 },
-        {id: 11, subjectCode: 11, subjectName: 'english3', units: 3, lectureHours: 0, labHours: 4 },
-        {id: 12, subjectCode: 12, subjectName: 'english4', units: 3, lectureHours: 3, labHours: 0 },
-        
-    ]
-
-    //function for getting the id
-    const setData = e => {
+    // function for setting data using id
+    const setData = async e => {
         var x = e.target.value;
         var id = parseInt(x);
-        for(var i = 0; i < dummyData.length; i += 1){
-            var result = dummyData[i];
-            if(result.id === id){
-           
-               console.log(result.subjectName);
-                
-            }
-        }
+        setupdateId(id);
+        await SubjectService.getOneSubject(id)
+        .then(response => {
+          const loadValues =  {
+            subject_code: response.data.subjectCode,
+            subject_name: response.data.subjectName,
+            units: response.data.units,
+            lab_hours: response.data.labHours,
+            lec_hours: response.data.lectureHours,
+            department_id: response.data.departmentID
+        }   
+        return  setFormValues(loadValues);             
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+        
     }
+
+    const updateSubject = () => {
+        SubjectService.updateSubject(      
+            formRef.current.values.subject_name,
+            formRef.current.values.subject_code, 
+            formRef.current.values.units, 
+            formRef.current.values.lec_hours,
+            formRef.current.values.lab_hours,
+            formRef.current.values.department_id,
+            updateId)
+            console.log(
+                updateId);
+            handleShow();
+    };
 
 
     const handleClose = () => {
@@ -48,13 +58,30 @@ function ModifySubject() {
     };
     const handleShow = () => setShow(true);
 
+    const initialValues = {
+        subject_code: '',
+        subject_name: '',
+        units: '',
+        lab_hours: '',
+        lec_hours: '',
+        department_id: ''
+    }
+    const loadValues = {
+        subject_code: '',
+        subject_name: '',
+        units: '',
+        lab_hours: '',
+        lec_hours: '',
+        department_id: ''
+    }
+
+
     return (
         <Formik
-            validationSchema={schema}
-            onSubmit={handleShow}
+            initialValues={   formValues || initialValues}
+            enableReinitialize
+            onSubmit={updateSubject}
             innerRef = {formRef}
-            initialValues={{
-            }}
         >
             {({
                 handleSubmit,
@@ -79,16 +106,16 @@ function ModifySubject() {
                             <Form noValidate onSubmit={handleSubmit}>
                                 <Row>
                                     <Col md>
-                                        <Form.Group  controlId="id">
+                                        <Form.Group  controlId="subject_id">
                                             <Form.Label>Subject ID</Form.Label>
                                             <Form.Control 
                                                 type="text" 
-                                                name="id" 
-                                                value={values.id} 
+                                                name="subject_id" 
+                                                value={values.subject_id} 
                                                 onChange={handleChange, setData}
-                                               
-                                                isValid={touched.id && !errors.id}
-                                                isInvalid={touched.id && !!errors.id} 
+                                                
+                                                isValid={touched.subject_id && !errors.subject_id}
+                                                isInvalid={touched.subject_id && !!errors.subject_id} 
                                                 placeholder="ID" 
                                             />
                                             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
@@ -196,6 +223,26 @@ function ModifySubject() {
                                             </Form.Control.Feedback>
                                         </Form.Group>
                                         
+                                    </Col>
+                                </Row>
+                                <Row className="g-2">
+                                    <Col md>
+                                        <Form.Group  controlId="department_id">
+                                            <Form.Label>Department ID</Form.Label>
+                                            <Form.Control 
+                                                type="text" 
+                                                name="department_id" 
+                                                value={values.department_id} 
+                                                onChange={handleChange}
+                                                isValid={touched.department_id && !errors.department_id}
+                                                isInvalid={touched.department_id && !!errors.department_id} 
+                                                placeholder="Department ID" 
+                                            />
+                                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                                            <Form.Control.Feedback type="invalid">
+                                                {errors.department_id}
+                                            </Form.Control.Feedback>
+                                        </Form.Group>
                                     </Col>
                                 </Row>
                                 <br />

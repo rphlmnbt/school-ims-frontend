@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Formik } from 'formik'
 import { Form, Button, Container, Row, Col, Modal } from 'react-bootstrap'
 import { FaUserCircle } from 'react-icons/fa'
@@ -6,7 +6,8 @@ import { IconContext } from 'react-icons/lib'
 import '../styles/pages/LogIn.css'
 import schema from '../schemas/login.schema'
 import logo from '../pseudoDb/acadbase-logo.png'
-import { useHistory  } from 'react-router-dom';
+import { useHistory  } from 'react-router-dom'
+import userService from '../services/user.service'
 
 function LogIn() {
     const formRef = useRef()
@@ -15,14 +16,39 @@ function LogIn() {
     const handleShow = () => setShow(true);
     const history = useHistory();
 
+    const logIn = () => {
+        console.log(formRef.current.values.password)
+        userService.login(formRef.current.values.email, formRef.current.values.password)
+          .then(response => {
+              
+            console.log(response.userID)
+            if (response.userID){
+                localStorage.setItem("logged",true);
+                const role = response.userRole;
+                var path;
+                if(role === 'student') {
+                    path = `/acadbase/StudentDashboard`; 
+                }
+                if(role === 'admin') {
+                    path = `/acadbase/AdminDashboard`; 
+                }
+                if(role === 'student') {
+                    path = `/acadbase/ProfessorDashboard`; 
+                }
+                         
+                
+                history.push(path);
+            }
+          })
+          .catch(e => {
+            console.log(e);
+            handleShow()
+          });
+    };
+
     localStorage.setItem("logged",false); 
     console.log(localStorage.getItem("logged"));
 
-    function loggedIn() {
-        localStorage.setItem("logged",true);              
-        let path = `/acadbase/AdminDashboard`; 
-        history.push(path);
-    }
 
     return (
         <Formik
@@ -101,7 +127,7 @@ function LogIn() {
                                         variant="primary btn-block" 
                                         type="submit" 
                                         className="submit-btn mt-5"
-                                        onClick={loggedIn}
+                                        onClick={logIn}
                                     >
                                         Log In
                                 </Button>

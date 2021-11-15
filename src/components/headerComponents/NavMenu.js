@@ -20,7 +20,7 @@ function NavMenu() {
     }, [location]);
 
     return (
-        <div>
+        <div id="navbar">
             {user ? <Sidebar /> : <TopNav />}
         </div>
     )
