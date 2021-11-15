@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState }  from 'react';
 import { Col, Container, Row} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.css';
@@ -7,35 +7,44 @@ import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
 import '../../styles/pages/BootstrapTable.css'
+import studentService from '../../services/student.service';
 
 function ViewStudents() {
 
-    const dummyData = [
-        {studentId: 1, email: 'yen@gmail.com', password: '******', firstName: 'yen', lastName: 'samson', contactNumber: '099999999', gender: 'male', 
-            civilStatus: 'complicated', birthDate: '01/01/01', homeAddress: 'house', courseId: '1311', yearLevel: 4, section: 'CpE-401'},
-        {studentId: 2, email: 'yen@gmail.com', password: '******', firstName: 'glenn', lastName: 'uy cana', contactNumber: '099999999', gender: 'male', 
-            civilStatus: 'complicated', birthDate: '01/01/01', homeAddress: 'house', courseId: '1311', yearLevel: 4, section: 'CpE-401'},
-        {studentId: 3, email: 'yen@gmail.com', password: '******', firstName: 'raph', lastName: 'manabat', contactNumber: '099999999', gender: 'male', 
-            civilStatus: 'complicated', birthDate: '01/01/01', homeAddress: 'house', courseId: '1311', yearLevel: 4, section: 'CpE-401'},
-        {studentId: 4, email: 'yen@gmail.com', password: '******', firstName: 'me', lastName: 'you', contactNumber: '099999999', gender: 'male', 
-            civilStatus: 'complicated', birthDate: '01/01/01', homeAddress: 'house', courseId: '1311', yearLevel: 4, section: 'CpE-401'}
+    const [data, setData] = useState([]);
 
-        
-    ]
+    useEffect(() => {
+        studentService.getStudents()
+          .then(response => {
+            setData(response.data);
+          })
+          .catch(function(error) {
+            console.log(error);
+          });
+      }, []);
     
+
+    const colStyle = {
+        whiteSpace: 'nowrap',
+        width: '50px', 
+        overflow: 'hidden',
+        textOverflow: 'ellipsis'
+    };
+
+
+
       const columns = [
-        { dataField: 'studentId', text: 'Student ID ', sort: true },
-        { dataField: 'email', text: 'Email', sort: true },
-        { dataField: 'password', text: 'Password', sort: true },
-        { dataField: 'firstName', text: 'First Name', sort: true },
-        { dataField: 'lastName', text: 'Last Name', sort: true },
-        { dataField: 'contactNumber', text: 'Contact Number', sort: true },
-        { dataField: 'gender', text: 'Gender', sort: true },
-        { dataField: 'civilStatus', text: 'Civil Status', sort: true },
-        { dataField: 'birthDate', text: 'Birth Date', sort: true },
-        { dataField: 'courseId', text: 'Course ID', sort: true },
-        { dataField: 'yearLevel', text: 'Year Level', sort: true },
-        { dataField: 'section', text: 'Section', sort: true }
+        { dataField: 'userID', text: 'Student ID ', sort: true, style:colStyle },
+        { dataField: 'email', text: 'Email', sort: true, style:colStyle },
+        { dataField: 'firstName', text: 'First Name', sort: true, style:colStyle },
+        { dataField: 'lastName', text: 'Last Name', sort: true, style:colStyle },
+        { dataField: 'contactNumber', text: 'Contact Number', sort: true , style:colStyle},
+        { dataField: 'gender', text: 'Gender', sort: true, style:colStyle },
+        { dataField: 'civilStatus', text: 'Civil Status', sort: true, style:colStyle },
+        { dataField: 'birthDate', text: 'Birth Date', sort: true, style:colStyle },
+        { dataField: 'courseID', text: 'Course ID', sort: true, style:colStyle },
+        { dataField: 'yearLevel', text: 'Year Level', sort: true, style:colStyle },
+        { dataField: 'section', text: 'Section', sort: true, style:colStyle }
       ];
     
       const defaultSorted = [{
@@ -69,7 +78,7 @@ function ViewStudents() {
                     <ToolkitProvider
                         bootstrap4
                         keyField='id'
-                        data={dummyData}
+                        data={data}
                         columns={columns}
                         search
                             >
@@ -98,6 +107,13 @@ function ViewStudents() {
                                                 defaultSorted={defaultSorted}
                                                 pagination={pagination}
                                                 {...props.baseProps}
+                                                cellStyle={  {
+                                                    textOverflow: 'ellipsis',
+                                                    whiteSpace: 'nowrap',
+                                                    overflow: 'hidden'
+                                                            
+                                            } }
+                                                
                                             />
                                         </div>
                                         
