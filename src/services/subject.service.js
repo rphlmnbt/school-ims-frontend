@@ -28,7 +28,31 @@ const getSubjects = () => {
     return axios.get('http://localhost:8080/subjects/')
   };
 
+const getOneSubject = (subjectID) => {
+    return axios.get(`http://localhost:8080/subjects/${subjectID}`)
+  };
+
+const updateSubject = (
+    subjectName,
+    subjectCode, 
+    units, 
+    lectureHours,
+    labHours,
+    subjectID
+    ) => {
+  return axios.put(`http://localhost:8080/subjects/${subjectID}
+  ?subjectName=${subjectName}
+  &subjectCode=${subjectCode}
+  &units=${units}
+  &lectureHours=${lectureHours}
+  &labHours=${labHours}`);
+  };
+
+
+
 export default {
     addNewSubject,
-    getSubjects
+    getSubjects,
+    updateSubject,
+    getOneSubject
   };

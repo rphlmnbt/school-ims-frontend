@@ -61,21 +61,21 @@ function AddSubject() {
                             <Form noValidate onSubmit={handleSubmit}>
                                 <Row className="g-2">
                                     <Col md>
-                                        <Form.Group  controlId="id">
+                                        <Form.Group  controlId="subject_id">
                                             <Form.Label>Subject ID</Form.Label>
                                             <Form.Control 
                                                 type="text" 
-                                                name="id" 
-                                                value={values.id} 
+                                                name="subject_id" 
+                                                value={values.subject_id} 
                                                 onChange={handleChange}
                                                
-                                                isValid={touched.id && !errors.id}
-                                                isInvalid={touched.id && !!errors.id} 
+                                                isValid={touched.subject_id && !errors.subject_id}
+                                                isInvalid={touched.subject_id && !!errors.subject_id} 
                                                 placeholder="ID" 
                                             />
                                             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                                             <Form.Control.Feedback type="invalid">
-                                                {errors.id}
+                                                {errors.subject_id}
                                             </Form.Control.Feedback>
                                         </Form.Group>
                                     </Col>
