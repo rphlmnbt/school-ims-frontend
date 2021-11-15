@@ -13,6 +13,7 @@ import { Container } from 'react-bootstrap';
 import logo from '../../pseudoDb/acadbase-logo.png'
 import Accounts from '../headerComponents/Accounts'
 import { Navbar, Nav, Row, Col } from 'react-bootstrap'
+import userService from '../../services/user.service'
 
 
 
@@ -61,6 +62,10 @@ const WholeNav = styled.nav`
 
 
 const Sidebar = () => {
+  
+  const [role,setRole] = useState(userService.getCurrentUserRole);
+  console.log(role)
+
   const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);
@@ -114,22 +119,21 @@ const Sidebar = () => {
                     <AiIcons.AiOutlineClose onClick={showSidebar} />
                   </NavIcon>
                 </div>
-                {
-                  //if stundent:
-                  // StudentSidebarData.map((item, index) => {
-                  // return <SubMenu item={item} key={index} />;
-                  // })
-                  
-                  //if admin:
-                  SidebarData.map((item, index) => {
-                    return <SubMenu item={item} key={index} />;
-                    })
-
-                  //if prof:
-                  // ProfSidebarData.map((item, index) => {
-                  //   return <SubMenu item={item} key={index} />;
-                  //   })
-                  }
+                {role === "admin" 
+                      && SidebarData.map((item, index) => {
+                          return <SubMenu item={item} key={index}/>
+                        })          
+                }
+                {role === "student" 
+                      && StudentSidebarData.map((item, index) => {
+                         return <SubMenu item={item} key={index} />;
+                         })        
+                }
+                {role === "professor" 
+                      && ProfSidebarData.map((item, index) => {
+                         return <SubMenu item={item} key={index} />;
+                         })        
+                }
               </SidebarWrap>
             </SidebarNav>
           </IconContext.Provider>
