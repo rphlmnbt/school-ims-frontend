@@ -15,9 +15,8 @@ function AddCourses() {
     const addNewCourse = () => {
         
         courseService.addNewCourse(
-            formRef.current.values.course_code, 
             formRef.current.values.course_name, 
-            formRef.current.values.department_id,
+            formRef.current.values.course_code, 
             formRef.current.values.chairperson);
             handleShow();
     };

@@ -3,10 +3,14 @@ import axios from 'axios'
 const API_URL =  'http://localhost:8080/courses/';
 
 const addNewCourse = (
-
+    courseName, 
+    courseCode, 
+    chairperson
     ) => {
 return axios.post(API_URL, {
-
+    courseName, 
+    courseCode, 
+    chairperson
 }).then(response => {
     console.log(response);
   })
