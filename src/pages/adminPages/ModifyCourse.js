@@ -148,6 +148,24 @@ function ModifyCourse() {
                                             </Form.Control.Feedback>
                                         </Form.Group>
                                     </Col>
+                                    <Col md>
+                                        <Form.Group  controlId="department_id">
+                                            <Form.Label>Department ID</Form.Label>
+                                            <Form.Control 
+                                                type="text" 
+                                                name="department_id" 
+                                                value={values.department_id} 
+                                                onChange={handleChange}
+                                                isValid={touched.department_id && !errors.department_id}
+                                                isInvalid={touched.department_id && !!errors.department_id} 
+                                                placeholder="Department ID" 
+                                            />
+                                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                                            <Form.Control.Feedback type="invalid">
+                                                {errors.department_id}
+                                            </Form.Control.Feedback>
+                                        </Form.Group>
+                                    </Col>
                                 </Row>
                                 <br />
                                 <Button 

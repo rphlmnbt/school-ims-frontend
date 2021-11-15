@@ -14,7 +14,11 @@ const schema = yup.object().shape({
 
     chairperson: yup.string()
                 .max(50, 'Too Long!')
-                .nullable()
+                .nullable(),
+
+    department_id: yup.number()
+                .min(0, "Invalid")
+                .nullable()            
 })
 
 export default schema
