@@ -37,11 +37,11 @@ const updateCourse = (
   departmentID,
   courseID
     ) => {
-  return axios.put(API_URL + `${courseID}
-  ?courseName=${courseName}
-  &courseCode=${courseCode}
-  &departmentID=${chairperson}
-  &chairperson=${departmentID}`);
+  return axios.put(API_URL + `${courseID}` +
+  `?courseName=${courseName}` +
+ ` &courseCode=${courseCode}` +
+ ` &departmentID=${chairperson}` +
+  `&chairperson=${departmentID}`);
   };
 
 
