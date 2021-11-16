@@ -26,22 +26,22 @@ const getActivities = () => {
     return axios.get(API_URL)
   };
 
-const getOneCourse = (courseID) => {
-    return axios.get(API_URL + `${courseID}`)
+const getOneActivity = (activityID) => {
+    return axios.get(API_URL + `${activityID}`)
   };
 
-const updateCourse = (
-  courseName, 
-  courseCode, 
-  chairperson,
-  departmentID,
-  courseID
+const updatActivity = (
+    activityName,  
+    activityType,  
+    studentScore,  
+    totalScore,
+    activityID
     ) => {
-  return axios.put(API_URL + `${courseID}` +
-  `?courseName=${courseName}` +
- ` &courseCode=${courseCode}` +
- ` &departmentID=${chairperson}` +
-  `&chairperson=${departmentID}`);
+  return axios.put(API_URL + `${activityID}` +
+  `?activityName=${activityName}` +
+ ` &activityType=${activityType}` +
+ ` &studentScore=${studentScore}` +
+  `&totalScore=${totalScore}`);
   };
 
 
@@ -49,6 +49,6 @@ const updateCourse = (
 export default {
     addNewActivity,
     getActivities,
-    getOneCourse,
-    updateCourse
+    getOneActivity,
+    updatActivity
   };

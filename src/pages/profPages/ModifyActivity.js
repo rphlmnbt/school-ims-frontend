@@ -4,14 +4,50 @@ import { Form, Button, Container, Row, Col, Modal } from "react-bootstrap";
 import { useHistory } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap'
 import schema from '../../schemas/activity.schema'
-
+import activityService from '../../services/activity.service';
 
 function ModifyActivity() {
 
     const formRef = useRef()
     const history = useHistory();
     const [show, setShow] = useState(false);
+    let [formValues, setFormValues] = useState(null);
+    const [updateId, setupdateId] = useState(null);
 
+    // function for setting data using id
+    const setData = async e => {
+
+        var x = e.target.value;
+        var id = parseInt(x);
+        setupdateId(id);
+        await activityService.getOneActivity(id)
+        .then(response => {
+            const  loadValues =  {
+
+                activity_type: response.data.activityType,  
+                activity_name: response.data.activityName, 
+                student_score: response.data.studentScore,
+                total_score: response.data.totalScore
+                
+            } ;
+        return  setFormValues(loadValues);             
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+        
+    }
+
+    const updatActivity = () => {
+
+        activityService.updatActivity(    
+            formRef.current.values.activity_type,
+            formRef.current.values.activity_name,
+            formRef.current.values.student_score,
+            formRef.current.values.total_score,
+            updateId);
+            handleShow();
+    };
 
 
     const handleClose = () => {
@@ -20,13 +56,20 @@ function ModifyActivity() {
     };
     const handleShow = () => setShow(true);
 
+    const initialValues = {
+        activity_type: '',  
+        activity_name: '', 
+        student_score: '',
+        total_score: '',
+    }
+
     return (
         <Formik
             validationSchema={schema}
-            onSubmit={handleShow}
+             onSubmit={updatActivity}
             innerRef = {formRef}
-            initialValues={{
-            }}
+            initialValues={   formValues || initialValues}
+            enableReinitialize
         >
             {({
                 handleSubmit,
@@ -56,8 +99,7 @@ function ModifyActivity() {
                                                 type="text" 
                                                 name="activity_id" 
                                                 value={values.activity_id} 
-                                                onChange={handleChange}
-                                               
+                                                onChange={handleChange, setData}
                                                 isValid={touched.activity_id && !errors.activity_id}
                                                 isInvalid={touched.activity_id && !!errors.activity_id} 
                                                 placeholder="Activity ID" 
