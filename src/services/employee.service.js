@@ -39,7 +39,7 @@ return axios.post(API_URL, {
 };
 
 
-const getStudents = () => {
+const getProfs = () => {
     return axios.get(API_URL)
   };
 
@@ -89,7 +89,7 @@ const updateStudent = (
 
 export default {
     addNewProf,
-    getStudents,
+    getProfs,
     getOneStudent,
     updateStudent
   };
