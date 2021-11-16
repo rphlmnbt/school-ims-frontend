@@ -43,8 +43,8 @@ const getProfs = () => {
     return axios.get(API_URL)
   };
 
-const getOneStudent = (studentID) => {
-    return axios.get(API_URL + `${studentID}`)
+const getOneProf = (profID) => {
+    return axios.get(API_URL + `${profID}`)
   };
 
 const updateStudent = (
@@ -58,9 +58,7 @@ const updateStudent = (
     homeAddress,
     contactNumber,
     civilStatus,
-    yearLevel,
-    courseID,
-    section,
+    departmentID,
     studentID
     ) => {
   return axios.put(API_URL + `${studentID}`+
@@ -74,9 +72,7 @@ const updateStudent = (
   `&homeAddress=${homeAddress}`+
   `&contactNumber=${contactNumber}`+
   `&civilStatus=${civilStatus}`+
-  `&yearLevel=${yearLevel}`+
-  `&courseID=${courseID}`+
-  `&section=${section}`)
+  `&departmentID=${departmentID}`)
   .then(response => {
     console.log(response);
   })
@@ -90,6 +86,6 @@ const updateStudent = (
 export default {
     addNewProf,
     getProfs,
-    getOneStudent,
+    getOneProf,
     updateStudent
   };

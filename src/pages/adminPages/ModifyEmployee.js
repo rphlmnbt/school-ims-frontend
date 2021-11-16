@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import { Formik} from 'formik'
+import { Formik, Field} from 'formik'
 import { Form, Button, Container, Row, Col, Modal } from "react-bootstrap";
 import { FaUserCircle } from 'react-icons/fa'
 import { IconContext } from 'react-icons/lib'
@@ -7,11 +7,62 @@ import '../../styles/pages/EditUser.css'
 import { useHistory } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap'
 import schema from '../../schemas/modifyemployee.schema'
+import profService from '../../services/employee.service';
 
 function ModifyEmployee() {
     const formRef = useRef()
     const history = useHistory();
     const [show, setShow] = useState(false);
+
+    let [formValues, setFormValues] = useState(null);
+    const [updateId, setupdateId] = useState(null);
+
+    // function for setting data using id
+    const setData = async e => {
+
+        var x = e.target.value;
+        var id = parseInt(x);
+        setupdateId(id);
+        await profService.getOneProf(id)
+        .then(response => {
+            const  loadValues =  {
+
+                email: response.data.email, 
+                password: response.data.password,
+                first_name: response.data.firstName,
+                last_name: response.data.lastName,
+                gender: response.data.gender,
+                birth_date: response.data.birthDate,
+                home_address: response.data.homeAddress,
+                contact_number: response.data.contactNumber,
+                civil_status: response.data.civilStatus,
+                department_id: response.data.departmentID
+            } ;
+        return  setFormValues(loadValues);             
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+        
+    }
+
+    const updatStudent = () => {
+        const userRole =  "student";
+        profService.updateStudent(    
+            formRef.current.values.email, 
+            formRef.current.values.password,
+            userRole, 
+            formRef.current.values.first_name,
+            formRef.current.values.last_name,
+            formRef.current.values.gender,
+            formRef.current.values.birth_date,
+            formRef.current.values.home_address,
+            formRef.current.values.contact_number,
+            formRef.current.values.civil_status,
+            formRef.current.values.department_id,
+            updateId);
+            handleShow();
+    };
 
     const handleClose = () => {
         setShow(false)
@@ -19,13 +70,26 @@ function ModifyEmployee() {
     };
     const handleShow = () => setShow(true);
 
+    const initialValues = {
+        email: '',  
+        password: '', 
+        first_name: '', 
+        last_name: '', 
+        gender: '', 
+        birth_date: '', 
+        home_address: '', 
+        contact_number: '', 
+        civil_status: '', 
+        department_id: ''
+    }
+
     return (
         <Formik
             validationSchema={schema}
-            onSubmit={handleShow}
+            onSubmit={updatStudent}
             innerRef = {formRef}
-            initialValues={{
-            }}
+            initialValues={   formValues || initialValues}
+            enableReinitialize
         >
             {({
                 handleSubmit,
@@ -56,7 +120,7 @@ function ModifyEmployee() {
                                                 type="professor_id" 
                                                 name="professor_id" 
                                                 value={values.professor_id} 
-                                                onChange={handleChange}
+                                                onChange={handleChange, setData}
                                                 isValid={touched.professor_id && !errors.professor_id} 
                                                 isInvalid={touched.professor_id && !!errors.professor_id} 
                                                 placeholder="Professor ID" 
@@ -155,7 +219,7 @@ function ModifyEmployee() {
                                                     <Row className="g-2">
                                                     
                                                         <Col md>
-                                                            <Form.Check 
+                                                            <Field
                                                                 name = "gender"
                                                                 type="radio" 
                                                                 label="Male" 
@@ -164,9 +228,10 @@ function ModifyEmployee() {
                                                                 isValid={touched.gender && !errors.gender} 
                                                                 isInvalid={touched.gender && !!errors.gender} 
                                                             />
+                                                            <span> Male</span>
                                                         </Col>
                                                         <Col md>
-                                                            <Form.Check 
+                                                            <Field
                                                                 name = "gender"
                                                                 type="radio" 
                                                                 label="Female" 
@@ -175,6 +240,7 @@ function ModifyEmployee() {
                                                                 isValid={touched.gender && !errors.gender} 
                                                                 isInvalid={touched.gender && !!errors.gender} 
                                                             />
+                                                            <span> Female</span>
                                                         </Col>
                                                     </Row>
 
@@ -301,7 +367,7 @@ function ModifyEmployee() {
                                     type="submit" 
                                     className="submit-btn"
                                 >
-                                    Add Employee
+                                    Save changes
                                 </Button>
                                 <LinkContainer to="/acadbase/AdminDashboard">
                                     <Button 
