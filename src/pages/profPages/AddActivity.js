@@ -4,7 +4,7 @@ import { Form, Button, Container, Row, Col, Modal } from "react-bootstrap";
 import { useHistory } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap'
 import schema from '../../schemas/activity.schema'
-
+import activityService from '../../services/activity.service';
 
 function AddActivity() {
 
@@ -12,7 +12,19 @@ function AddActivity() {
     const history = useHistory();
     const [show, setShow] = useState(false);
 
+    const addNewActivity = () => {
+        console.log(formRef.current.values.activity_name, 
+            formRef.current.values.activity_type,
+            formRef.current.values.student_score, 
+            formRef.current.values.total_score);
+        activityService.addNewActivity(
+            formRef.current.values.activity_name, 
+            formRef.current.values.activity_type,
+            formRef.current.values.student_score, 
+            formRef.current.values.total_score);
 
+            handleShow();
+    };
 
     const handleClose = () => {
         setShow(false)
@@ -23,7 +35,7 @@ function AddActivity() {
     return (
         <Formik
             validationSchema={schema}
-            onSubmit={handleShow}
+            onSubmit={addNewActivity}
             innerRef = {formRef}
             initialValues={{
             }}
@@ -50,25 +62,25 @@ function AddActivity() {
                             <Form noValidate onSubmit={handleSubmit}>
                                 <Row className="g-2">
                                     <Col md>
-                                        <Form.Group  controlId="activity_id">
-                                            <Form.Label>Activity ID</Form.Label>
+                                        <Form.Group  controlId="activity_name">
+                                            <Form.Label>Activity Name</Form.Label>
                                             <Form.Control 
                                                 type="text" 
-                                                name="activity_id" 
-                                                value={values.activity_id} 
+                                                name="activity_name" 
+                                                value={values.activity_name} 
                                                 onChange={handleChange}
-                                               
-                                                isValid={touched.activity_id && !errors.activity_id}
-                                                isInvalid={touched.activity_id && !!errors.activity_id} 
-                                                placeholder="Activity ID" 
+                                                isValid={touched.activity_name && !errors.activity_name}
+                                                isInvalid={touched.activity_name && !!errors.activity_name} 
+                                                placeholder="Activity Name" 
                                             />
                                             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                                             <Form.Control.Feedback type="invalid">
-                                                {errors.activity_id}
+                                                {errors.activity_name}
                                             </Form.Control.Feedback>
                                         </Form.Group>
                                     </Col>
-
+                                </Row>
+                                <Row className="g-2">
                                     <Col md>
                                         <Form.Group controlId="activity_type">
                                             <Form.Label>Activity Type</Form.Label>
@@ -89,26 +101,7 @@ function AddActivity() {
                                         
                                     </Col>
                                 </Row>
-                                <Row className="g-2">
-                                    <Col md>
-                                        <Form.Group  controlId="activity_name">
-                                            <Form.Label>Activity Name</Form.Label>
-                                            <Form.Control 
-                                                type="text" 
-                                                name="activity_name" 
-                                                value={values.activity_name} 
-                                                onChange={handleChange}
-                                                isValid={touched.activity_name && !errors.activity_name}
-                                                isInvalid={touched.activity_name && !!errors.activity_name} 
-                                                placeholder="Activity Name" 
-                                            />
-                                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                                            <Form.Control.Feedback type="invalid">
-                                                {errors.activity_name}
-                                            </Form.Control.Feedback>
-                                        </Form.Group>
-                                    </Col>
-                                </Row>
+                                
                                 <Row className="g-2">
                                     <Col md>
                                         <Form.Group  controlId="student_score">
