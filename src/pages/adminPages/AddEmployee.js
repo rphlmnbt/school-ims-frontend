@@ -7,11 +7,30 @@ import '../../styles/pages/EditUser.css'
 import { useHistory } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap'
 import schema from '../../schemas/addemployee.schema'
+import profService from '../../services/employee.service';
 
 function AddEmployee() {
     const formRef = useRef()
     const history = useHistory();
     const [show, setShow] = useState(false);
+
+    const addNewProf = () => {
+        const userRole =  "professor";
+        profService.addNewProf(
+            formRef.current.values.email, 
+            formRef.current.values.password, 
+            userRole,
+            formRef.current.values.first_name,
+            formRef.current.values.last_name,
+            formRef.current.values.gender,
+            formRef.current.values.birth_date,
+            formRef.current.values.home_address,
+            formRef.current.values.contact_number,
+            formRef.current.values.civil_status,
+            formRef.current.values.department_id);
+            
+            handleShow();
+    };
 
     const handleClose = () => {
         setShow(false)
@@ -22,7 +41,7 @@ function AddEmployee() {
     return (
         <Formik
             validationSchema={schema}
-            onSubmit={handleShow}
+            onSubmit={addNewProf}
             innerRef = {formRef}
             initialValues={{
             }}
