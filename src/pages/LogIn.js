@@ -32,7 +32,7 @@ function LogIn() {
                 if(role === 'admin') {
                     path = `/acadbase/AdminDashboard`; 
                 }
-                if(role === 'student') {
+                if(role === 'professor') {
                     path = `/acadbase/ProfessorDashboard`; 
                 }
                          
