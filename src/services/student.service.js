@@ -18,6 +18,7 @@ const addNewStudent = (
     courseID,
     section
     ) => {
+      console.log("0"+birthDate+"o")
         
 return axios.post(API_URL, {
     email,
@@ -46,22 +47,46 @@ const getStudents = () => {
     return axios.get(API_URL)
   };
 
-const getOneStudent = (courseID) => {
-    return axios.get(API_URL + `${courseID}`)
+const getOneStudent = (studentID) => {
+    return axios.get(API_URL + `${studentID}`)
   };
 
 const updateStudent = (
-  courseName, 
-  courseCode, 
-  chairperson,
-  departmentID,
-  courseID
+    email,
+    password,
+    userRole,
+    firstName,
+    lastName,
+    gender,
+    birthDate,
+    homeAddress,
+    contactNumber,
+    civilStatus,
+    yearLevel,
+    courseID,
+    section,
+    studentID
     ) => {
-  return axios.put(API_URL + `${courseID}
-  ?courseName=${courseName}
-  &courseCode=${courseCode}
-  &departmentID=${chairperson}
-  &chairperson=${departmentID}`);
+  return axios.put(API_URL + `${studentID}`+
+  `?email=${email}`+
+  `&password=${password}`+
+  `&userRole=${userRole}`+
+  `&firstName=${firstName}`+
+  `&lastName=${lastName}`+
+  `&gender=${gender}`+
+  `&birthDate=${birthDate}`+
+  `&homeAddress=${homeAddress}`+
+  `&contactNumber=${contactNumber}`+
+  `&civilStatus=${civilStatus}`+
+  `&yearLevel=${yearLevel}`+
+  `&courseID=${courseID}`+
+  `&section=${section}`)
+  .then(response => {
+    console.log(response);
+  })
+  .catch(error => {
+    console.log(error);
+  });
   };
 
 

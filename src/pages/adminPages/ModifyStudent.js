@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import { Formik} from 'formik'
+import { Formik, Field} from 'formik'
 import { Form, Button, Container, Row, Col, Modal } from "react-bootstrap";
 import { FaUserCircle } from 'react-icons/fa'
 import { IconContext } from 'react-icons/lib'
@@ -7,26 +7,99 @@ import '../../styles/pages/EditUser.css'
 import { useHistory } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap'
 import schema from '../../schemas/modifystudent.schema'
+import studentService from '../../services/student.service';
 
 function ModifyStudent() {
 
     const formRef = useRef()
     const history = useHistory();
     const [show, setShow] = useState(false);
+    let [formValues, setFormValues] = useState(null);
+    const [updateId, setupdateId] = useState(null);
 
+    // function for setting data using id
+    const setData = async e => {
+
+        var x = e.target.value;
+        var id = parseInt(x);
+        setupdateId(id);
+        await studentService.getOneStudent(id)
+        .then(response => {
+            const  loadValues =  {
+
+                email: response.data.email, 
+                password: response.data.password,
+                first_name: response.data.firstName,
+                last_name: response.data.lastName,
+                gender: response.data.gender,
+                birth_date: response.data.birthDate,
+                home_address: response.data.homeAddress,
+                contact_number: response.data.contactNumber,
+                civil_status: response.data.civilStatus,
+                year_level: response.data.yearLevel,
+                course_id: response.data.courseID,
+                section: response.data.section
+            } ;
+        return  setFormValues(loadValues);             
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+        
+    }
+
+    const updatStudent = () => {
+        const userRole =  "student";
+        studentService.updateStudent(    
+            formRef.current.values.email, 
+            formRef.current.values.password,
+            userRole, 
+            formRef.current.values.first_name,
+            formRef.current.values.last_name,
+            formRef.current.values.gender,
+            formRef.current.values.birth_date,
+            formRef.current.values.home_address,
+            formRef.current.values.contact_number,
+            formRef.current.values.civil_status,
+            formRef.current.values.year_level,
+            formRef.current.values.course_id,
+            formRef.current.values.section,
+            updateId);
+            handleShow();
+    };
+    
     const handleClose = () => {
         setShow(false)
         history.push('/acadbase/AdminDashboard')
     };
     const handleShow = () => setShow(true);
 
+    const initialValues = {
+        email: '',  
+        password: '', 
+        first_name: '', 
+        last_name: '', 
+        gender: '', 
+        birth_date: '', 
+        home_address: '', 
+        contact_number: '', 
+        civil_status: '', 
+        year_level: '', 
+        course_id: '',
+        section: ''
+    }
+
+
     return (
         <Formik
             validationSchema={schema}
-            onSubmit={handleShow}
+            onSubmit={updatStudent}
             innerRef = {formRef}
-            initialValues={{
-            }}
+            initialValues={   formValues || initialValues}
+            enableReinitialize
+            // initialValues={{
+            //     gender: "1"
+            //   }}
         >
             {({
                 handleSubmit,
@@ -56,7 +129,7 @@ function ModifyStudent() {
                                                 type="student_id" 
                                                 name="student_id" 
                                                 value={values.student_id} 
-                                                onChange={handleChange}
+                                                onChange={handleChange, setData}
                                                 isValid={touched.student_id && !errors.student_id} 
                                                 isInvalid={touched.student_id && !!errors.student_id} 
                                                 placeholder="Student ID" 
@@ -150,34 +223,40 @@ function ModifyStudent() {
 
                                 <Row className="g-2 " >
                                     <Col md>
-                                    <Form.Group controlId="gender">
-                                            <Form.Label>Gender</Form.Label>
+                                    <Form.Group controlId="gender"
+                                        
+                                    
+                                    >
+                                            <Form.Label>Gender</Form.Label>                                  
                                                     <Row className="g-2">
-                                                    
                                                         <Col md>
-                                                            <Form.Check 
+                                                            <Field 
                                                                 name = "gender"
                                                                 type="radio" 
                                                                 label="Male" 
-                                                                value={"Male"} 
+                                                                value= "Male"
                                                                 onChange={handleChange}
                                                                 isValid={touched.gender && !errors.gender} 
                                                                 isInvalid={touched.gender && !!errors.gender} 
+                                                                
                                                             />
+                                                            <span> Male</span>
                                                         </Col>
                                                         <Col md>
-                                                            <Form.Check 
+                                                            <Field
                                                                 name = "gender"
                                                                 type="radio" 
                                                                 label="Female" 
-                                                                value={"Female"} 
+                                                                value="Female" 
                                                                 onChange={handleChange}
                                                                 isValid={touched.gender && !errors.gender} 
                                                                 isInvalid={touched.gender && !!errors.gender} 
                                                             />
+                                                            <span> Female</span>
                                                         </Col>
+                                                       
                                                     </Row>
-
+                                                    
                                                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                                                 <Form.Control.Feedback type="invalid">
                                                     {errors.gender}
