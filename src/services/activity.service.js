@@ -22,7 +22,7 @@ return axios.post(API_URL, {
 };
 
 
-const getCourses = () => {
+const getActivities = () => {
     return axios.get(API_URL)
   };
 
@@ -48,7 +48,7 @@ const updateCourse = (
 
 export default {
     addNewActivity,
-    getCourses,
+    getActivities,
     getOneCourse,
     updateCourse
   };
