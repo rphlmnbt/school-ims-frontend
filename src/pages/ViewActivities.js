@@ -8,19 +8,35 @@ import paginationFactory from 'react-bootstrap-table2-paginator';
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
 import '../styles/pages/BootstrapTable.css'
 import activityService from '../services/activity.service';
+import userService from '../services/user.service';
+import studentService from '../services/student.service';
 
 function ViewActivities() {
 
     const [data, setData] = useState([]);
+    const userRole = userService.getCurrentUserRole()
+    const userID = userService.getCurrentUserID()
 
     useEffect(() => {
-        activityService.getActivities()
-          .then(response => {
-            setData(response.data);
-          })
-          .catch(function(error) {
-            console.log(error);
-          });
+        userRole === "admin" &&
+            activityService.getActivities()
+            .then(response => {
+                setData(response.data);
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+
+        // userRole === "student" &&
+        //     studentService.getOneStudent(userID)
+        //     .then(response => {
+        //         setData(response.data.activities);
+        //     })
+        //     .catch(function(error) {
+        //         console.log(error);
+        //     });
+        
+
       }, []);
 
       const colStyle = {

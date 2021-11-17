@@ -48,7 +48,7 @@ function ModifyStudent() {
         
     }
 
-    const updatStudent = () => {
+    const updateStudent = () => {
         const userRole =  "student";
         studentService.updateStudent(    
             formRef.current.values.email, 
@@ -93,7 +93,7 @@ function ModifyStudent() {
     return (
         <Formik
             validationSchema={schema}
-            onSubmit={updatStudent}
+            onSubmit={updateStudent}
             innerRef = {formRef}
             initialValues={   formValues || initialValues}
             enableReinitialize

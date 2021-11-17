@@ -107,5 +107,7 @@ export default {
     addNewStudent,
     getStudents,
     getOneStudent,
-    updateStudent
+    updateStudent,
+    getStudentSubjectByID,
+    addNewSubject
   };

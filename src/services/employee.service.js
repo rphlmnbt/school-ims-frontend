@@ -17,7 +17,7 @@ const addNewProf = (
     departmentID
     ) => {
         
-return axios.post(API_URL, {
+return axios.post(API_URL+`?departmentID=${departmentID}`, {
     email,
     password,
     userRole,  
@@ -27,8 +27,7 @@ return axios.post(API_URL, {
     birthDate,
     homeAddress,
     contactNumber,
-    civilStatus,
-    departmentID
+    civilStatus
 }).then(response => {
     console.log(response);
     console.log("this is " + departmentID);
@@ -43,11 +42,11 @@ const getProfs = () => {
     return axios.get(API_URL)
   };
 
-const getOneProf = (profID) => {
-    return axios.get(API_URL + `${profID}`)
+const getOneProf = (professorID) => {
+    return axios.get(API_URL + `${professorID}`)
   };
 
-const updateStudent = (
+const updateProfessor = (
     email,
     password,
     userRole,
@@ -59,9 +58,9 @@ const updateStudent = (
     contactNumber,
     civilStatus,
     departmentID,
-    studentID
+    professorID
     ) => {
-  return axios.put(API_URL + `${studentID}`+
+  return axios.put(API_URL + `${professorID}`+
   `?email=${email}`+
   `&password=${password}`+
   `&userRole=${userRole}`+
@@ -81,11 +80,26 @@ const updateStudent = (
   });
   };
 
+  const getProfessorSubjectByID = (professorID) => {
+    return axios.get(API_URL + `${professorID}/subject`)
+  }
+
+  const addNewSubject = (professorID, subjectID) => {
+    return axios.put(API_URL + `${professorID}/subject?subjectID=${subjectID}`)
+    .then(response => {
+      console.log(response);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  }
 
 
 export default {
     addNewProf,
     getProfs,
     getOneProf,
-    updateStudent
+    updateProfessor,
+    getProfessorSubjectByID,
+    addNewSubject
   };
