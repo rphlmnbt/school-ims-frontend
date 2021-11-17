@@ -55,7 +55,7 @@ function AddActivity() {
                             <Row>
                                 <Col className="box-title p-2 mb-5">
                                     <div >
-                                        <h4>Create New Activity</h4>
+                                        <h4>Record Activity</h4>
                                     </div>
                                 </Col>
                             </Row>
@@ -79,8 +79,6 @@ function AddActivity() {
                                             </Form.Control.Feedback>
                                         </Form.Group>
                                     </Col>
-                                </Row>
-                                <Row className="g-2">
                                     <Col md>
                                         <Form.Group controlId="activity_type">
                                             <Form.Label>Activity Type</Form.Label>
@@ -101,7 +99,6 @@ function AddActivity() {
                                         
                                     </Col>
                                 </Row>
-                                
                                 <Row className="g-2">
                                     <Col md>
                                         <Form.Group  controlId="student_score">
@@ -138,8 +135,46 @@ function AddActivity() {
                                             <Form.Control.Feedback type="invalid">
                                                 {errors.total_score}
                                             </Form.Control.Feedback>
+                                        </Form.Group>  
+                                    </Col>
+                                </Row>
+                                <Row className="g-2">
+                                <Col md>
+                                        <Form.Group  controlId="student_id">
+                                            <Form.Label>Student ID</Form.Label>
+                                            <Form.Control 
+                                                type="text" 
+                                                name="student_id" 
+                                                value={values.student_id} 
+                                                onChange={handleChange}
+                                                isValid={touched.student_id && !errors.student_id}
+                                                isInvalid={touched.student_id && !!errors.student_id} 
+                                                placeholder="Student ID" 
+                                            />
+                                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                                            <Form.Control.Feedback type="invalid">
+                                                {errors.student_id}
+                                            </Form.Control.Feedback>
                                         </Form.Group>
-                                        
+                                    </Col>
+
+                                    <Col md>
+                                        <Form.Group controlId="total_score">
+                                            <Form.Label>Subject ID</Form.Label>
+                                            <Form.Control 
+                                                type="text" 
+                                                name="subject_id" 
+                                                value={values.subject_id} 
+                                                onChange={handleChange}
+                                                isValid={touched.subject_id && !errors.subject_id} 
+                                                isInvalid={touched.subject_id && !!errors.subject_id} 
+                                                placeholder="Subject ID" 
+                                            />
+                                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                                            <Form.Control.Feedback type="invalid">
+                                                {errors.subject_id}
+                                            </Form.Control.Feedback>
+                                        </Form.Group>  
                                     </Col>
                                 </Row>
                                 

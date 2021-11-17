@@ -45,7 +45,7 @@ export const ProfSidebarData = [
                 icon: <FaIcons.FaList />
             },
             {
-                title: 'Add Activity',
+                title: 'Record Activity',
                 path: '/acadbase/ProfessorDashboard/ProfAddActivity',
                 icon: <RiIcons.RiPlayListAddLine />
             },
