@@ -49,19 +49,24 @@ function ViewActivities() {
 
       }, []);
 
+      console.log(data)
+
       const colStyle = {
         whiteSpace: 'nowrap',
         width: '50px', 
         overflow: 'hidden',
         textOverflow: 'ellipsis'
     };
-    
+
       const columns = [
         { dataField: 'activityID', text: 'Activity ID', sort: true, style:colStyle },
+        { dataField: 'subjectName', text: 'Subject Name', sort: true, style:colStyle  },
         { dataField: 'activityType', text: 'Activity Code', sort: true, style:colStyle },
         { dataField: 'activityName', text: 'Activity Name', sort: true, style:colStyle },
         { dataField: 'studentScore', text: 'Student Score', sort: true, style:colStyle },
-        { dataField: 'totalScore', text: 'Total Score', sort: true, style:colStyle }
+        { dataField: 'totalScore', text: 'Total Score', sort: true, style:colStyle },
+        { dataField: 'studentName', text: 'Student Name', sort: true, style:colStyle  },
+        { dataField: 'professorName', text: 'Professor Name', sort: true, style:colStyle  }
       ];
     
       const defaultSorted = [{
