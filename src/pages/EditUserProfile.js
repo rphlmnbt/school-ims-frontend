@@ -7,8 +7,13 @@ import '../styles/pages/EditUser.css'
 import { useHistory } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap'
 import schema from '../schemas/edituser.schema'
+import studentService from '../services/student.service';
+import userService from '../services/user.service';
 
 function EditUserProfile() {
+    const userID = userService.getCurrentUserID()
+    const userRole = userService.getCurrentUserRole()
+    console.log(typeof userID)
     const formRef = useRef()
     const history = useHistory();
     const [show, setShow] = useState(false);
@@ -18,11 +23,36 @@ function EditUserProfile() {
         history.push('/acadbase/StudentDashboard')
     };
     const handleShow = () => setShow(true);
+    const updateUser = () => {
+        
+        userService.updateUser(
+            formRef.current.values.email, 
+            formRef.current.values.password, 
+            "",
+            formRef.current.values.first_name, 
+            formRef.current.values.last_name,
+            formRef.current.values.gender, 
+            formRef.current.values.birth_date,
+            formRef.current.values.home_address,
+            formRef.current.values.contact_number, 
+            formRef.current.values.civil_status, 
+            userID
+        )
+            .then(response => {
+                if (response.status === 200) {
+                    handleShow()
+                }
+            })
+            .catch(e => {
+                console.log(e);
+            }
+        );
+    };
 
     return (
         <Formik
             validationSchema={schema}
-            onSubmit={handleShow}
+            onSubmit={updateUser}
             innerRef = {formRef}
             initialValues={{
             }}

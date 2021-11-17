@@ -24,12 +24,7 @@ function StudentDashboardHome() {
           });
       }, []);
 
-    //   useEffect(() => {
-    //     console.log(user)
-    //     setCourse(user.course.courseName)
-    //     setSubjects(user.joinedStudentSubjects.length)
-    //     setYearLevel(user.yearLevel)
-    //   }, [user]);
+
 
       
 

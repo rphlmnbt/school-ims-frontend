@@ -48,7 +48,6 @@ const getStudents = () => {
   };
 
 const getOneStudent = (studentID) => {
-    console.log("hello")
     return axios.get(API_URL + `${studentID}`)
   };
 
@@ -64,10 +63,9 @@ const updateStudent = (
     contactNumber,
     civilStatus,
     yearLevel,
-    courseID,
     section,
-    studentID
-    ) => {
+    courseID,
+    studentID   ) => {
   return axios.put(API_URL + `${studentID}`+
     `?email=${email}`+
     `&password=${password}`+
@@ -80,8 +78,8 @@ const updateStudent = (
     `&contactNumber=${contactNumber}`+
     `&civilStatus=${civilStatus}`+
     `&yearLevel=${yearLevel}`+
-    `&courseID=${courseID}`+
-    `&section=${section}`)
+    `&section=${section}` +
+    `&courseID=${courseID}`)
     .then(response => {
       console.log(response);
     })
