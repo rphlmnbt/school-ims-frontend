@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react'
+import React, {useState, useEffect} from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import studentService from '../../services/student.service'
 import userService from '../../services/user.service'
@@ -10,6 +10,7 @@ function StudentDashboardHome() {
     const [student, setStudent] = useState([])
     const [subjects, setSubjects] = useState("NUM")
     const [course, setCourse] = useState("COURSE")
+    const [activities, setActivities] = useState("ACT")
     
     useEffect( async () => {
          await studentService.getOneStudent(userID)
@@ -18,6 +19,7 @@ function StudentDashboardHome() {
             setStudent(response.data)
             setSubjects(response.data.joinedStudentSubjects)
             setCourse(response.data.course)
+            setActivities(response.data.activities)
           })
           .catch(function(error) {
             console.log(error);
@@ -45,7 +47,7 @@ function StudentDashboardHome() {
                         <Col >
                             <div>
                                 <p className="par-center">Total Subjects: {subjects.length} </p><br/><br/>
-     
+                                <p className="par-center">Total Activities: {activities.length}</p><br/><br/>
                             </div>
                         </Col>
                     </Row>

@@ -1,9 +1,30 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
+import employeeService from '../../services/employee.service'
+import userService from '../../services/user.service'
 import '../../styles/pages/DashboardHome.css'
 import ProfProfile from './ProfProfile'
 
 function ProfDashboardHome() {
+    const userID = userService.getCurrentUserID()
+    const [professor, setProfessor] = useState([])
+    const [subjects, setSubjects] = useState("NUM")
+    const [department, setDepartment] = useState("DEPT")
+    const [activities, setActivities] = useState("ACT")
+
+    useEffect( async () => {
+        await employeeService.getOneProf(userID)
+         .then(response => {
+           console.log(response.data)
+           setProfessor(response.data)
+            setSubjects(response.data.joinedProfessorSubjects)
+            setDepartment(response.data.department)
+            setActivities(response.data.activities)
+         })
+         .catch(function(error) {
+           console.log(error);
+         });
+     }, []);
     return (
         <Container className="extend-width" >
             <ProfProfile />
@@ -19,9 +40,8 @@ function ProfDashboardHome() {
                     <Row className="box-info p-2 ">
                         <Col >
                             <div>
-                                <p className="par-center">Total Subjects: 99</p><br/><br/>
-                                <p className="par-center">Total Subjects Resigned: 99</p><br/><br/>
-                                <p className="par-center">Total Subjects Present: 99</p>
+                                <p className="par-center">Total Subjects: {subjects.length}</p><br/><br/>
+                                <p className="par-center">Total Activities: {activities.length}</p><br/><br/>
                             </div>
                         </Col>
                     </Row>
@@ -33,16 +53,16 @@ function ProfDashboardHome() {
                     <Row className="box-title p-2">
                         <Col>
                             <div >
-                                <h4>Student Information</h4>
+                                <h4>Department Information</h4>
                             </div>
                         </Col>
                     </Row>
                     <Row className="box-info p-2 ">
                         <Col >
                             <div>
-                                <p className="par-center">Total Students: 99</p><br/><br/>
-                                <p className="par-center">Total Students Resigned: 99</p><br/><br/>
-                                <p className="par-center">Total Students Present: 99</p>
+                                <p className="par-center">Department ID: {department.departmentID}</p><br/><br/>
+                                <p className="par-center ">Department Name: {department.departmentName}</p><br/><br/>
+                                <p className="par-center">Department Dean: {department.departmentDean}</p>
                             </div>
                         </Col>
                     </Row>
