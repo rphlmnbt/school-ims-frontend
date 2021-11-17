@@ -20,7 +20,7 @@ const addNewStudent = (
     ) => {
       console.log("0"+birthDate+"o")
         
-return axios.post(API_URL, {
+return axios.post(API_URL+`?courseID=${courseID}`, {
     email,
     password,
     userRole,  
@@ -32,7 +32,6 @@ return axios.post(API_URL, {
     contactNumber,
     civilStatus,
     yearLevel,
-    courseID,
     section
 }).then(response => {
     console.log(response);
