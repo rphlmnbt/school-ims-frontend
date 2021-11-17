@@ -10,6 +10,7 @@ import '../styles/pages/BootstrapTable.css'
 import activityService from '../services/activity.service';
 import userService from '../services/user.service';
 import studentService from '../services/student.service';
+import employeeService from '../services/employee.service';
 
 function ViewActivities() {
 
@@ -27,14 +28,23 @@ function ViewActivities() {
                 console.log(error);
             });
 
-        // userRole === "student" &&
-        //     studentService.getOneStudent(userID)
-        //     .then(response => {
-        //         setData(response.data.activities);
-        //     })
-        //     .catch(function(error) {
-        //         console.log(error);
-        //     });
+        userRole === "student" &&
+            studentService.getOneStudent(userID)
+            .then(response => {
+                setData(response.data.activities);
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+
+        userRole === "professor" &&
+            employeeService.getOneProf(userID)
+            .then(response => {
+                setData(response.data.activities);
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
         
 
       }, []);
