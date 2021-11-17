@@ -12,8 +12,6 @@ import userService from '../services/user.service';
 
 function EditUserProfile() {
     const userID = userService.getCurrentUserID()
-    const userRole = userService.getCurrentUserRole()
-    console.log(typeof userID)
     const formRef = useRef()
     const history = useHistory();
     const [show, setShow] = useState(false);

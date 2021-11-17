@@ -1,9 +1,25 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Row, Col } from 'react-bootstrap'
 import { FaUserCircle } from 'react-icons/fa'
 import { IconContext } from 'react-icons/lib'
+import employeeService from '../../services/employee.service'
+import userService from '../../services/user.service'
 
 function ProfProfile() {
+    const userID = userService.getCurrentUserID()
+    const [professor, setProfessor] = useState([])
+
+    useEffect( async () => {
+        await employeeService.getOneProf(userID)
+         .then(response => {
+           console.log(response.data)
+           setProfessor(response.data)
+         })
+         .catch(function(error) {
+           console.log(error);
+         });
+     }, []);
+
     return (
         <Row className="user-info-box pt-5">
             <Col lg={12} sm={12} className="shadow" >
@@ -22,24 +38,24 @@ function ProfProfile() {
                     </Col>
                     
                     <Col lg={5} sm={12}>
-                            <p className="lname">Mendoza,</p>
-                            <p className="fname">AILGER CARIÑO</p>
+                            <p className="lname">{professor.lastName},</p>
+                            <p className="fname">{professor.firstName}</p>
                     </Col>
                     <span className="border-left"></span>
                     <Col lg={2} sm={12}>
                         <div>
-                            <p className="profile-info m-0 p-0">Employee Number : </p>
-                            <p className="profile-info  m-0 p-0">Gender: </p>
-                            <p className="profile-info  m-0 p-0">Nationality: </p>
-                            <p className="profile-info ">Religion: </p> 
+                        <p className="profile-info m-0 p-0 font-weight-bold">Employee ID : </p>
+                            <p className="profile-info  m-0 p-0 font-weight-bold">Email: </p>
+                            <p className="profile-info  m-0 p-0 font-weight-bold">Contact Number: </p>
+                            <p className="profile-info font-weight-bold">User Role: </p> 
                         </div>
                     </Col>
                     <Col lg={2} sm={12}>
                         <div>
-                            <p className="profile-info m-0 p-0">12345674</p>
-                            <p className="profile-info  m-0 p-0">Male</p>
-                            <p className="profile-info  m-0 p-0">Filipino</p>
-                            <p className="profile-info ">Yen's Org</p>   
+                        <p className="profile-info m-0 p-0">{professor.userID}</p>
+                            <p className="profile-info  m-0 p-0">{professor.email}</p>
+                            <p className="profile-info  m-0 p-0">{professor.contactNumber}</p>
+                            <p className="profile-info ">{professor.userRole}</p> 
                         </div>
                     </Col>
                 </Row>
