@@ -5,12 +5,15 @@ import { useHistory } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap'
 import schema from '../../schemas/activity.schema'
 import activityService from '../../services/activity.service';
+import userService from '../../services/user.service';
 
 function AddActivity() {
 
     const formRef = useRef()
     const history = useHistory();
     const [show, setShow] = useState(false);
+    const userRole = userService.getCurrentUserRole()
+    const userID = userService.getCurrentUserID()
 
     const addNewActivity = () => {
         console.log(formRef.current.values.activity_name, 
@@ -21,7 +24,10 @@ function AddActivity() {
             formRef.current.values.activity_name, 
             formRef.current.values.activity_type,
             formRef.current.values.student_score, 
-            formRef.current.values.total_score);
+            formRef.current.values.total_score,
+            formRef.current.values.student_id,
+            userID,
+            formRef.current.values.subject_id);
 
             handleShow();
     };
