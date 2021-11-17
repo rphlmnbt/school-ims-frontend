@@ -6,9 +6,15 @@ const addNewActivity = (
      activityName,  
      activityType,  
      studentScore,  
-     totalScore
+     totalScore,
+     studentID,
+     professorID,
+     subjectID
     ) => {
-return axios.post(API_URL, {
+return axios.post(API_URL 
+  + `?studentID=${studentID}`
+  + `&professorID=${professorID}`
+  + `&subjectID=${subjectID}`, {
     activityName,  
      activityType,  
      studentScore,  
@@ -30,18 +36,24 @@ const getOneActivity = (activityID) => {
     return axios.get(API_URL + `${activityID}`)
   };
 
-const updatActivity = (
+const updateActivity = (
     activityName,  
     activityType,  
     studentScore,  
     totalScore,
-    activityID
+    activityID,
+     studentID,
+     professorID,
+     subjectID
     ) => {
   return axios.put(API_URL + `${activityID}` +
   `?activityName=${activityName}` +
  ` &activityType=${activityType}` +
  ` &studentScore=${studentScore}` +
-  `&totalScore=${totalScore}`);
+  `&totalScore=${totalScore}` +
+  `&studentID=${studentID}` +
+  `&professorID=${professorID}` +
+  `&subjectID=${subjectID}`)
   };
 
 
@@ -50,5 +62,5 @@ export default {
     addNewActivity,
     getActivities,
     getOneActivity,
-    updatActivity
+    updateActivity
   };
