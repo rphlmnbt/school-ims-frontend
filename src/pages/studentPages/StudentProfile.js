@@ -1,9 +1,25 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Row, Col } from 'react-bootstrap'
 import { FaUserCircle } from 'react-icons/fa'
 import { IconContext } from 'react-icons/lib'
+import studentService from '../../services/student.service'
+import userService from '../../services/user.service'
 
 function StudentProfile() {
+    const userID = userService.getCurrentUserID()
+    const [student, setStudent] = useState([])
+
+    useEffect( async () => {
+        await studentService.getOneStudent(userID)
+         .then(response => {
+           console.log(response.data)
+           setStudent(response.data)
+         })
+         .catch(function(error) {
+           console.log(error);
+         });
+     }, []);
+
     return (
         <Row className="user-info-box pt-5 ">
             <Col lg={12} sm={12} className=" shadow " >
@@ -22,25 +38,25 @@ function StudentProfile() {
                     </Col>
                     
                     <Col lg={5} sm={12}>
-                            <p className="lname">Samson,</p>
-                            <p className="fname">Yennyl</p>
+                            <p className="lname">{student.lastName},</p>
+                            <p className="fname">{student.firstName}</p>
                     </Col>
                     <span className="border-left"></span>
                     <Col lg={2} sm={12} className="">
                         <div>
-                            <p className="profile-info m-0 p-0">Admin Number : </p>
-                            <p className="profile-info  m-0 p-0">Gender: </p>
-                            <p className="profile-info  m-0 p-0">Nationality: </p>
-                            <p className="profile-info ">Religion: </p>
+                            <p className="profile-info m-0 p-0 font-weight-bold">Student ID : </p>
+                            <p className="profile-info  m-0 p-0 font-weight-bold">Email: </p>
+                            <p className="profile-info  m-0 p-0 font-weight-bold">Contact Number: </p>
+                            <p className="profile-info font-weight-bold">User Role: </p>
                             
                         </div>
                     </Col>
                     <Col lg={2} sm={12} className="">
                         <div>
-                            <p className="profile-info m-0 p-0">12345674</p>
-                            <p className="profile-info  m-0 p-0">Male</p>
-                            <p className="profile-info  m-0 p-0">Filipino</p>
-                            <p className="profile-info ">Yen's Org</p>
+                            <p className="profile-info m-0 p-0">{student.userID}</p>
+                            <p className="profile-info  m-0 p-0">{student.email}</p>
+                            <p className="profile-info  m-0 p-0">{student.contactNumber}</p>
+                            <p className="profile-info ">{student.userRole}</p>
                             
                         </div>
                     </Col>               

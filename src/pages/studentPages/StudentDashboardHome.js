@@ -6,7 +6,6 @@ import '../../styles/pages/DashboardHome.css'
 import StudentProfile from './StudentProfile'
 
 function StudentDashboardHome() {
-    console.log("nauna ako")
     const userID = userService.getCurrentUserID()
     const [student, setStudent] = useState([])
     const [subjects, setSubjects] = useState("NUM")
@@ -72,7 +71,8 @@ function StudentDashboardHome() {
                             <Col >
                                 <div>
                                     <p className="par-center">Course Name: {course.courseName}</p><br/><br/>
-                                    <p className="par-center">Year Level: {student.yearLevel}</p> 
+                                    <p className="par-center">Year Level: {student.yearLevel}</p> <br/><br/>
+                                    <p className="par-center">Section: {student.section}</p> 
                                 </div>
                             </Col>
                         </Row>
