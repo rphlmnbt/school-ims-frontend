@@ -19,15 +19,6 @@ function ViewActivities() {
     const userID = userService.getCurrentUserID()
 
     useEffect(() => {
-        userRole === "admin" &&
-            activityService.getActivities()
-            .then(response => {
-                setData(response.data);
-            })
-            .catch(function(error) {
-                console.log(error);
-            });
-
         userRole === "student" &&
             studentService.getOneStudent(userID)
             .then(response => {
