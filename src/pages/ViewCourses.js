@@ -30,7 +30,7 @@ function ViewCourses() {
         { dataField: 'courseCode', text: 'Course Code', sort: true },
         { dataField: 'courseName', text: 'Course Name', sort: true },
         { dataField: 'chairperson', text: 'Chairperson', sort: true },
-        { dataField: 'departmentID', text: 'Department ID', sort: true }
+        { dataField: 'department.departmentName', text: 'Department Name', sort: true }
       ];
     
       const defaultSorted = [{
