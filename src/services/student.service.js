@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { actions } from 'react-table';
 
 const API_URL =  'http://localhost:8080/students/';
 
@@ -47,6 +48,7 @@ const getStudents = () => {
   };
 
 const getOneStudent = (studentID) => {
+    console.log("hello")
     return axios.get(API_URL + `${studentID}`)
   };
 
@@ -67,27 +69,40 @@ const updateStudent = (
     studentID
     ) => {
   return axios.put(API_URL + `${studentID}`+
-  `?email=${email}`+
-  `&password=${password}`+
-  `&userRole=${userRole}`+
-  `&firstName=${firstName}`+
-  `&lastName=${lastName}`+
-  `&gender=${gender}`+
-  `&birthDate=${birthDate}`+
-  `&homeAddress=${homeAddress}`+
-  `&contactNumber=${contactNumber}`+
-  `&civilStatus=${civilStatus}`+
-  `&yearLevel=${yearLevel}`+
-  `&courseID=${courseID}`+
-  `&section=${section}`)
+    `?email=${email}`+
+    `&password=${password}`+
+    `&userRole=${userRole}`+
+    `&firstName=${firstName}`+
+    `&lastName=${lastName}`+
+    `&gender=${gender}`+
+    `&birthDate=${birthDate}`+
+    `&homeAddress=${homeAddress}`+
+    `&contactNumber=${contactNumber}`+
+    `&civilStatus=${civilStatus}`+
+    `&yearLevel=${yearLevel}`+
+    `&courseID=${courseID}`+
+    `&section=${section}`)
+    .then(response => {
+      console.log(response);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  };
+
+const getStudentSubjectByID = (studentID) => {
+  return axios.get(API_URL + `${studentID}/subject`)
+}
+
+const addNewSubject = (studentID, subjectID) => {
+  return axios.put(API_URL + `${studentID}/subject?subjectID=${subjectID}`)
   .then(response => {
     console.log(response);
   })
   .catch(error => {
     console.log(error);
   });
-  };
-
+}
 
 
 export default {
