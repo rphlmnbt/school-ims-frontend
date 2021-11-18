@@ -8,11 +8,10 @@ const addNewCourse = (
     chairperson,
     departmentID
     ) => {
-return axios.post(API_URL, {
+return axios.post(API_URL + `?departmentID=${departmentID}`, {
     courseName, 
     courseCode, 
-    chairperson,
-    departmentID
+    chairperson  
 }).then(response => {
     console.log(response);
   })
