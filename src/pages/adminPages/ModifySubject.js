@@ -27,7 +27,7 @@ function ModifySubject() {
             units: response.data.units,
             lab_hours: response.data.labHours,
             lec_hours: response.data.lectureHours,
-            department_id: response.data.departmentID
+            department_id: response.data.department.departmentID
         }   
         return  setFormValues(loadValues);             
         })

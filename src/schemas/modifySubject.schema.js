@@ -21,7 +21,7 @@ const schema = yup.object().shape({
                 .min(0, "Invalid")
                 .nullable(),
     department_id: yup.number()
-                .min(0, "Invalid")
+                .min(1, "Invalid")
                 .nullable()
 })
 

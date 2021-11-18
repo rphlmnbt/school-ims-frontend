@@ -52,6 +52,7 @@ function ViewSubjects() {
         { dataField: 'units', text: 'Units', sort: true },
         { dataField: 'lectureHours', text: 'Lecture Hours', sort: true },
         { dataField: 'labHours', text: 'Lab Hours', sort: true },
+        userRole === "admin" ? { dataField: 'department.departmentName', text: 'Department Name', sort: true } :
         { dataField: 'departmentName', text: 'Department Name', sort: true }
       ];
     
