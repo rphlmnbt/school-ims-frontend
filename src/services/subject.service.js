@@ -10,13 +10,12 @@ const addNewSubject = (
     labHours,
     departmentID
     ) => {
-return axios.post(API_URL, {
+return axios.post(API_URL +`?departmentID=${departmentID}`, {
     subjectName,
     subjectCode, 
     units, 
     lectureHours,
-    labHours,
-    departmentID
+    labHours
 }).then(response => {
     console.log(response);
   })
