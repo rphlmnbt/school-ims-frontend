@@ -1,9 +1,25 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Row, Col } from 'react-bootstrap'
 import { FaUserCircle } from 'react-icons/fa'
 import { IconContext } from 'react-icons/lib'
+import adminService from '../../services/admin.service'
+import userService from '../../services/user.service'
 
 function AdminProfile() {
+    const userID = userService.getCurrentUserID()
+    const [admin, setAdmin] = useState([])
+
+    useEffect( async () => {
+        await adminService.getOneAdmin(userID)
+         .then(response => {
+           console.log(response.data)
+           setAdmin(response.data)
+         })
+         .catch(function(error) {
+           console.log(error);
+         });
+     }, []);
+
     return (
         <Row className="user-info-box pt-5">
             <Col lg={12} sm={12} className="shadow" >
@@ -22,24 +38,24 @@ function AdminProfile() {
                     </Col>
                     
                     <Col lg={5} sm={12}>
-                            <p className="lname">Manabat,</p>
-                            <p className="fname">RAPHAEL DUCUT</p>
+                            <p className="lname">{admin.lastName},</p>
+                            <p className="fname">{admin.firstName}</p>
                     </Col>
                     <span className="border-left"></span>
                     <Col lg={2} sm={12}>
                         <div>
-                            <p className="profile-info m-0 p-0">Admin Number : </p>
-                            <p className="profile-info  m-0 p-0">Gender: </p>
-                            <p className="profile-info  m-0 p-0">Nationality: </p>
-                            <p className="profile-info ">Religion: </p> 
+                            <p className="profile-info m-0 p-0 font-weight-bold">Admin ID : </p>
+                            <p className="profile-info  m-0 p-0 font-weight-bold">Email: </p>
+                            <p className="profile-info  m-0 p-0 font-weight-bold">Contact Number: </p>
+                            <p className="profile-info font-weight-bold">User Role: </p> 
                         </div>
                     </Col>
                     <Col lg={2} sm={12}>
                         <div>
-                            <p className="profile-info m-0 p-0">12345674</p>
-                            <p className="profile-info  m-0 p-0">Male</p>
-                            <p className="profile-info  m-0 p-0">Filipino</p>
-                            <p className="profile-info ">Yen's Org</p>   
+                            <p className="profile-info m-0 p-0">{admin.userID}</p>
+                            <p className="profile-info  m-0 p-0">{admin.email}</p>
+                            <p className="profile-info  m-0 p-0">{admin.contactNumber}</p>
+                            <p className="profile-info ">{admin.userRole}</p>   
                         </div>
                     </Col>
                 </Row>

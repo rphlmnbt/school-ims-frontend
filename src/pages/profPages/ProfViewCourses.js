@@ -1,13 +1,13 @@
 import React from 'react'
+import ViewCourses from '../ViewCourses'
 
-
-function ProfViewActivities() {
+function ProfViewCourses() {
 
     return (
         <>
-            <h1>View Activities</h1>
+            <ViewCourses/>
         </>
     )
 }
 
-export default ProfViewActivities
+export default ProfViewCourses

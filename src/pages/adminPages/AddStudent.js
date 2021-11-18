@@ -7,11 +7,32 @@ import '../../styles/pages/EditUser.css'
 import { useHistory } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap'
 import schema from '../../schemas/addstudent.schema'
+import studentService from '../../services/student.service';
 
 function AddStudent() {
     const formRef = useRef()
     const history = useHistory();
     const [show, setShow] = useState(false);
+
+    const addNewStudent = () => {
+        const userRole =  "student";
+        studentService.addNewStudent(
+            formRef.current.values.email, 
+            formRef.current.values.password, 
+            userRole,
+            formRef.current.values.first_name,
+            formRef.current.values.last_name,
+            formRef.current.values.gender,
+            formRef.current.values.birth_date,
+            formRef.current.values.home_address,
+            formRef.current.values.contact_number,
+            formRef.current.values.civil_status,
+            formRef.current.values.year_level,
+            formRef.current.values.course_id,
+            formRef.current.values.section);
+
+            handleShow();
+    };
 
     const handleClose = () => {
         setShow(false)
@@ -22,7 +43,7 @@ function AddStudent() {
     return (
         <Formik
             validationSchema={schema}
-            onSubmit={handleShow}
+            onSubmit={addNewStudent}
             innerRef = {formRef}
             initialValues={{
             }}

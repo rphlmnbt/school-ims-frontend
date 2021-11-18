@@ -4,14 +4,54 @@ import { Form, Button, Container, Row, Col, Modal } from "react-bootstrap";
 import { useHistory } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap'
 import schema from '../../schemas/activity.schema'
-
+import activityService from '../../services/activity.service';
 
 function ModifyActivity() {
 
     const formRef = useRef()
     const history = useHistory();
     const [show, setShow] = useState(false);
+    let [formValues, setFormValues] = useState(null);
+    const [updateId, setupdateId] = useState(null);
 
+    // function for setting data using id
+    const setData = async e => {
+
+        var x = e.target.value;
+        var id = parseInt(x);
+        setupdateId(id);
+        await activityService.getOneActivity(id)
+        .then(response => {
+            const  loadValues =  {
+
+                activity_type: response.data.activityType,  
+                activity_name: response.data.activityName, 
+                student_score: response.data.studentScore,
+                total_score: response.data.totalScore,
+                student_id: response.data.students.userID,
+                subject_id: response.data.subject.subjectID
+                
+            } ;
+        return  setFormValues(loadValues);             
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+        
+    }
+
+    const updateActivity = () => {
+
+        activityService.updateActivity(    
+            formRef.current.values.activity_type,
+            formRef.current.values.activity_name,
+            formRef.current.values.student_score,
+            formRef.current.values.total_score,
+            formRef.current.values.student_id,
+            formRef.current.values.subject_id,
+            updateId);
+            handleShow();
+    };
 
 
     const handleClose = () => {
@@ -20,13 +60,22 @@ function ModifyActivity() {
     };
     const handleShow = () => setShow(true);
 
+    const initialValues = {
+        activity_type: '',  
+        activity_name: '', 
+        student_score: '',
+        total_score: '',
+        student_id: '',
+        subject_id: '',
+    }
+
     return (
         <Formik
             validationSchema={schema}
-            onSubmit={handleShow}
+             onSubmit={updateActivity}
             innerRef = {formRef}
-            initialValues={{
-            }}
+            initialValues={   formValues || initialValues}
+            enableReinitialize
         >
             {({
                 handleSubmit,
@@ -56,8 +105,7 @@ function ModifyActivity() {
                                                 type="text" 
                                                 name="activity_id" 
                                                 value={values.activity_id} 
-                                                onChange={handleChange}
-                                               
+                                                onChange={handleChange, setData}
                                                 isValid={touched.activity_id && !errors.activity_id}
                                                 isInvalid={touched.activity_id && !!errors.activity_id} 
                                                 placeholder="Activity ID" 
@@ -147,6 +195,45 @@ function ModifyActivity() {
                                             </Form.Control.Feedback>
                                         </Form.Group>
                                         
+                                    </Col>
+                                </Row>
+                                <Row className="g-2">
+                                <Col md>
+                                        <Form.Group  controlId="student_id">
+                                            <Form.Label>Student ID</Form.Label>
+                                            <Form.Control 
+                                                type="text" 
+                                                name="student_id" 
+                                                value={values.student_id} 
+                                                onChange={handleChange}
+                                                isValid={touched.student_id && !errors.student_id}
+                                                isInvalid={touched.student_id && !!errors.student_id} 
+                                                placeholder="Student ID" 
+                                            />
+                                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                                            <Form.Control.Feedback type="invalid">
+                                                {errors.student_id}
+                                            </Form.Control.Feedback>
+                                        </Form.Group>
+                                    </Col>
+
+                                    <Col md>
+                                        <Form.Group controlId="total_score">
+                                            <Form.Label>Subject ID</Form.Label>
+                                            <Form.Control 
+                                                type="text" 
+                                                name="subject_id" 
+                                                value={values.subject_id} 
+                                                onChange={handleChange}
+                                                isValid={touched.subject_id && !errors.subject_id} 
+                                                isInvalid={touched.subject_id && !!errors.subject_id} 
+                                                placeholder="Subject ID" 
+                                            />
+                                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                                            <Form.Control.Feedback type="invalid">
+                                                {errors.subject_id}
+                                            </Form.Control.Feedback>
+                                        </Form.Group>  
                                     </Col>
                                 </Row>
                                 

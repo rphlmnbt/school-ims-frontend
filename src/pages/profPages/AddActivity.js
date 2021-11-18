@@ -4,15 +4,33 @@ import { Form, Button, Container, Row, Col, Modal } from "react-bootstrap";
 import { useHistory } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap'
 import schema from '../../schemas/activity.schema'
-
+import activityService from '../../services/activity.service';
+import userService from '../../services/user.service';
 
 function AddActivity() {
 
     const formRef = useRef()
     const history = useHistory();
     const [show, setShow] = useState(false);
+    const userRole = userService.getCurrentUserRole()
+    const userID = userService.getCurrentUserID()
 
+    const addNewActivity = () => {
+        console.log(formRef.current.values.activity_name, 
+            formRef.current.values.activity_type,
+            formRef.current.values.student_score, 
+            formRef.current.values.total_score);
+        activityService.addNewActivity(
+            formRef.current.values.activity_name, 
+            formRef.current.values.activity_type,
+            formRef.current.values.student_score, 
+            formRef.current.values.total_score,
+            formRef.current.values.student_id,
+            userID,
+            formRef.current.values.subject_id);
 
+            handleShow();
+    };
 
     const handleClose = () => {
         setShow(false)
@@ -23,7 +41,7 @@ function AddActivity() {
     return (
         <Formik
             validationSchema={schema}
-            onSubmit={handleShow}
+            onSubmit={addNewActivity}
             innerRef = {formRef}
             initialValues={{
             }}
@@ -43,52 +61,11 @@ function AddActivity() {
                             <Row>
                                 <Col className="box-title p-2 mb-5">
                                     <div >
-                                        <h4>Create New Activity</h4>
+                                        <h4>Record Activity</h4>
                                     </div>
                                 </Col>
                             </Row>
                             <Form noValidate onSubmit={handleSubmit}>
-                                <Row className="g-2">
-                                    <Col md>
-                                        <Form.Group  controlId="activity_id">
-                                            <Form.Label>Activity ID</Form.Label>
-                                            <Form.Control 
-                                                type="text" 
-                                                name="activity_id" 
-                                                value={values.activity_id} 
-                                                onChange={handleChange}
-                                               
-                                                isValid={touched.activity_id && !errors.activity_id}
-                                                isInvalid={touched.activity_id && !!errors.activity_id} 
-                                                placeholder="Activity ID" 
-                                            />
-                                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                                            <Form.Control.Feedback type="invalid">
-                                                {errors.activity_id}
-                                            </Form.Control.Feedback>
-                                        </Form.Group>
-                                    </Col>
-
-                                    <Col md>
-                                        <Form.Group controlId="activity_type">
-                                            <Form.Label>Activity Type</Form.Label>
-                                            <Form.Control 
-                                                type="text" 
-                                                name="activity_type" 
-                                                value={values.activity_type} 
-                                                onChange={handleChange}
-                                                isValid={touched.activity_type && !errors.activity_type} 
-                                                isInvalid={touched.activity_type && !!errors.activity_type} 
-                                                placeholder="Activity Type" 
-                                            />
-                                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                                            <Form.Control.Feedback type="invalid">
-                                                {errors.activity_type}
-                                            </Form.Control.Feedback>
-                                        </Form.Group>
-                                        
-                                    </Col>
-                                </Row>
                                 <Row className="g-2">
                                     <Col md>
                                         <Form.Group  controlId="activity_name">
@@ -107,6 +84,25 @@ function AddActivity() {
                                                 {errors.activity_name}
                                             </Form.Control.Feedback>
                                         </Form.Group>
+                                    </Col>
+                                    <Col md>
+                                        <Form.Group controlId="activity_type">
+                                            <Form.Label>Activity Type</Form.Label>
+                                            <Form.Control 
+                                                type="text" 
+                                                name="activity_type" 
+                                                value={values.activity_type} 
+                                                onChange={handleChange}
+                                                isValid={touched.activity_type && !errors.activity_type} 
+                                                isInvalid={touched.activity_type && !!errors.activity_type} 
+                                                placeholder="Activity Type" 
+                                            />
+                                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                                            <Form.Control.Feedback type="invalid">
+                                                {errors.activity_type}
+                                            </Form.Control.Feedback>
+                                        </Form.Group>
+                                        
                                     </Col>
                                 </Row>
                                 <Row className="g-2">
@@ -145,8 +141,46 @@ function AddActivity() {
                                             <Form.Control.Feedback type="invalid">
                                                 {errors.total_score}
                                             </Form.Control.Feedback>
+                                        </Form.Group>  
+                                    </Col>
+                                </Row>
+                                <Row className="g-2">
+                                <Col md>
+                                        <Form.Group  controlId="student_id">
+                                            <Form.Label>Student ID</Form.Label>
+                                            <Form.Control 
+                                                type="text" 
+                                                name="student_id" 
+                                                value={values.student_id} 
+                                                onChange={handleChange}
+                                                isValid={touched.student_id && !errors.student_id}
+                                                isInvalid={touched.student_id && !!errors.student_id} 
+                                                placeholder="Student ID" 
+                                            />
+                                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                                            <Form.Control.Feedback type="invalid">
+                                                {errors.student_id}
+                                            </Form.Control.Feedback>
                                         </Form.Group>
-                                        
+                                    </Col>
+
+                                    <Col md>
+                                        <Form.Group controlId="total_score">
+                                            <Form.Label>Subject ID</Form.Label>
+                                            <Form.Control 
+                                                type="text" 
+                                                name="subject_id" 
+                                                value={values.subject_id} 
+                                                onChange={handleChange}
+                                                isValid={touched.subject_id && !errors.subject_id} 
+                                                isInvalid={touched.subject_id && !!errors.subject_id} 
+                                                placeholder="Subject ID" 
+                                            />
+                                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                                            <Form.Control.Feedback type="invalid">
+                                                {errors.subject_id}
+                                            </Form.Control.Feedback>
+                                        </Form.Group>  
                                     </Col>
                                 </Row>
                                 

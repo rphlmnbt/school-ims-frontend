@@ -8,18 +8,41 @@ import paginationFactory from 'react-bootstrap-table2-paginator';
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
 import '../styles/pages/BootstrapTable.css'
 import subjectService from '../services/subject.service';
+import userService from '../services/user.service';
+import studentService from '../services/student.service';
+import employeeService from '../services/employee.service';
 
 function ViewSubjects() {
     const [data, setData] = useState([]);
+    const userRole = userService.getCurrentUserRole()
+    const userID = userService.getCurrentUserID()
 
     useEffect(() => {
-        subjectService.getSubjects()
-          .then(response => {
-            setData(response.data);
-          })
-          .catch(function(error) {
-            console.log(error);
-          });
+        userRole === "admin" &&
+            subjectService.getSubjects()
+            .then(response => {
+                setData(response.data);
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+        userRole === "student" &&
+            studentService.getOneStudent(userID)
+            .then(response => {
+                setData(response.data.joinedStudentSubjects);
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+
+        userRole === "professor" &&
+            employeeService.getOneProf(userID)
+            .then(response => {
+                setData(response.data.joinedProfessorSubjects);
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
       }, []);
 
       const columns = [
@@ -29,7 +52,8 @@ function ViewSubjects() {
         { dataField: 'units', text: 'Units', sort: true },
         { dataField: 'lectureHours', text: 'Lecture Hours', sort: true },
         { dataField: 'labHours', text: 'Lab Hours', sort: true },
-        { dataField: 'departmentID', text: 'Department ID', sort: true }
+        userRole === "admin" ? { dataField: 'department.departmentName', text: 'Department Name', sort: true } :
+        { dataField: 'departmentName', text: 'Department Name', sort: true }
       ];
     
       const defaultSorted = [{

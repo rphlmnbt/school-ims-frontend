@@ -32,13 +32,14 @@ function LogIn() {
                 if(role === 'admin') {
                     path = `/acadbase/AdminDashboard`; 
                 }
-                if(role === 'student') {
+                if(role === 'professor') {
                     path = `/acadbase/ProfessorDashboard`; 
-                }
-                         
-                
+                }            
                 history.push(path);
+            }  else {
+                handleShow()
             }
+               
           })
           .catch(e => {
             console.log(e);
@@ -85,7 +86,7 @@ function LogIn() {
                                 <h3 id="infoLabel">
                                     ACADBASE
                                 </h3>
-                                <p className="text-white" >Lorem Ipsum Ailger Manyaman</p>
+                                <p className="text-white" >Information Management System</p>
                             </div>
                         </Col>
                         <Col lg={4} sm={12} className="text-center shadow p-3 bg-white">
@@ -104,7 +105,6 @@ function LogIn() {
                                         name="email" 
                                         value={values.email} 
                                         onChange={handleChange} 
-                                        isValid={touched.email && !errors.email}
                                         isInvalid={touched.email && !!errors.email} 
                                         placeholder="Enter Email"
                                     />
@@ -118,7 +118,6 @@ function LogIn() {
                                         name="password" 
                                         value={values.password} 
                                         onChange={handleChange} 
-                                        isValid={touched.password && !errors.password}
                                         isInvalid={touched.password && !!errors.password} 
                                         placeholder="Enter Password"
                                     />

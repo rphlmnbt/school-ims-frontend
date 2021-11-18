@@ -3,9 +3,6 @@ import * as yup from "yup"
 const schema = yup.object().shape({
 
 
-    activity_id: yup.number()
-                .min(1, "Invalid")
-                .nullable().required("Please enter activity ID"),
 
     activity_type: yup.string()
                 .min(1, "Invalid")
@@ -22,7 +19,13 @@ const schema = yup.object().shape({
 
     total_score: yup.number()
                 .min(1, "Invalid")
-                .nullable().required("Please enter total score")
+                .nullable().required("Please enter total score"),
+    student_id: yup.number()
+                .min(1, "Invalid")
+                .nullable().required("Please enter student ID"),
+    subject_id: yup.number()
+                .min(1, "Invalid")
+                .nullable().required("Please enter subject ID")
 })
 
 export default schema
