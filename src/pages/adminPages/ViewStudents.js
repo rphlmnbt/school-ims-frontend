@@ -42,7 +42,7 @@ function ViewStudents() {
         { dataField: 'gender', text: 'Gender', sort: true, style:colStyle },
         { dataField: 'civilStatus', text: 'Civil Status', sort: true, style:colStyle },
         { dataField: 'birthDate', text: 'Birth Date', sort: true, style:colStyle },
-        { dataField: 'courseID', text: 'Course ID', sort: true, style:colStyle },
+        { dataField: 'course.courseName', text: 'Course Name', sort: true, style:colStyle },
         { dataField: 'yearLevel', text: 'Year Level', sort: true, style:colStyle },
         { dataField: 'section', text: 'Section', sort: true, style:colStyle }
       ];

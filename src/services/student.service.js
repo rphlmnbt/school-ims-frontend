@@ -63,8 +63,8 @@ const updateStudent = (
     contactNumber,
     civilStatus,
     yearLevel,
-    section,
     courseID,
+    section,
     studentID   ) => {
   return axios.put(API_URL + `${studentID}`+
     `?email=${email}`+
