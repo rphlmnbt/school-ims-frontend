@@ -44,7 +44,7 @@ function ProfProfile() {
                     <span className="border-left"></span>
                     <Col lg={2} sm={12}>
                         <div>
-                        <p className="profile-info m-0 p-0 font-weight-bold">Employee ID : </p>
+                            <p className="profile-info m-0 p-0 font-weight-bold">Employee ID : </p>
                             <p className="profile-info  m-0 p-0 font-weight-bold">Email: </p>
                             <p className="profile-info  m-0 p-0 font-weight-bold">Contact Number: </p>
                             <p className="profile-info font-weight-bold">User Role: </p> 
@@ -52,7 +52,7 @@ function ProfProfile() {
                     </Col>
                     <Col lg={2} sm={12}>
                         <div>
-                        <p className="profile-info m-0 p-0">{professor.userID}</p>
+                            <p className="profile-info m-0 p-0">{professor.userID}</p>
                             <p className="profile-info  m-0 p-0">{professor.email}</p>
                             <p className="profile-info  m-0 p-0">{professor.contactNumber}</p>
                             <p className="profile-info ">{professor.userRole}</p> 
