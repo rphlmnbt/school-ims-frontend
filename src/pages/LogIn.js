@@ -85,7 +85,7 @@ function LogIn() {
                                 <h3 id="infoLabel">
                                     ACADBASE
                                 </h3>
-                                <p className="text-white" >Lorem Ipsum Ailger Manyaman</p>
+                                <p className="text-white" >Information Management System</p>
                             </div>
                         </Col>
                         <Col lg={4} sm={12} className="text-center shadow p-3 bg-white">
