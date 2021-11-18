@@ -41,7 +41,7 @@ function ViewEmployees() {
         { dataField: 'gender', text: 'Gender', sort: true, style:colStyle },
         { dataField: 'civilStatus', text: 'Civil Status', sort: true, style:colStyle },
         { dataField: 'birthDate', text: 'Birth Date', sort: true, style:colStyle },
-        { dataField: 'departmentID', text: 'Department ID', sort: true, style:colStyle }
+        { dataField: 'department.departmentName', text: 'Department Name', sort: true, style:colStyle }
       ];
     
       const defaultSorted = [{

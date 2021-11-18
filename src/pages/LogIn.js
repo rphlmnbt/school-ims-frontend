@@ -34,11 +34,12 @@ function LogIn() {
                 }
                 if(role === 'professor') {
                     path = `/acadbase/ProfessorDashboard`; 
-                }
-                         
-                
+                }            
                 history.push(path);
+            }  else {
+                handleShow()
             }
+               
           })
           .catch(e => {
             console.log(e);
@@ -104,7 +105,6 @@ function LogIn() {
                                         name="email" 
                                         value={values.email} 
                                         onChange={handleChange} 
-                                        isValid={touched.email && !errors.email}
                                         isInvalid={touched.email && !!errors.email} 
                                         placeholder="Enter Email"
                                     />
@@ -118,7 +118,6 @@ function LogIn() {
                                         name="password" 
                                         value={values.password} 
                                         onChange={handleChange} 
-                                        isValid={touched.password && !errors.password}
                                         isInvalid={touched.password && !!errors.password} 
                                         placeholder="Enter Password"
                                     />

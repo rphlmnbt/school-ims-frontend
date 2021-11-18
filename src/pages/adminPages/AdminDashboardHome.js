@@ -1,9 +1,64 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
+import adminService from '../../services/admin.service'
+import courseService from '../../services/course.service'
+import employeeService from '../../services/employee.service'
+import studentService from '../../services/student.service'
+import subjectService from '../../services/subject.service'
+import userService from '../../services/user.service'
 import '../../styles/pages/DashboardHome.css'
 import AdminProfile from './AdminProfile'
 
 function AdminDashboardHome() {
+    const userID = userService.getCurrentUserID()
+    const [admin, setAdmin] = useState([])
+    const [employees, setEmployees] = useState([])
+    const [students, setStudents] = useState([])
+    const [subjects, setSubjects] = useState([])
+    const [courses, setCourses] = useState([])
+
+    useEffect( async () => {
+        await adminService.getOneAdmin(userID)
+         .then(response => {
+           console.log(response.data)
+           setAdmin(response.data)
+         })
+         .catch(function(error) {
+           console.log(error);
+         });
+         await employeeService.getProfs()
+         .then(response => {
+            console.log(response.data)
+             setEmployees(response.data)
+         })
+         .catch(function(error) {
+            console.log(error);
+          });
+        await studentService.getStudents()
+        .then(response => {
+            console.log(response.data)
+             setStudents(response.data)
+         })
+         .catch(function(error) {
+            console.log(error);
+          });
+        await subjectService.getSubjects()
+        .then(response => {
+            console.log(response.data)
+             setSubjects(response.data)
+         })
+         .catch(function(error) {
+            console.log(error);
+          });
+          await courseService.getCourses()
+        .then(response => {
+            console.log(response.data)
+             setCourses(response.data)
+         })
+         .catch(function(error) {
+            console.log(error);
+          });
+     }, []);
 
     return (
             <Container>
@@ -20,9 +75,7 @@ function AdminDashboardHome() {
                         <Row className="box-info p-2 ">
                             <Col >
                                 <div>
-                                    <p className="par-center">Total Employees: 99</p><br/><br/>
-                                    <p className="par-center">Total Employees Resigned: 99</p><br/><br/>
-                                    <p className="par-center">Total Employees Present: 99</p>
+                                    <p className="par-center">Total Employees: {employees.length}</p><br/><br/>
                                 </div>
                             </Col>
                         </Row>
@@ -41,9 +94,7 @@ function AdminDashboardHome() {
                         <Row className="box-info p-2 ">
                             <Col >
                                 <div>
-                                    <p className="par-center">Total Students: 99</p><br/><br/>
-                                    <p className="par-center">Total Students Resigned: 99</p><br/><br/>
-                                    <p className="par-center">Total Students Present: 99</p>
+                                    <p className="par-center">Total Students: {students.length}</p><br/><br/>
                                 </div>
                             </Col>
                         </Row>
@@ -61,9 +112,7 @@ function AdminDashboardHome() {
                         <Row className="box-info p-2 ">
                             <Col >
                                 <div>
-                                    <p className="par-center">Total Subjects: 99</p><br/><br/>
-                                    <p className="par-center">Total Subjects Resigned: 99</p><br/><br/>
-                                    <p className="par-center">Total Subjects Present: 99</p>
+                                    <p className="par-center">Total Subjects: {subjects.length}</p><br/><br/>
                                 </div>
                             </Col>
                         </Row>
@@ -82,9 +131,7 @@ function AdminDashboardHome() {
                         <Row className="box-info p-2 ">
                             <Col >
                                 <div>
-                                    <p className="par-center">Total Course: 99</p> <br/><br/>
-                                    <p className="par-center">Total Course Resigned: 99</p><br/><br/>
-                                    <p className="par-center">Total Course Present: 99</p>
+                                    <p className="par-center">Total Course: {courses.length}</p> <br/><br/>
                                 </div>
                             </Col>
                         </Row>
