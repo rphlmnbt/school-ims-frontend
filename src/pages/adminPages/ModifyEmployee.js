@@ -46,9 +46,9 @@ function ModifyEmployee() {
         
     }
 
-    const updatStudent = () => {
+    const updateProfessor = () => {
         const userRole =  "student";
-        profService.updateStudent(    
+        profService.updateProfessor(    
             formRef.current.values.email, 
             formRef.current.values.password,
             userRole, 
@@ -86,7 +86,7 @@ function ModifyEmployee() {
     return (
         <Formik
             validationSchema={schema}
-            onSubmit={updatStudent}
+            onSubmit={updateProfessor}
             innerRef = {formRef}
             initialValues={   formValues || initialValues}
             enableReinitialize
