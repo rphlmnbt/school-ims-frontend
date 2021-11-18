@@ -24,7 +24,7 @@ function ModifyCourse() {
             const  loadValues =  {
                 course_name: response.data.courseCode,
                 course_code: response.data.courseCode,
-                department_id: response.data.departmentID,
+                department_id: response.data.department.departmentID,
                 chairperson: response.data.chairperson
             }   
         return  setFormValues(loadValues);             
