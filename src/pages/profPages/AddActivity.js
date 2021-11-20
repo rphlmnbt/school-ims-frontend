@@ -192,7 +192,7 @@ function AddActivity() {
                                 >
                                     Create Activity
                                 </Button>
-                                <LinkContainer to="/acadbase/AdminDashboard">
+                                <LinkContainer to="/acadbase/ProfessorDashboard">
                                     <Button 
                                         variant="primary btn-block"  
                                         className="submit-btn"
