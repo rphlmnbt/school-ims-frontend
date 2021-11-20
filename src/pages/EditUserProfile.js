@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { Formik} from 'formik'
 import { Form, Button, Container, Row, Col, Modal } from "react-bootstrap";
 import { FaUserCircle } from 'react-icons/fa'
@@ -12,13 +12,15 @@ import userService from '../services/user.service';
 
 function EditUserProfile() {
     const userID = userService.getCurrentUserID()
+    const userRole = userService.getCurrentUserRole()
     const formRef = useRef()
     const history = useHistory();
-    const [show, setShow] = useState(false);
+    const [show, setShow] = useState(false)
+    const [dashboardPath, setDashboardPath] = useState([])
 
     const handleClose = () => {
         setShow(false)
-        history.push('/acadbase/StudentDashboard')
+        history.push(dashboardPath)
     };
     const handleShow = () => setShow(true);
     const updateUser = () => {
@@ -46,6 +48,13 @@ function EditUserProfile() {
             }
         );
     };
+
+    useEffect(() => {
+        userRole === 'admin' && setDashboardPath('/acadbase/AdminDashboard');
+        userRole === 'professor' && setDashboardPath('/acadbase/ProfessorDashboard');
+        userRole === 'student' && setDashboardPath('/acadbase/StudentDashboard');
+
+      }, []);
 
     return (
         <Formik
@@ -289,7 +298,7 @@ function EditUserProfile() {
                                 >
                                     Apply Changes
                                 </Button>
-                                <LinkContainer to="/acadbase/StudentDashboard">
+                                <LinkContainer to={dashboardPath}>
                                     <Button 
                                         variant="primary btn-block"  
                                         className="submit-btn"
