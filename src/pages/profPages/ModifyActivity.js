@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap'
 import schema from '../../schemas/activity.schema'
 import activityService from '../../services/activity.service';
+import userService from '../../services/user.service';
 
 function ModifyActivity() {
 
@@ -42,14 +43,17 @@ function ModifyActivity() {
 
     const updateActivity = () => {
 
+
         activityService.updateActivity(    
             formRef.current.values.activity_type,
             formRef.current.values.activity_name,
             formRef.current.values.student_score,
             formRef.current.values.total_score,
+            updateId,
             formRef.current.values.student_id,
             formRef.current.values.subject_id,
-            updateId);
+            userService.getCurrentUserID()
+           );
             handleShow();
     };
 

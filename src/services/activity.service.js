@@ -37,23 +37,29 @@ const getOneActivity = (activityID) => {
   };
 
 const updateActivity = (
+  activityType,
     activityName,  
-    activityType,  
     studentScore,  
     totalScore,
     activityID,
-     studentID,
-     professorID,
-     subjectID
+     studentID,     
+     subjectID,
+     professorID
     ) => {
   return axios.put(API_URL + `${activityID}` +
   `?activityName=${activityName}` +
- ` &activityType=${activityType}` +
- ` &studentScore=${studentScore}` +
+  `&activityType=${activityType}` +
+  `&studentScore=${studentScore}` +
   `&totalScore=${totalScore}` +
   `&studentID=${studentID}` +
   `&professorID=${professorID}` +
   `&subjectID=${subjectID}`)
+  .then(response => {
+    console.log(response);
+  })
+  .catch(error => {
+    console.log(error);
+  });
   };
 
 
