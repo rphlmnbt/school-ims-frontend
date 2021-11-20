@@ -56,7 +56,7 @@ function ModifyActivity() {
 
     const handleClose = () => {
         setShow(false)
-        history.push('/acadbase/AdminDashboard')
+        history.push('/acadbase/ProfessorDashboard')
     };
     const handleShow = () => setShow(true);
 
