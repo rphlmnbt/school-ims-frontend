@@ -34,7 +34,6 @@ function ViewEmployees() {
       const columns = [
         { dataField: 'userID', text: 'Employee ID ', sort: true, style:colStyle },
         { dataField: 'email', text: 'Email', sort: true, style:colStyle },
-        { dataField: 'password', text: 'Password', sort: true, style:colStyle },
         { dataField: 'firstName', text: 'First Name', sort: true, style:colStyle },
         { dataField: 'lastName', text: 'Last Name', sort: true, style:colStyle },
         { dataField: 'contactNumber', text: 'Contact Number', sort: true, style:colStyle },
