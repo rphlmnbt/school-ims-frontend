@@ -1,13 +1,13 @@
 import React from 'react'
 
-
+import StudentViewCourses from '../ViewCourses'
 function ViewCourses() {
 
     return (
         <>
-            <h1>View Courses</h1>
+            <ViewCourses/>
         </>
     )
 }
 
-export default ViewCourses
+export default StudentViewCourses
