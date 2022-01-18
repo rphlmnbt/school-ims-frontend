@@ -60,6 +60,11 @@ export const SidebarData = [
             title: 'Modify Student',
             path: '/acadbase/AdminDashboard/ModifyStudent',
             icon: <FaIcons.FaUserCog />
+        },
+        {
+            title: 'Add Subject to Student',
+            path: '/acadbase/AdminDashboard/AddStudentSubject',
+            icon: <AiIcons.AiFillFileAdd />
         }
         ]
     },

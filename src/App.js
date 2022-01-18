@@ -28,6 +28,7 @@ import ProfViewCourses from './pages/profPages/ProfViewCourses'
 import ProfViewActivities from './pages/profPages/ProfViewActivities'
 import AddActivity from './pages/profPages/AddActivity'
 import ModifyActivity from './pages/profPages/ModifyActivity'
+import AddStudentSubject from './pages/adminPages/AddStudentSubject';
 
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
           <Route exact path="/acadbase/AdminDashboard/ModifyCourse" component={ModifyCourse} />
           <Route exact path="/acadbase/AdminDashboard/AddSubject" component={AddSubject} />
           <Route exact path="/acadbase/AdminDashboard/ModifySubject" component={ModifySubject} />
+          <Route exact path="/acadbase/AdminDashboard/AddStudentSubject" component={AddStudentSubject} />
 
           <Route exact path="/acadbase/StudentDashboard" component={StudentDashboardHome} />
           <Route exact path="/acadbase/StudentDashboard/EditUserProfile" component={EditUserProfile} />
