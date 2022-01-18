@@ -34,6 +34,11 @@ export const SidebarData = [
             title: 'Modify Employee',
             path: '/acadbase/AdminDashboard/ModifyEmployee',
             icon: <FaIcons.FaUserCog />
+        },
+        {
+            title: 'Add Subject to Employee',
+            path: '/acadbase/AdminDashboard/AddEmployeeSubject',
+            icon: <AiIcons.AiFillFileAdd />
         }
         ]
     },

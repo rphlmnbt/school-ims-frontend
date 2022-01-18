@@ -3,11 +3,11 @@ import { Formik} from 'formik'
 import { Form, Button, Container, Row, Col, Modal } from "react-bootstrap";
 import { useHistory } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap'
-import schema from '../../schemas/addstudentsubject.schema'
+import schema from '../../schemas/addemployeesubject.schema'
 import adminService from '../../services/admin.service';
 
 
-function AddStudentSubject() {
+function AddEmployeeSubject() {
 
     const formRef = useRef()
     const history = useHistory();
@@ -21,10 +21,10 @@ function AddStudentSubject() {
     };
     const handleShow = () => setShow(true);
 
-    const addStudentSubject = () => {
+    const addProfSubject = () => {
         
-        adminService.addStudentSubject(
-            formRef.current.values.student_id,
+        adminService.addProfSubject(
+            formRef.current.values.professor_id,
             formRef.current.values.subject_id);
         handleShow();
     };
@@ -32,7 +32,7 @@ function AddStudentSubject() {
     return (
         <Formik
             validationSchema={schema}
-            onSubmit={addStudentSubject}
+            onSubmit={addProfSubject}
             innerRef = {formRef}
             initialValues={{
             }}
@@ -52,7 +52,7 @@ function AddStudentSubject() {
                             <Row>
                                 <Col className="box-title p-2 mb-5">
                                     <div >
-                                        <h4>Add Subject to Student</h4>
+                                        <h4>Add Subject to Professor</h4>
                                     </div>
                                 </Col>
                             </Row>
@@ -80,20 +80,20 @@ function AddStudentSubject() {
                                 </Row>
                                 <Row className="g-2">
                                     <Col md>
-                                        <Form.Group  controlId="student_id">
-                                            <Form.Label>Student ID</Form.Label>
+                                        <Form.Group  controlId="professor_id">
+                                            <Form.Label>Professor ID</Form.Label>
                                             <Form.Control 
                                                 type="text" 
-                                                name="student_id" 
-                                                value={values.student_id} 
+                                                name="professor_id" 
+                                                value={values.professor_id} 
                                                 onChange={handleChange}
-                                                isValid={touched.student_id && !errors.student_id}
-                                                isInvalid={touched.student_id && !!errors.student_id} 
-                                                placeholder="Student ID" 
+                                                isValid={touched.professor_id && !errors.professor_id}
+                                                isInvalid={touched.professor_id && !!errors.professor_id} 
+                                                placeholder="Professor ID" 
                                             />
                                             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                                             <Form.Control.Feedback type="invalid">
-                                                {errors.student_id}
+                                                {errors.professor_id}
                                             </Form.Control.Feedback>
                                         </Form.Group>
                                     </Col>
@@ -137,4 +137,4 @@ function AddStudentSubject() {
     )
 }
 
-export default AddStudentSubject
+export default AddEmployeeSubject
