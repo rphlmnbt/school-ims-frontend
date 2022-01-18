@@ -36,7 +36,7 @@ function ModifyEmployee() {
                 home_address: response.data.homeAddress,
                 contact_number: response.data.contactNumber,
                 civil_status: response.data.civilStatus,
-                department_id: response.data.departmentID
+                department_id: response.data.department.departmentID
             } ;
         return  setFormValues(loadValues);             
         })

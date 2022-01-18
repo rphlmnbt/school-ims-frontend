@@ -37,7 +37,7 @@ function ModifyStudent() {
                 contact_number: response.data.contactNumber,
                 civil_status: response.data.civilStatus,
                 year_level: response.data.yearLevel,
-                course_id: response.data.courseID,
+                course_id: response.data.course.courseID,
                 section: response.data.section
             } ;
         return  setFormValues(loadValues);             
